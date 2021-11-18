@@ -1,0 +1,179 @@
+# encoding: UTF-8
+# Namespaces
+default namespace hspiel = "http://www.mospace.de/hspiel"
+namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
+
+# Das Wurzel-Element
+start = senderliste
+
+senderliste =
+## Senderliste ist das Wurzelelement der Sendeplatz-Übersicht. Es enthält
+## Senderfamilien als Tochterelemente.
+    element senderliste {senderliste.attlist, senderfamilie* }
+
+senderliste.attlist =
+    attribute xsi:schemaLocation { xsd:string }
+
+senderfamilie =
+## Senderfamilie/Rundfunkanstalt.
+    element senderfamilie { senderfamilie.attlist, sender+ }
+
+senderfamilie.attlist =
+    id.att &
+    name.att &
+    url.att &
+    frequrl.att?
+
+sender =
+## Ein einzelner Sender mit einer oder mehreren eigenen Frequenzen und/oder
+## Livestreams, auf denen das gleiche Programm gesendet wird.
+    element sender { sender.attlist, sender.content}
+
+sender.attlist =
+    id.att &
+    name.att &
+    url.att &
+    programmurl.att
+sender.attlist &=
+    attribute longname { xsd:string }
+sender.attlist &=
+    frequrl.att ?
+sender.attlist &=
+attribute sendeschema { xsd:anyURI } ?
+
+sender.content =
+    livestream*,
+    sendung*
+
+livestream =
+## Ein Webradio-Angebot.
+    element livestream { livestream.content }
+
+livestream.content =
+    url,
+    typ,
+    mplayertyp,
+    psradioid?
+
+sendung =
+## Eine Radiosendung mit unter Umständen mehreren Sendeterminen.
+    element sendung { sendung.attlist, sendung.content}
+
+sendung.attlist =
+    id.att &
+    name.att &
+    programmurl.att?
+
+sendung.content =
+    kategorie+,
+    sendetermin+
+
+kategorie =
+## Eine Sendungskategorie.
+    element kategorie { kategorie.datatype }
+
+sendetermin =
+## Ein einzelner Sendetermin. Das Attribut "name" sollte für "sendetermin"
+## nur benutzt werden, wenn es sich um die identische Wiederholung einer
+## anderen Ausstrahlung handelt. Andernfalls soll ein eigenes Element "sendung"
+## verwendet werden.
+    element sendetermin { sendetermin.attlist }
+
+sendetermin.attlist =
+    id.att? &
+    ( attribute tag { DAY.datatype } ) &
+    ( attribute zeit { zeit.datatype } ) &
+    ( attribute dauer { dauer.datatype } )? &
+    ( attribute intervall { string } )? &
+    (
+        ( attribute wdhvon { xsd:IDREF } )  &
+        name.att?
+    )? &
+    ( attribute anmerkung { string } )?
+
+
+url =
+## Eine Internet-Adresse.
+    element url { xsd:anyURI }
+
+psradioid =
+## Die Phonostar channelid des Senders bzw. Livestreams.
+    element psradioid { xsd:nonNegativeInteger}
+
+typ =
+## Der Anzeigename für das Datenformat des Livestreams.
+    element typ { livestreamtyp.datatype }
+
+mplayertyp =
+## Das genaue Datenformat des Livestreams, zur maschinellen Weiterverarbeitung.
+    element mplayertyp { mplayertyp.datatype }
+
+# Universal-Attribute
+url.att = attribute url { xsd:anyURI }
+programmurl.att = attribute programmurl { xsd:anyURI}
+frequrl.att = attribute frequenzenurl { xsd:anyURI}
+id.att = attribute id { xsd:ID }
+name.att = attribute name { string }
+
+# Datentypen
+mplayertyp.datatype =
+    string "ra"  |
+    string "rm"  |
+    string "m3u" |
+    string "asx" |
+    string "wma" |
+    string "mp3" |
+    string "smil"
+
+## Der Typ des Webradioangebots. Für Webradioangebote im MP3-Format soll
+## "MP3" verwendet werden, ebenso für Angebote im Ogg-Vorbis-Format "OGG".
+## "RP" steht als Sammelbezeichnung für die proprietären RealPlayer-Formate,
+## "WM" ebenso für proprietäre Windows-Media-Formate.
+## Livestreams in nicht-proprietären Formaten sollten bevorzugt angegeben
+## werden. Dabei soll dem MP3-Format
+## der Vorzug gegeben werden, da zur Zeit das Ogg-Vorbis-Format noch keine
+## vergleichbare Soft- und Hardware-Unterstützung genießt,
+livestreamtyp.datatype =
+    string "RP" |
+    string "WM" |
+    string "MP3" |
+    string "OGG"
+
+## Eine Sendungskategorie. Hörspiele erhalten in der Regel die Kategorie
+## "Hörspiel allgemein", es sei denn es handelt sich um Sendungen speziell
+## für Kinder ("Kinder"), um Krimis ("Krimi") oder um Klangkunst und Hörspiele
+## eher avantgardistischer Natur ("Experimentelles Hörspiel"). Falls an einem
+## bestimmten Sendetermin stets nur Teile mehrteiliger Hörspiele gesendet
+## werden, soll die Kategorie "Serie" verwendet werden. "Literatur" soll
+## ausschließlich für Lesungen nicht-szenischer Werke verwendet werden,
+## "Theater" für Tonaufnahmen tatsächlicher Theateraufführungen.
+kategorie.datatype =
+   string "Kinder"
+ | string "Literatur"
+ | string "Feature"
+ | string "Serie"
+ | string "Krimi"
+ | string "Dialekt"
+ | string "Hörspiel allgemein"
+ | string "Experimentelles Hörspiel"
+ | string "Theater"
+
+
+## Dauer in ganzen Minuten. Ein angehängtes Plus-Zeichen kann verwendet werden,
+## um auszudrücken, dass die Dauer den angegebenen Wert gelegentlich
+## überschreiten kann. Variiert die Dauer stark, so soll das Attribut "dauer"
+## überhaupt nicht angegeben werden.
+dauer.datatype =
+    xsd:string { pattern="\d+\+?" }
+
+## Eine minutengenaue 24h-Uhrzeit in MEZ/MESZ;
+## mit zweistelligen Stunden zwischen 00 und 23
+## und zweistelligen Minuten zwischen 00 und 59
+zeit.datatype =
+    xsd:string { pattern="(([0-1][0-9])|(2[0-3])):[0-5][0-9]" }
+
+## Wochentag als Ganzzahl zwischen 0 und 7.
+## 0 und 7 stehen für Sonntag. 1 = Montag, 2 = Dienstag, etc.
+DAY.datatype =
+    xsd:integer { minInclusive="0" maxInclusive="7" }
+

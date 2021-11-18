@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  encoding: UTF-8
+  Namespaces
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.mospace.de/hspiel" xmlns:hspiel="http://www.mospace.de/hspiel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+  <!-- Das Wurzel-Element -->
+  <xs:element name="senderliste">
+    <xs:annotation>
+      <xs:documentation>Senderliste ist das Wurzelelement der Sendeplatz-Übersicht. Es enthält
+Senderfamilien als Tochterelemente.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="hspiel:senderfamilie"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="hspiel:senderliste.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="senderliste.attlist">
+    <xs:attribute ref="xsi:schemaLocation" use="required"/>
+  </xs:attributeGroup>
+  <xs:element name="senderfamilie">
+    <xs:annotation>
+      <xs:documentation>Senderfamilie/Rundfunkanstalt.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="hspiel:sender"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="hspiel:senderfamilie.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="senderfamilie.attlist">
+    <xs:attributeGroup ref="hspiel:id.att"/>
+    <xs:attributeGroup ref="hspiel:name.att"/>
+    <xs:attributeGroup ref="hspiel:url.att"/>
+    <xs:attribute name="frequenzenurl" type="xs:anyURI"/>
+  </xs:attributeGroup>
+  <xs:element name="sender">
+    <xs:annotation>
+      <xs:documentation>Ein einzelner Sender mit einer oder mehreren eigenen Frequenzen und/oder
+Livestreams, auf denen das gleiche Programm gesendet wird.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="hspiel:sender.content">
+          <xs:attributeGroup ref="hspiel:sender.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="sender.attlist">
+    <xs:attributeGroup ref="hspiel:id.att"/>
+    <xs:attributeGroup ref="hspiel:name.att"/>
+    <xs:attributeGroup ref="hspiel:url.att"/>
+    <xs:attributeGroup ref="hspiel:programmurl.att"/>
+    <xs:attribute name="longname" use="required" type="xs:string"/>
+    <xs:attribute name="frequenzenurl" type="xs:anyURI"/>
+    <xs:attribute name="sendeschema" type="xs:anyURI"/>
+  </xs:attributeGroup>
+  <xs:complexType name="sender.content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="hspiel:livestream"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="hspiel:sendung"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="livestream" type="hspiel:livestream.content">
+    <xs:annotation>
+      <xs:documentation>Ein Webradio-Angebot.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="livestream.content">
+    <xs:sequence>
+      <xs:element ref="hspiel:url"/>
+      <xs:element ref="hspiel:typ"/>
+      <xs:element ref="hspiel:mplayertyp"/>
+      <xs:element minOccurs="0" ref="hspiel:psradioid"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="sendung">
+    <xs:annotation>
+      <xs:documentation>Eine Radiosendung mit unter Umständen mehreren Sendeterminen.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="hspiel:sendung.content">
+          <xs:attributeGroup ref="hspiel:sendung.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="sendung.attlist">
+    <xs:attributeGroup ref="hspiel:id.att"/>
+    <xs:attributeGroup ref="hspiel:name.att"/>
+    <xs:attribute name="programmurl" type="xs:anyURI"/>
+  </xs:attributeGroup>
+  <xs:complexType name="sendung.content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="hspiel:kategorie"/>
+      <xs:element maxOccurs="unbounded" ref="hspiel:sendetermin"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="kategorie" type="hspiel:kategorie.datatype">
+    <xs:annotation>
+      <xs:documentation>Eine Sendungskategorie.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="sendetermin">
+    <xs:annotation>
+      <xs:documentation>Ein einzelner Sendetermin. Das Attribut "name" sollte für "sendetermin"
+nur benutzt werden, wenn es sich um die identische Wiederholung einer
+anderen Ausstrahlung handelt. Andernfalls soll ein eigenes Element "sendung"
+verwendet werden.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="hspiel:sendetermin.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="sendetermin.attlist">
+    <xs:attribute name="id" type="xs:ID"/>
+    <xs:attribute name="tag" use="required" type="hspiel:DAY.datatype"/>
+    <xs:attribute name="zeit" use="required" type="hspiel:zeit.datatype"/>
+    <xs:attribute name="dauer" type="hspiel:dauer.datatype"/>
+    <xs:attribute name="intervall" type="xs:string"/>
+    <xs:attribute name="wdhvon" type="xs:IDREF"/>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="anmerkung" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:element name="url" type="xs:anyURI">
+    <xs:annotation>
+      <xs:documentation>Eine Internet-Adresse.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="psradioid" type="xs:nonNegativeInteger">
+    <xs:annotation>
+      <xs:documentation>Die Phonostar channelid des Senders bzw. Livestreams.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="typ" type="hspiel:livestreamtyp.datatype">
+    <xs:annotation>
+      <xs:documentation>Der Anzeigename für das Datenformat des Livestreams.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="mplayertyp" type="hspiel:mplayertyp.datatype">
+    <xs:annotation>
+      <xs:documentation>Das genaue Datenformat des Livestreams, zur maschinellen Weiterverarbeitung.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <!-- Universal-Attribute -->
+  <xs:attributeGroup name="url.att">
+    <xs:attribute name="url" use="required" type="xs:anyURI"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="programmurl.att">
+    <xs:attribute name="programmurl" use="required" type="xs:anyURI"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="frequrl.att">
+    <xs:attribute name="frequenzenurl" use="required" type="xs:anyURI"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="id.att">
+    <xs:attribute name="id" use="required" type="xs:ID"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="name.att">
+    <xs:attribute name="name" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <!-- Datentypen -->
+  <xs:simpleType name="mplayertyp.datatype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ra"/>
+      <xs:enumeration value="rm"/>
+      <xs:enumeration value="m3u"/>
+      <xs:enumeration value="asx"/>
+      <xs:enumeration value="wma"/>
+      <xs:enumeration value="mp3"/>
+      <xs:enumeration value="smil"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="livestreamtyp.datatype">
+    <xs:annotation>
+      <xs:documentation>Der Typ des Webradioangebots. Für Webradioangebote im MP3-Format soll
+"MP3" verwendet werden, ebenso für Angebote im Ogg-Vorbis-Format "OGG".
+"RP" steht als Sammelbezeichnung für die proprietären RealPlayer-Formate,
+"WM" ebenso für proprietäre Windows-Media-Formate.
+Livestreams in nicht-proprietären Formaten sollten bevorzugt angegeben
+werden. Dabei soll dem MP3-Format
+der Vorzug gegeben werden, da zur Zeit das Ogg-Vorbis-Format noch keine
+vergleichbare Soft- und Hardware-Unterstützung genießt,</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RP"/>
+      <xs:enumeration value="WM"/>
+      <xs:enumeration value="MP3"/>
+      <xs:enumeration value="OGG"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="kategorie.datatype">
+    <xs:annotation>
+      <xs:documentation>Eine Sendungskategorie. Hörspiele erhalten in der Regel die Kategorie
+"Hörspiel allgemein", es sei denn es handelt sich um Sendungen speziell
+für Kinder ("Kinder"), um Krimis ("Krimi") oder um Klangkunst und Hörspiele
+eher avantgardistischer Natur ("Experimentelles Hörspiel"). Falls an einem
+bestimmten Sendetermin stets nur Teile mehrteiliger Hörspiele gesendet
+werden, soll die Kategorie "Serie" verwendet werden. "Literatur" soll
+ausschließlich für Lesungen nicht-szenischer Werke verwendet werden,
+"Theater" für Tonaufnahmen tatsächlicher Theateraufführungen.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Kinder"/>
+      <xs:enumeration value="Literatur"/>
+      <xs:enumeration value="Feature"/>
+      <xs:enumeration value="Serie"/>
+      <xs:enumeration value="Krimi"/>
+      <xs:enumeration value="Dialekt"/>
+      <xs:enumeration value="Hörspiel allgemein"/>
+      <xs:enumeration value="Experimentelles Hörspiel"/>
+      <xs:enumeration value="Theater"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dauer.datatype">
+    <xs:annotation>
+      <xs:documentation>Dauer in ganzen Minuten. Ein angehängtes Plus-Zeichen kann verwendet werden,
+um auszudrücken, dass die Dauer den angegebenen Wert gelegentlich
+überschreiten kann. Variiert die Dauer stark, so soll das Attribut "dauer"
+überhaupt nicht angegeben werden.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d+\+?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="zeit.datatype">
+    <xs:annotation>
+      <xs:documentation>Eine minutengenaue 24h-Uhrzeit in MEZ/MESZ;
+mit zweistelligen Stunden zwischen 00 und 23
+und zweistelligen Minuten zwischen 00 und 59</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([0-1][0-9])|(2[0-3])):[0-5][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DAY.datatype">
+    <xs:annotation>
+      <xs:documentation>Wochentag als Ganzzahl zwischen 0 und 7.
+0 und 7 stehen für Sonntag. 1 = Montag, 2 = Dienstag, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="7"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

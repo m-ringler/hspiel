@@ -1,0 +1,2570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<senderliste
+    xmlns="http://www.mospace.de/hspiel"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mospace.de/hspiel/ radiosendeplaetze.xsd">
+
+
+  <!-- SR -->
+    <senderfamilie
+        id="sr"
+        name="Saarländischer Rundfunk"
+        url="http://www.sr-online.de/">
+            <!-- SR1 -->
+        <sender
+            id="sr1"
+            name="SR 1 Europawelle"
+            longname="Saarländischer Rundfunk Europawelle"
+            url="http://www.sr-online.de/sronline/sr1/uebersicht/index.html"
+            programmurl="http://www.sr-online.de/sronline/sr1/programm/index.html"
+            frequenzenurl="http://www.sr-online.de/sronline/sr1/programm/frequenzen/index.html">
+            <livestream>
+                <url>http://streaming01.sr-online.de/sr1_2.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>153</psradioid>
+            </livestream>
+       <!-- Radiotatort -->
+            <sendung
+                id="sr1_radiotatort"
+                name="Radiotatort"
+                programmurl="http://www.ard.de/home/radio/ARD_Radio_Tatort/94130/index.html">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="20:00"
+                    dauer="60"
+                    intervall="1x im Monat"
+                    wdhvon="nwradio_radiotatort_mi"/>
+            </sendung>
+        </sender>
+        <!-- SR2 -->
+        <sender
+            id="sr2"
+            name="SR 2 KulturRadio"
+            longname="Saarländischer Rundfunk KulturRadio"
+            url="http://www.sr-online.de/sronline/sr2/uebersicht/index.html"
+            programmurl="http://www.sr-online.de/sronline/sr2/programmvorschau/index.html"
+            frequenzenurl="http://www.sr-online.de/sronline/sr2/service/frequenzen/index.html">
+            <livestream>
+                <url>http://streaming01.sr-online.de/sr2_2.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>154</psradioid>
+            </livestream>
+      <!-- SR2 FeatureZeit -->
+            <sendung
+                id="sr2_featurezt"
+                name="FeatureZeit"
+                programmurl="http://www.sr-online.de/sronline/sr2/sendungen_a-z/featurezeit/index.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="09:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- SR2 HörspielZeit -->
+            <sendung
+                id="sr2_hspielzt"
+                name="Hörspielzeit"
+                programmurl="http://www.sr-online.de/sronline/sr2/sendungen_a-z/hoerspielzeit/index.html">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <kategorie>Krimi</kategorie>
+                <!-- <sendetermin tag="4" zeit="20:04" dauer="56" anmerkung="wenn nicht um 18:00"/> -->
+                <!--<sendetermin tag="4" zeit="20:04" dauer="56" anmerkung="am 19.11. sonst um 18:00"/>-->
+                <sendetermin
+                    tag="7"
+                    anmerkung="darin einmal im Monat Radiotatort"
+                    zeit="17:04"/>
+            </sendung>
+      <!-- SR2 Fortsetzung folgt -->
+            <sendung
+                id="sr2_forts"
+                name="Fortsetzung folgt..."
+                programmurl="http://www.sr-online.de/sronline/sr2/sendungen_a-z/fortsetzung_folgt/index.html">
+                <kategorie>Serie</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="14:05"
+                    dauer="25"/>
+                <sendetermin
+                    tag="2"
+                    zeit="14:05"
+                    dauer="25"/>
+                <sendetermin
+                    tag="3"
+                    zeit="14:05"
+                    dauer="25"/>
+                <sendetermin
+                    tag="4"
+                    zeit="14:05"
+                    dauer="25"/>
+                <sendetermin
+                    tag="5"
+                    zeit="14:05"
+                    dauer="25"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+  <!-- Radio Bremen -->
+    <!-- aktualisiert 2009-03-30 -->
+    <senderfamilie
+        id="rb"
+        name="Radio Bremen"
+        url="http://www.radiobremen.de/">
+    <!-- Nordwestradio -->
+        <sender
+            id="nwradio"
+            name="nordwest radio"
+            longname="Radio Bremen nordwest radio"
+            url="http://www.radiobremen.de/nordwestradio/"
+            frequenzenurl="http://www.radiobremen.de/nordwestradio/info/frequenzen/"
+            programmurl="http://www.radiobremen.de/nordwestradio/sendungen/hoerspiel/">
+            <livestream>
+                <url>http://dl-ondemand.radiobremen.de/nordwestradio.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>5556</psradioid>
+            </livestream>
+       <!-- Radiotatort -->
+            <sendung
+                id="nwradio_radiotatort"
+                name="Radiotatort"
+                programmurl="http://www.ard.de/home/radio/ARD_Radio_Tatort/94130/index.html">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="19:05"
+                    dauer="55"
+                    intervall="1x im Monat"
+                    id="nwradio_radiotatort_mi"/>
+            </sendung>
+       <!-- Hörspiel -->
+            <sendung
+                id="nwradio_hspiel"
+                name="Hörspiel">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="19:05"
+                    dauer="55"
+                    intervall="14-täglich"/>
+            </sendung>
+      <!-- Niederdeutsches Hörspiel -->
+            <sendung
+                id="nwradio_ndthspiel"
+                name="Niederdeutsches Hörspiel"
+                programmurl="http://www.radiobremen.de/nordwestradio/sendungen/niederdeutsches_hoerspiel/">
+                <kategorie>Dialekt</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="17:05"
+                    dauer="55"
+                    intervall="14-täglich"
+                    id="nwradio_ndthspiel_so"/>
+                <sendetermin
+                    tag="1"
+                    zeit="21:05"
+                    dauer="55"
+                    intervall="14-täglich"
+                    id="nwradio_ndthspiel_mo"
+                    wdhvon="nwradio_ndthspiel_so"/>
+            </sendung>
+      <!-- Feature -->
+            <sendung
+                id="nwradio_feature"
+                name="Feature"
+                programmurl="http://www.radiobremen.de/nordwestradio/sendungen/feature/">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="09:05"
+                    dauer="55"
+                    intervall="14-täglich"
+                    id="nwradio_feature_so"/>
+                <sendetermin
+                    tag="3"
+                    zeit="19:05"
+                    dauer="55"
+                    intervall="14-täglich"
+                    id="nwradio_feature_mi"
+                    wdhvon="nwradio_feature_so"/>
+            </sendung>
+      <!-- Fundsachen -->
+            <sendung
+                id="nwradio_fundsachen"
+                name="Fundsachen"
+                programmurl="http://www.radiobremen.de/nordwestradio/sendungen/feature/">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="09:05"
+                    dauer="55"
+                    intervall="14-täglich"
+                    id="nwradio_fundsachen_so"/>
+            </sendung>
+      <!-- Lesebuch -->
+            <sendung
+                id="nwradio_lesebuch"
+                name="Lesebuch"
+                programmurl="http://www.radiobremen.de/nordwestradio/sendungen/lesebuch/">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="18:30"
+                    dauer="30"/>
+                <sendetermin
+                    tag="2"
+                    zeit="18:30"
+                    dauer="30"/>
+                <sendetermin
+                    tag="3"
+                    zeit="18:30"
+                    dauer="30"/>
+                <sendetermin
+                    tag="4"
+                    zeit="18:30"
+                    dauer="30"/>
+                <sendetermin
+                    tag="5"
+                    zeit="18:30"
+                    dauer="30"/>
+            </sendung>
+        </sender>
+        <!-- Bremen Vier -->
+        <sender
+            id="rb4"
+            name="Bremen 4"
+            longname="Radio Bremen Vier"
+            url="http://www.radiobremen.de/bremenvier/"
+            frequenzenurl="http://www.radiobremen.de/bremenvier/ueber-uns/kontakt/"
+            programmurl="http://www.radiobremen.de/bremenvier/programm/themen/hoerbuecher/">
+            <livestream>
+                <url>http://dl-ondemand.radiobremen.de/bremenvier.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>7004</psradioid>
+            </livestream>
+       <!-- Radiotatort -->
+            <sendung
+                id="rb4_radiotatort"
+                name="Radiotatort"
+                programmurl="http://www.ard.de/home/radio/ARD_Radio_Tatort/94130/index.html">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="19:05"
+                    dauer="55"
+                    intervall="1x im Monat"
+                    wdhvon="nwradio_radiotatort_mi"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+  <!-- HR -->
+    <senderfamilie
+        id="hr"
+        name="Hessischer Rundfunk"
+        url="http://www.hr-online.de/">
+        <sender
+            id="youfm"
+            name="You FM"
+            longname="Hessischer Rundfunk You FM"
+            url="http://www.you-fm.de"
+            programmurl="http://www.you-fm.de/index.jsp?rubrik=12170"
+            frequenzenurl="http://www.hr-online.de/website/radio/you_fm/frequenzen12360.jsp?rubrik=12360">
+            <livestream>
+                <url>http://metafiles.gl-systemhaus.de/hr/youfm_2.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>6476</psradioid>
+            </livestream>
+        </sender>
+        <sender
+            id="hr2"
+            name="hr2"
+            longname="Hessischer Rundfunk Zwei"
+            url="http://www.hr-online.de/website/radio/hr2/index.jsp"
+            programmurl="http://www.hr-online.de/website/radio/hr2/kalender3758.jsp"
+            frequenzenurl="http://www.hr-online.de/website/radio/hr2/frequenzen3684.jsp?rubrik=3684">
+            <livestream>
+                <url>http://metafiles.gl-systemhaus.de/hr/hr2_2.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>6476</psradioid>
+            </livestream>
+            <sendung
+                id="hr2_libretto_lesung"
+                name="Libretto Lesung"
+                programmurl="http://www.hr-online.de/website/radio/hr2/index.jsp?rubrik=69084">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="09:30"
+                    dauer="30"
+                    id="lesung_mo_morgen"/>
+                <sendetermin
+                    tag="2"
+                    zeit="09:30"
+                    dauer="30"
+                    id="lesung_di_morgen"/>
+                <sendetermin
+                    tag="3"
+                    zeit="09:30"
+                    dauer="30"
+                    id="lesung_mi_morgen"/>
+                <sendetermin
+                    tag="4"
+                    zeit="09:30"
+                    dauer="30"
+                    id="lesung_do_morgen"/>
+                <sendetermin
+                    tag="5"
+                    zeit="09:30"
+                    dauer="30"
+                    id="lesung_fr_morgen"/>
+            </sendung>
+            <sendung
+                id="hr2_lesung"
+                name="Lesung">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="15:05"
+                    dauer="30"
+                    id="lesung_mo_mittag"/>
+                <sendetermin
+                    tag="2"
+                    zeit="15:05"
+                    dauer="30"
+                    id="lesung_di_mittag"/>
+                <sendetermin
+                    tag="3"
+                    zeit="15:05"
+                    dauer="30"
+                    id="lesung_mi_mittag"/>
+                <sendetermin
+                    tag="4"
+                    zeit="15:05"
+                    dauer="30"
+                    id="lesung_do_mittag"/>
+                <sendetermin
+                    tag="5"
+                    zeit="15:05"
+                    dauer="30"
+                    id="lesung_fr_mittag"/>
+            </sendung>
+            <sendung
+                id="hr2_spaetlese"
+                name="Spätlese">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="22:30"
+                    dauer="30"/>
+                <sendetermin
+                    tag="5"
+                    zeit="22:30"
+                    dauer="30"/>
+            </sendung>
+            <sendung
+                id="hr2_Domino"
+                name="Domino Lauschinsel"
+                programmurl="http://www.hr-online.de/website/radio/hr2/index.jsp?rubrik=20186">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="14:05"
+                    dauer="55"/>
+            </sendung>
+            <sendung
+                id="hr2_artistcorner"
+                name="hr2-Crossover: The Artist's Corner"
+                programmurl="http://www.hr-online.de/website/radio/hr2/index.jsp?rubrik=17846">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="23:05"
+                    dauer="55"/>
+            </sendung>
+            <sendung
+                id="hr2_hspielmi"
+                name="Hörspiel am Mittwoch"
+                programmurl="http://www.hr-online.de/website/radio/hr2/index.jsp?rubrik=17852">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="21:30"
+                    anmerkung="bis 15. 1. 2014, dann bereits um 21:00"/>
+                <sendetermin
+                    tag="3"
+                    zeit="21:00"
+                    anmerkung="ab 15. 1. 2014"/>
+            </sendung>
+            <sendung
+                id="hr2_hspielso"
+                name="Hörspiel am Sonntag Mittag"
+                programmurl="http://www.hr-online.de/website/radio/hr2/index.jsp?rubrik=17852">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="14:05"
+                    dauer="90"/>
+            </sendung>
+            <sendung
+                id="hr2_feature"
+                name="Feature"
+                programmurl="http://www.hr-online.de/website/radio/hr2/index.jsp?rubrik=17850">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="18:05"
+                    dauer="55"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+  <!-- DRADIO -->
+    <senderfamilie
+        id="dradio"
+        name="DRadio"
+        url="http://www.deutschlandradio.de">
+
+    <!-- DLF -->
+        <sender
+            id="dlf"
+            name="DLF"
+            longname="Deutschlandfunk"
+            frequenzenurl="http://www.deutschlandradio.de/frequenzen-suchen.212.de.html"
+            programmurl="http://www.deutschlandfunk.de/hoerspiel.687.de.html"
+            url="http://www.deutschlandfunk.de/startseite.187.de.html">
+            <livestream>
+                <url>http://www.deutschlandradio.de/streaming/dlf.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>127</psradioid>
+            </livestream>
+      <!-- DLF Lesezeit -->
+            <sendung
+                id="DLF_Lesezeit"
+                name="Lesezeit"
+                programmurl="http://www.deutschlandfunk.de/programmvorschau.281.de.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="20:30"
+                    dauer="30"
+                    anmerkung="Aus urheberrechtlichen Gründen nur dürftige Sendungsinformationen."/>
+            </sendung>
+      <!-- DLF Politisches Feature -->
+            <sendung
+                id="DLF_polfeat"
+                name="Das Feature"
+                programmurl="http://www.deutschlandfunk.de/feature.713.de.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="19:15"
+                    dauer="45"/>
+            </sendung>
+      <!-- DLF Kulturelles Feature -->
+            <sendung
+                id="DLF_kulfeat"
+                name="Studiozeit Feature"
+                programmurl="http://www.deutschlandradio.de/feature.625.de.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="20:10"
+                    dauer="50"/>
+            </sendung>
+      <!-- DLF Studiozeit Hörspiel -->
+            <sendung
+                id="DLF_studzthspiel"
+                name="Studiozeit Hörspiel">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="20:10"
+                    dauer="50"/>
+            </sendung>
+      <!-- DLF Mitternachtskrimi -->
+            <sendung
+                id="DLF_mnkrimi"
+                name="Mitternachtskrimi">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="00:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- DLF Hörspiel -->
+            <sendung
+                id="DLF_hspiel"
+                name="Hörspiel">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="20:05"
+                    dauer="120"/>
+            </sendung>
+        </sender>
+
+    <!-- DLR Kultur -->
+        <sender
+            id="dlr"
+            name="DLR Kultur"
+            longname="Deutschlandradio Kultur"
+            frequenzenurl="http://www.deutschlandradio.de/frequenzen-suchen.212.de.html"
+            programmurl="http://www.deutschlandradiokultur.de/hoerspiel.963.de.html"
+            url="http://www.deutschlandradiokultur.de/startseite.197.de.html">
+            <livestream>
+                <url>http://www.deutschlandradio.de/streaming/dkultur.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>126</psradioid>
+            </livestream>
+      <!-- DLR Kultur Aus den Archiven -->
+            <sendung
+                id="dlr_archiv"
+                name="Aus den Archiven"
+                programmurl="http://www.deutschlandradiokultur.de/aus-den-archiven.1260.de.html">
+                <kategorie>Feature</kategorie>
+                <kategorie>Hörspiel allgemein</kategorie>
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="05:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- DLR Kultur Feature -->
+            <sendung
+                id="dlr_feature"
+                name="Feature"
+                programmurl="http://www.deutschlandradiokultur.de/feature.957.de.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="00:05"
+                    dauer="55"/>
+                <sendetermin
+                    tag="6"
+                    zeit="18:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- DLR Kultur Zeitfragen -->
+            <sendung
+                id="dlr_zeitfragen"
+                name="Zeitfragen"
+                programmurl="http://www.deutschlandradiokultur.de/zeitfragen.975.de.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="19:30"
+                    dauer="30"/>
+            </sendung>
+      <!-- DLR Kultur Klangkunst -->
+            <sendung
+                id="dlr_klangkunst"
+                name="Klangkunst"
+                programmurl="http://www.deutschlandradiokultur.de/klangkunst.1021.de.html">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="00:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- DLR Kultur Hörspiel -->
+            <sendung
+                id="dlr_hspiel"
+                name="Hörspiel"
+                programmurl="http://www.deutschlandradiokultur.de/hoerspiel.963.de.html">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="21:33"
+                    dauer="60"/>
+                <sendetermin
+                    tag="7"
+                    zeit="18:30"
+                    dauer="90"/>
+            </sendung>
+     <!-- DLR Freispiel -->
+            <sendung
+                id="dlr_freispiel"
+                name="Freispiel"
+                programmurl="http://www.deutschlandradiokultur.de/freispiel.1019.de.html">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="00:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- DLR Krimi -->
+            <sendung
+                id="dlr_krimi"
+                name="Krimi"
+                programmurl="http://www.deutschlandradiokultur.de/kriminalhoerspiel.1033.de.html">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="21:33"
+                    dauer="55"/>
+            </sendung>
+      <!-- DLR Kultur Kinderhörspiel -->
+            <sendung
+                id="dlr_kihspiel"
+                name="Kakadu Kinderhörspiel"
+                programmurl="http://www.kakadu.de/">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="08:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- DLR Kultur Kinderlesung -->
+            <sendung
+                id="dlr_kilesung"
+                name="Kakadu Erzähltag"
+                programmurl="http://www.kakadu.de/programm/">
+                <kategorie>Kinder</kategorie>
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="07:30"
+                    dauer="30"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+
+  <!-- ORF -->
+    <senderfamilie
+        id="orf"
+        name="Österreichischer Rundfunk"
+        url="http://www.orf.at">
+
+    <!-- Ö1 -->
+    <!-- Livestream is erroneously reported broken by LinkSleuth -->
+        <sender
+            id="oe1"
+            name="Ö1"
+            longname="Österreichischer Rundfunk Eins"
+            frequenzenurl="http://oe1.orf.at/frequenzen"
+            programmurl="http://oe1.orf.at/programm/"
+            url="http://oe1.orf.at">
+            <livestream>
+                <url>http://mp3stream3.apasf.apa.at:8000/listen.pls</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>2212</psradioid>
+            </livestream>
+      <!-- Ö1 Hörspielstudio -->
+            <sendung
+                id="oe1_hspielstud"
+                name="Hörspielstudio">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="21:00"
+                    dauer="90" />
+            </sendung>
+      <!-- Ö1 Welttheater -->
+            <sendung
+                id="oe1_welttheater"
+                name="Das große Welttheater">
+                <kategorie>Theater</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="20:30"
+                    dauer="90"
+                    intervall="1x im Monat statt Hörspielstudio" />
+            </sendung>
+      <!-- Ö1 Hörspielgalerie -->
+            <sendung
+                id="oe1_hspielgalerie"
+                name="Die Hörspiel-Galerie">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="14:00"
+                    dauer="60" />
+            </sendung>
+      <!-- Ö1 Hörbilder -->
+            <sendung
+                id="oe1_hbilder"
+                name="Hörbilder">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="09:05"
+                    dauer="55" />
+            </sendung>
+      <!-- Ö1 Tonspuren -->
+            <sendung
+                id="oe1_tonspuren"
+                name="Tonspuren">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="22:15"
+                    dauer="40"
+                    id="oe1_tonspuren_fr"/>
+                <sendetermin
+                    tag="7"
+                    zeit="21:15"
+                    dauer="40"
+                    wdhvon="oe1_tonspuren_fr"/>
+            </sendung>
+      <!-- Ö1 Kunstradio -->
+            <sendung
+                id="oe1_kunstradio"
+                name="Zeit-Ton - Kunstradio"
+                programmurl="http://www.kunstradio.at">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="23:05"
+                    dauer="40" />
+            </sendung>
+      <!-- Ö1 Radiogeschichten -->
+            <sendung
+                id="oe1_radiogeschichten"
+                name="Radiogeschichten">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="11:40"
+                    dauer="20" />
+                <sendetermin
+                    tag="2"
+                    zeit="11:40"
+                    dauer="20" />
+                <sendetermin
+                    tag="3"
+                    zeit="11:40"
+                    dauer="20" />
+            </sendung>
+      <!-- Ö1 Leseprobe -->
+            <sendung
+                id="oe1_leseprobe"
+                name="Leseprobe">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="23:45"
+                    dauer="15" />
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+
+  <!-- SRF -->
+    <senderfamilie
+        id="srf"
+        name="Schweizer Radio und Fernsehen"
+        url="http://www.srf.ch">
+
+    <!-- SRF1 -->
+    <!-- Zuletzt aktualisiert 2012-12-27 -->
+        <sender
+            id="srf1"
+            name="SRF 1"
+            longname="Radio SRF Eins"
+            frequenzenurl="http://www.broadcast.ch/portal.aspx?pid=740"
+            programmurl="http://www.srf.ch/sendungen/hoerspiel"
+            url="http://www.srf.ch/radio-srf-1">
+            <livestream>
+                <url>http://stream.srg-ssr.ch/drs1/mp3_128.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>883</psradioid>
+            </livestream>
+            <!-- SRF Zambox Sonntagsgeschichte -->
+            <sendung
+                id="srf_zambox_so"
+                name="Zambox"
+                programmurl="http://www.zambo.ch/Start/TV-Radio/Zambox/">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="19:03"
+                    dauer="57"/>
+            </sendung>
+      <!-- SRF1 Hörspiel am Montag -->
+            <sendung
+                id="srf1_hspielmo"
+                name="Hörspiel">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="14:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- SRF1 Hörspiel am Freitag -->
+            <sendung
+                id="srf1_hspielfr"
+                name="Hörspiel">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="20:03"
+                    dauer="57"/>
+            </sendung>
+      <!-- SRF1 Schreckmümpfeli -->
+            <sendung
+                id="srf1_schreckm"
+                name="Schreckmümpfeli"
+                programmurl="http://www.srf.ch/sendungen/schreckmuempfeli">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    id="srf1_schreckm_mo"
+                    tag="1"
+                    zeit="23:04"
+                    dauer="06"/>
+            </sendung>
+      <!-- SRF1 Morgengeschichte -->
+            <sendung
+                id="srf1_morgengeschichte"
+                name="Morgengeschichte"
+                programmurl="http://www.srf.ch/sendungen/morgengeschichte">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="06:42"
+                    dauer="02"/>
+            </sendung>
+        </sender>
+
+    <!-- SRF2 -->
+    <!-- Zuletzt aktualisiert 2012-12-27 -->
+        <sender
+            id="srf2"
+            name="SRF 2"
+            longname="Radio SRF Zwei Kultur"
+            frequenzenurl="http://www.broadcast.ch/portal.aspx?pid=740"
+            url="http://www.srf.ch/radio-srf-2-kultur"
+            programmurl="http://www.srf.ch/sendungen/hoerspiel">
+            <livestream>
+                <url>http://stream.srg-ssr.ch/drs2/mp3_128.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>884</psradioid>
+            </livestream>
+      <!-- Hörspiel Mittwoch -->
+            <sendung
+                id="srf2_hspiel_mi"
+                name="Hörspiel, ArtOrt Hörspiel">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <kategorie>Dialekt</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="20:00"
+                    dauer="60"/>
+            </sendung>
+      <!-- Hörspiel Samstag -->
+            <sendung
+                id="srf2_hspiel_sa"
+                name="Hörspiel, Ein Fall für SRF2">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <kategorie>Krimi</kategorie>
+                <kategorie>Dialekt</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="21:00"
+                    dauer="90"/>
+            </sendung>
+        </sender>
+
+    <!-- SRF3 -->
+    <!-- Zuletzt aktualisiert 2012-12-27 -->
+        <sender
+            id="srf3"
+            longname="Radio SRF Drei"
+            name="SRF 3"
+            url="http://www.srf.ch/radio-srf-3/"
+            programmurl="http://www.srf.ch/sendungen/maloney"
+            frequenzenurl="http://www.broadcast.ch/portal.aspx?pid=740">
+            <livestream>
+                <url>http://stream.srg-ssr.ch/drs3/mp3_128.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>885</psradioid>
+            </livestream>
+      <!-- SRF3 Schreckmümpfeli -->
+      <!--
+      <sendung
+       id="srf3_schreckm"
+       name="Schreckmümpfeli"
+       programmurl="http://www.srf.ch/index.cfm?gbAction=35C877B1-ACC6-4B4C-B2E51903C40ED627&amp;CategoryNodeID=7838DF38-CD04-49ED-9184352FA53500D6">
+<kategorie>Krimi</kategorie>
+        <sendetermin wdhvon="srf1_schreckm_mo" tag="7" zeit="23:10" dauer="10"/>
+      </sendung>
+      -->
+      <!-- SRF3 Philip Maloney -->
+            <sendung
+                id="srf3_philmaloney"
+                name="Philip Maloney"
+                programmurl="http://www.srf.ch/sendungen/maloney">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="11:00"
+                    dauer="60"/>
+            </sendung>
+        </sender>
+
+<!-- SRF Musikwelle -->
+    <!-- Zuletzt aktualisiert 2008-09-29 -->
+        <sender
+            id="srfmw"
+            longname="Radio SRF Musikwelle"
+            name="SRF Musikwelle"
+            url="http://www.srf.ch/radio-srf-musikwelle"
+            programmurl="http://www.srf.ch/sendungen/hoerspiel"
+            frequenzenurl="http://www.broadcast.ch/portal.aspx?pid=740">
+            <livestream>
+                <url>http://stream.srg-ssr.ch/drsmw/mp3_128.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>886</psradioid>
+            </livestream>
+      <!-- SRF Musikwelle Hörspiel -->
+            <sendung
+                id="srfmw_hsp"
+                name="Hörspiel"
+                programmurl="http://www.srf.ch/sendungen/hoerspiel">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="14:00"
+                    dauer="120"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+  <!-- MDR -->
+    <senderfamilie
+        id="mdr"
+        name="Mitteldeutscher Rundfunk"
+        url="http://www.mdr.de">
+    <!-- MDR FIGARO -->
+        <sender
+            id="mdrfig"
+            name="mdr Figaro"
+            longname="Mitteldeutscher Rundfunk Figaro"
+            frequenzenurl="http://www.mdr.de/mdr-figaro/frequenzen/"
+            programmurl="http://www.mdr.de/mdr-figaro/hoerspiel/hoerspiel/"
+            url="http://www.mdr.de/mdr-figaro/">
+            <livestream>
+                <!-- Leading #EXTM3U confuses mplayer and is suppressed -->
+                <url>http://hspiel.mospace.de/strip.php?url=http://avw.mdr.de/streams/284310-0_mp3_high.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>1227</psradioid>
+            </livestream>
+      <!-- MDR FIGARO LESEZEIT -->
+            <sendung
+                id="mdrfig_lz"
+                name="Lesezeit"
+                programmurl="http://www.mdr.de/mdr-figaro/literatur/2247275.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="09:05"
+                    dauer="30"
+                    id="mdrfig_lz_mo"/>
+                <sendetermin
+                    tag="1"
+                    zeit="19:05"
+                    dauer="30"
+                    wdhvon="mdrfig_lz_mo"/>
+                <sendetermin
+                    tag="2"
+                    zeit="09:05"
+                    dauer="30"
+                    id="mdrfig_lz_di"/>
+                <sendetermin
+                    tag="2"
+                    zeit="19:05"
+                    dauer="30"
+                    wdhvon="mdrfig_lz_di"/>
+                <sendetermin
+                    tag="3"
+                    zeit="09:05"
+                    dauer="30"
+                    id="mdrfig_lz_mi"/>
+                <sendetermin
+                    tag="3"
+                    zeit="19:05"
+                    dauer="30"
+                    wdhvon="mdrfig_lz_mi"/>
+                <sendetermin
+                    tag="4"
+                    zeit="09:05"
+                    dauer="30"
+                    id="mdrfig_lz_do"/>
+                <sendetermin
+                    tag="4"
+                    zeit="19:05"
+                    dauer="30"
+                    wdhvon="mdrfig_lz_do"/>
+                <sendetermin
+                    tag="5"
+                    zeit="09:05"
+                    dauer="30"
+                    id="mdrfig_lz_fr"/>
+                <sendetermin
+                    tag="5"
+                    zeit="19:05"
+                    dauer="30"
+                    wdhvon="mdrfig_lz_fr"/>
+            </sendung>
+      <!-- MDR Figaro Figarinos Kinderhörspiel -->
+            <sendung
+                id="mdrfig_khspiel"
+                name="Figarinos Kinderhörspiel"
+                programmurl="http://www.mdr.de/figarino/radio/verteilseite1320.html">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="07:10"
+                    dauer="50"/>
+            </sendung>
+      <!-- MDR Figaro Hörspiel, Krimi, Feature -->
+            <sendung
+                id="mdrfig_krimi"
+                name="Hörspiel, Krimi, Feature">
+                <kategorie>Krimi</kategorie>
+                <kategorie>Hörspiel allgemein</kategorie>
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="18:00"
+                    dauer="60"/>
+            </sendung>
+      <!-- MDR FIGARO FIGAROTHEK KLASSIKERLESUNG -->
+            <sendung
+                id="mdrfig_figarothek"
+                name="Figarothek"
+                programmurl="http://www.mdr.de/mdr-figaro/literatur/5198468.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="15:10"
+                    dauer="15"/>
+                <sendetermin
+                    tag="2"
+                    zeit="15:10"
+                    dauer="15"/>
+                <sendetermin
+                    tag="3"
+                    zeit="15:10"
+                    dauer="15"/>
+                <sendetermin
+                    tag="4"
+                    zeit="15:10"
+                    dauer="15"/>
+                <sendetermin
+                    tag="5"
+                    zeit="15:10"
+                    dauer="15"/>
+            </sendung>
+      <!-- MDR Figaro Hörspielzeit -->
+            <sendung
+                id="mdrfig_hsz"
+                name="Hörspiel">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="22:00"
+                    dauer="90"/>
+            </sendung>
+      <!-- MDR Figaro Feature -->
+            <sendung
+                id="mdrfig_feature"
+                name="Feature"
+                programmurl="http://www.mdr.de/mdr-figaro/hoerspiel/feature/7010420.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="22:00"
+                    dauer="60"/>
+                <sendetermin
+                    tag="6"
+                    zeit="09:05"
+                    dauer="30"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+
+  <!-- RBB -->
+    <senderfamilie
+        id="rbb"
+        name="Radio Berlin-Brandenburg"
+        url="http://www.rbb.de">
+
+    <!-- RBB88.8 -->
+    <!-- zuletzt aktualisiert 2008-04-06 -->
+        <sender
+            id="rbb888"
+            name="RBB 88.8"
+            longname="RBB Radio Berlin"
+            frequenzenurl="http://www.radioberlin.de/programm/frequenzen/frequenzen.html"
+            url="http://www.radioberlin.de/"
+            programmurl="http://www.radioberlin.de/programm/index.html">
+            <livestream>
+                <url>http://www.radioberlin.de/live.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>125</psradioid>
+            </livestream>
+      <!-- RBB88.8 Ohrenbär -->
+            <sendung
+                id="sfb_ob"
+                name="Ohrenbär"
+                programmurl="http://www.ohrenbaer.de/">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="19:20"
+                    dauer="10"
+                    id="rbb_ob_mo"/>
+                <sendetermin
+                    tag="2"
+                    zeit="19:20"
+                    dauer="10"
+                    id="rbb_ob_di"/>
+                <sendetermin
+                    tag="3"
+                    zeit="19:20"
+                    dauer="10"
+                    id="rbb_ob_mi"/>
+                <sendetermin
+                    tag="4"
+                    zeit="19:20"
+                    dauer="10"
+                    id="rbb_ob_do"/>
+                <sendetermin
+                    tag="5"
+                    zeit="19:20"
+                    dauer="10"
+                    id="rbb_ob_fr"/>
+                <sendetermin
+                    tag="6"
+                    zeit="19:20"
+                    dauer="10"
+                    id="rbb_ob_sa"/>
+                <sendetermin
+                    tag="7"
+                    zeit="19:20"
+                    dauer="10"
+                    id="rbb_ob_so"/>
+            </sendung>
+      <!--<sendung
+       id="rbb888_krimi"
+       name="Der Krimi zur Nacht"
+       programmurl="http://www.radioberlin.de/_/beitrag_jsp/key=beitrag_41808.html">
+<kategorie>Krimi</kategorie>
+        <sendetermin tag="7" zeit="22:00" dauer="60"/>
+      </sendung>-->
+        </sender>
+
+    <!-- RBB Radio Eins -->
+        <sender
+            id="rbb1"
+            name="RBB 1"
+            longname="Rundfunk Berlin-Brandenburg Radio Eins"
+            url="http://www.radioeins.de"
+            programmurl="http://www.radioeins.de/programm/index.html"
+            frequenzenurl="http://www.radioeins.de/frequenzen/index.html">
+            <livestream>
+                <url>http://www.radioeins.de/live.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>133</psradioid>
+            </livestream>
+       <!-- Radiotatort -->
+            <sendung
+                id="rbb1_radiotatort"
+                name="Radiotatort"
+                programmurl="http://www.ard.de/home/radio/ARD_Radio_Tatort/94130/index.html">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="20:00"
+                    dauer="60"
+                    intervall="1x im Monat"
+                    wdhvon="nwradio_radiotatort_mi"/>
+            </sendung>
+        </sender>
+
+    <!-- zuletzt aktualisiert 2008-09-03 -->
+    <!-- RBB Kulturradio -->
+        <sender
+            id="rbbkultur"
+            name="RBB Kulturradio"
+            longname="Rundfunk Berlin-Brandenburg Kulturradio"
+            url="http://www.kulturradio.de"
+            programmurl="http://www.kulturradio.de/programm/"
+            frequenzenurl="http://www.kulturradio.de/frequenzen/">
+            <livestream>
+                <url>http://www.kulturradio.de/live.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>170</psradioid>
+            </livestream>
+       <!-- Radiotatort -->
+            <sendung
+                id="rbbkultur_radiotatort"
+                name="Radiotatort"
+                programmurl="http://www.ard.de/home/radio/ARD_Radio_Tatort/94130/index.html">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="22:04"
+                    dauer="56"
+                    intervall="1x im Monat"
+                    wdhvon="nwradio_radiotatort_mi" />
+            </sendung>
+            <sendung
+                id="rbbkultur_lesung_mittag"
+                name="Lesung im Kulturradio am Mittag"
+                programmurl="http://www.kulturradio.de/programm/schema/sendungen/lesung.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="14:30"
+                    dauer="30"
+                    id="rbbkultur_lesung_mo_mittag"/>
+                <sendetermin
+                    tag="2"
+                    zeit="14:30"
+                    dauer="30"
+                    id="rbbkultur_lesung_di_mittag"/>
+                <sendetermin
+                    tag="3"
+                    zeit="14:30"
+                    dauer="30"
+                    id="rbbkultur_lesung_mi_mittag"/>
+                <sendetermin
+                    tag="4"
+                    zeit="14:30"
+                    dauer="30"
+                    id="rbbkultur_lesung_do_mittag"/>
+                <sendetermin
+                    tag="5"
+                    zeit="14:30"
+                    dauer="30"
+                    id="rbbkultur_lesung_fr_mittag"/>
+            </sendung>
+            <sendung
+                id="rbbkultur_lesung_abends"
+                name="Lesung"
+                programmurl="http://www.kulturradio.de/programm/schema/sendungen/lesung.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="23:04"
+                    dauer="31"
+                    wdhvon="rbbkultur_lesung_mo_mittag"/>
+                <sendetermin
+                    tag="2"
+                    zeit="23:04"
+                    dauer="31"
+                    wdhvon="rbbkultur_lesung_di_mittag"/>
+                <sendetermin
+                    tag="3"
+                    zeit="23:04"
+                    dauer="31"
+                    wdhvon="rbbkultur_lesung_mi_mittag"/>
+                <sendetermin
+                    tag="4"
+                    zeit="23:04"
+                    dauer="31"
+                    wdhvon="rbbkultur_lesung_do_mittag"/>
+                <sendetermin
+                    tag="5"
+                    zeit="23:04"
+                    dauer="31"
+                    wdhvon="rbbkultur_lesung_fr_mittag"/>
+            </sendung>
+            <sendung
+                id="rbbkultur_feature_mi"
+                name="Feature"
+                programmurl="http://www.kulturradio.de/programm/schema/sendungen/feature.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="22:04"
+                    dauer="56"/>
+                <sendetermin
+                    tag="6"
+                    zeit="09:05"
+                    dauer="30"/>
+                <sendetermin
+                    tag="7"
+                    zeit="14:04"
+                    dauer="56"/>
+            </sendung>
+      <!-- RBB Kultur Hörspiel -->
+            <sendung
+                id="rbbkultur_hspiel"
+                name="Hörspiel"
+                programmurl="http://www.kulturradio.de/programm/schema/sendungen/hoerspiel.html">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="22:04"
+                    dauer="56"/>
+                <sendetermin
+                    tag="7"
+                    zeit="14:04"
+                    dauer="56"
+                    intervall="am letzten Sonntag im Monat"/>
+            </sendung>
+      <!-- RBB Kultur Hörstück -->
+            <sendung
+                id="rbbkultur_hstück"
+                name="Hörstück"
+                programmurl="http://www.kulturradio.de/programm/schema/sendungen/hoerspiel.html">
+                <kategorie>Feature</kategorie>
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="14:10"
+                    dauer="20"/>
+                <sendetermin
+                    tag="2"
+                    zeit="14:10"
+                    dauer="20"/>
+                <sendetermin
+                    tag="3"
+                    zeit="14:10"
+                    dauer="20"/>
+                <sendetermin
+                    tag="4"
+                    zeit="14:10"
+                    dauer="20"/>
+                <sendetermin
+                    tag="5"
+                    zeit="14:10"
+                    dauer="20"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+
+  <!-- BR -->
+    <senderfamilie
+        id="br"
+        name="Bayerischer Rundfunk"
+        url="http://www.br.de">
+
+    <!-- BR2 -->
+    <!-- zuletzt aktualisiert 2011-11-23 -->
+        <sender
+            id="br2"
+            name="BR 2"
+            longname="Bayerischer Rundfunk Bayern2Radio"
+            frequenzenurl="http://www.br.de/unternehmen/inhalt/technik/ukw-frequenzen100.html"
+            programmurl="http://www.br.de/bayern2/hoerspiel-und-medienkunst/index.xml"
+            url="http://www.br.de/radio/bayern2/index.html">
+            <livestream>
+                <url>http://streams.br.de/bayern2_2.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>122</psradioid>
+            </livestream>
+      <!-- BR 2 radio mikro -->
+            <sendung
+                id="br2_mikro"
+                name="Radio Mikro Hörspiel"
+                programmurl="http://www.br-online.de/kinder/radio-tv/hoerspiele/">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="18:30"
+                    dauer="30"
+                    id="br2_mikro_sa"/>
+            </sendung>
+      <!-- BR 2 hör!spiel! -->
+            <sendung
+                id="br2_hsp"
+                name="Hörspiel"
+                programmurl="http://www.br.de/radio/bayern2/sendungen/hoerspiel-und-medienkunst/hoerspiel100.html">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <!-- 60 min -->
+                <sendetermin
+                    tag="7"
+                    zeit="15:00"
+                    dauer="60"
+                    id="br2_hsp_so"/>
+                <sendetermin
+                    tag="1"
+                    zeit="20:03"
+                    dauer="60"
+                    id="br2_hsp_mo"
+                    wdhvon="br2_hsp_so"/>
+                <!-- 115 min -->
+                <sendetermin
+                    tag="6"
+                    zeit="15:05"
+                    dauer="115"
+                    id="br2_hsp_sa"/>
+            </sendung>
+      <!-- BR2 krimi! -->
+            <sendung
+                id="br2_krimi"
+                name="krimi!"
+                programmurl="http://www.br.de/radio/bayern2/sendungen/hoerspiel-und-medienkunst/radiokrimi102.html">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="20:03"
+                    dauer="57"
+                    id="br2_krimi_mi"/>
+                <!--<sendetermin
+                    tag="4"
+                    zeit="21:03"
+                    dauer="57"
+                    id="br2_krimi_do"
+                    wdhvon="br2_krimi_mi"/>-->
+            </sendung>
+      <!-- BR2 hörspiel!art.mix -->
+            <sendung
+                id="br2_hspartmix"
+                name="hör!spiel!art.mix"
+                programmurl="http://www.br.de/radio/bayern2/sendungen/hoerspiel-und-medienkunst/hoerspielartmix100.html">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="21:03"
+                    dauer="117"/>
+            </sendung>
+      <!-- BR2 radioTexte -->
+            <sendung
+                id="br2_rtexte_di"
+                name="radioTexte am Dienstag"
+                programmurl="http://www.br.de/radio/bayern2/kultur/radiotexte/index.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="21:03"
+                    dauer="57"/>
+            </sendung>
+            <sendung
+                id="br2_rtexte_do"
+                name="radioTexte am Donnerstag"
+                programmurl="http://www.br.de/radio/bayern2/kultur/radiotexte/index.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="4"
+                    zeit="21:03"
+                    dauer="57"/>
+            </sendung>
+            <sendung
+                id="br2_rtexte_so"
+                name="radioTexte - Das offene Buch"
+                programmurl="http://www.br.de/radio/bayern2/kultur/radiotexte/index.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="11:00"
+                    dauer="30"/>
+            </sendung>
+      <!-- BR2 radioFeature -->
+            <sendung
+                id="br2_rfeature"
+                name="radioFeature"
+                programmurl="http://www.br.de/radio/bayern2/kultur/radiofeature/index.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="13:05"
+                    dauer="55"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+
+  <!-- NDR -->
+    <senderfamilie
+        id="ndr"
+        name="Norddeutscher Rundfunk"
+        url="http://www.ndr.de">
+  <!-- NDR 90,3 -->
+        <sender
+            id="ndr903"
+            name="NDR 90.3"
+            longname="Norddeutscher Rundfunk 90.3"
+            url="http://www.ndr.de/903/"
+            programmurl="http://www.ndr.de/903/programm/">
+            <livestream>
+                <url>http://www.ndr.de/resources/metadaten/audio/m3u/ndr903.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>138</psradioid>
+            </livestream>
+            <sendung
+                id="ndr903_platthsp"
+                name="Dat Plattdüütsche Hörspeel"
+                programmurl="http://www.ndr.de/kultur/norddeutsche_sprache/niederdeutsch/Niederdeutsches-Hoerspiel,niederdeutsches4.html">
+                <kategorie>Dialekt</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="20:05"
+                    dauer="55"
+                    intervall="14-täglich"
+                    wdhvon="wellenord_ndthsp_fr"/>
+            </sendung>
+        </sender>
+<!-- NDR 1 Welle Nord -->
+        <sender
+            id="wellenord"
+            name="Welle Nord"
+            longname="Norddeutscher Rundfunk 1 Welle Nord"
+            url="http://www.ndr.de/wellenord/"
+            frequenzenurl="http://www.ndr.de/wellenord/service/Frequenz-Uebersicht-NDR-1-Welle-Nord,frequenzen115.html"
+            programmurl="http://www.ndr.de/wellenord/programm/">
+            <livestream>
+                <url>http://www.ndr.de/resources/metadaten/audio/m3u/ndr1wellenord.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>1242</psradioid>
+            </livestream>
+            <sendung
+                id="wellenord_ndthsp"
+                name="Niederdeutsches Hörspiel"
+                programmurl="http://www.ndr.de/kultur/norddeutsche_sprache/niederdeutsch/Niederdeutsches-Hoerspiel,niederdeutsches4.html">
+                <kategorie>Dialekt</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="21:05"
+                    dauer="55"
+                    intervall="14-täglich"
+                    id="wellenord_ndthsp_fr"
+                    wdhvon="nwradio_ndthspiel_so"/>
+            </sendung>
+        </sender>
+<!-- NDR 1 Radio MV -->
+        <sender
+            id="radiomv"
+            name="Radio MV"
+            longname="Norddeutscher Rundfunk 1 Radio Mecklenburg-Vorpommern"
+            url="http://www.ndr.de/radiomv/"
+            frequenzenurl="http://www.ndr.de/radiomv/service/NDR-1-Radio-MV-UKW-Frequenzen,frequenzenmv103.html"
+            programmurl="http://www.ndr.de/radiomv/programm/">
+            <livestream>
+                <url>http://www.ndr.de/resources/metadaten/audio/m3u/ndr1radiomv.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>202</psradioid>
+            </livestream>
+            <sendung
+                id="radiomv_platthsp"
+                name="Plattdeutsches Hörspiel"
+                programmurl="http://www.ndr.de/kultur/norddeutsche_sprache/niederdeutsch/Niederdeutsches-Hoerspiel,niederdeutsches4.html">
+                <kategorie>Dialekt</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="19:05"
+                    dauer="55"
+                    intervall="14-täglich"
+                    wdhvon="wellenord_ndthsp_fr"/>
+            </sendung>
+        </sender>
+<!-- NDR 1 Niedersachsen -->
+        <sender
+            id="ndr1nie"
+            name="NDR 1 Niedersachsen"
+            longname="Norddeutscher Rundfunk 1 Niedersachsen"
+            url="http://www.ndr.de/ndr1niedersachsen/"
+            frequenzenurl="http://www.ndr.de/ndr1niedersachsen/service/ndrnds34.html"
+            programmurl="http://www.ndr.de/ndr1niedersachsen/programm/">
+            <livestream>
+                <url>http://www.ndr.de/resources/metadaten/audio/m3u/ndr1niedersachsen.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>205</psradioid>
+            </livestream>
+            <sendung
+                id="ndr1nie_platthsp"
+                name="Niederdeutsches Hörspiel"
+                programmurl="http://www.ndr.de/ndr1niedersachsen/sendungen/hoerspiel/Hoerspiele-op-Platt,niederdeutscheshoerspiel2.html">
+                <kategorie>Dialekt</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="20:05"
+                    dauer="55"
+                    intervall="14-täglich"
+                    wdhvon="wellenord_ndthsp_fr"/>
+            </sendung>
+        </sender>
+
+
+  <!-- N-JOY -->
+  <!--
+        <sender
+            id="njoy"
+            name="N-JOY"
+            longname="Norddeutscher Rundfunk N-JOY"
+            url="http://www.n-joy.de"
+            programmurl="http://www.ndr.de/n-joy/radio/sendeplan/programmschema108.html"
+            frequenzenurl="http://www.ndr.de/n-joy/radio/frequenzen121.html">
+            <livestream>
+                <url>http://ndr.ic.llnwd.net/stream/ndr_n-joy_hi_mp3</url>
+                <typ>MP3</typ>
+                <mplayertyp>mp3</mplayertyp>
+                <psradioid>39</psradioid>
+            </livestream> -->
+      <!-- NJoy Hörspiel -->
+      <!--
+            <sendung
+                id="njoy_hspiel"
+                name="Hörspiel">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="4"
+                    zeit="22:00"
+                    intervall="am ersten Donnerstag im Monat"/>
+            </sendung>
+        </sender>  -->
+
+    <!-- NDR Kultur -->
+        <sender
+            id="ndrkultur"
+            name="NDR Kultur"
+            longname="Norddeutscher Rundfunk Kultur"
+            url="http://www.ndr.de/ndrkultur/"
+            programmurl="http://www.ndr.de/ndrkultur/programmueberblick/"
+            frequenzenurl="http://www.ndr.de/ndrkultur/service/frequenzen/index.html">
+            <livestream>
+                <url>http://www.ndr.de/resources/metadaten/audio/m3u/ndrkultur.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>139</psradioid>
+            </livestream>
+      <!-- NDR Kultur Hörspiel -->
+            <sendung
+                id="ndrkultur_hspiel"
+                name="Hörspiel"
+                programmurl="http://www.ndr.de/ndrkultur/sendungen/Hoerspiele-auf-NDR-Kultur,hoerspiel44.html">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="20:05"/>
+            </sendung>
+      <!-- NDR Kultur Am Morgen vorgelesen -->
+            <sendung
+                id="ndrkultur_ammorgen"
+                name="Am Morgen vorgelesen"
+                programmurl="http://www.ndr.de/ndrkultur/sendungen/am_morgen_vorgelesen/">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="08:30"
+                    dauer="30"/>
+                <sendetermin
+                    tag="2"
+                    zeit="08:30"
+                    dauer="30"/>
+                <sendetermin
+                    tag="3"
+                    zeit="08:30"
+                    dauer="30"/>
+                <sendetermin
+                    tag="4"
+                    zeit="08:30"
+                    dauer="30"/>
+                <sendetermin
+                    tag="5"
+                    zeit="08:30"
+                    dauer="30"/>
+            </sendung>
+      <!-- NDR Kultur Sonnabend-Story -->
+            <sendung
+                id="ndrkultur_sonnstory"
+                name="Die Sonnabend-Story"
+                programmurl="http://www.ndr.de/ndrkultur/sendungen/Die-Sonnabend-Story,sonnabendstory4.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="08:30"
+                    dauer="30"/>
+            </sendung>
+      <!-- NDR Kultur Am Abend vorgelesen -->
+            <sendung
+                id="ndrkultur_amabend"
+                name="Am Abend vorgelesen"
+                programmurl="http://www.ndr.de/ndrkultur/sendungen/am_abend_vorgelesen/">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="22:05"
+                    dauer="30"/>
+                <sendetermin
+                    tag="2"
+                    zeit="22:05"
+                    dauer="30"/>
+                <sendetermin
+                    tag="3"
+                    zeit="22:05"
+                    dauer="30"/>
+                <sendetermin
+                    tag="4"
+                    zeit="22:05"
+                    dauer="30"/>
+                <sendetermin
+                    tag="5"
+                    zeit="22:05"
+                    dauer="30"/>
+            </sendung>
+            <sendung
+                id="ndrkultur_kulturforum"
+                name="Kulturforum"
+                programmurl="http://www.ndr.de/ndrkultur/sendungen/kulturforum/index.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="20:05"
+                    dauer="55"/>
+            </sendung>
+        </sender>
+
+    <!-- NDR Info -->
+        <sender
+            id="ndrinfo"
+            name="NDR Info"
+            longname="Norddeutscher Rundfunk Information"
+            url="http://www.ndr.de/info/"
+            programmurl="http://www.ndr.de/info/programm/"
+            frequenzenurl="http://www.ndr.de/info/service/NDR-Info-Frequenzen,frequenzen2.html">
+            <livestream>
+                <url>http://www.ndr.de/resources/metadaten/audio/m3u/ndrinfo.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>137</psradioid>
+            </livestream>
+      <!-- NDR Info Hörspiel -->
+            <sendung
+                id="ndrinfo_hspiel"
+                name="Das Hörspiel"
+                programmurl="http://www.ndr.de/info/sendungen/hoerspiel_kriminalhoerspiel/">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="21:05" />
+            </sendung>
+      <!-- NDR Info Kriminalhörspiel -->
+            <sendung
+                id="ndrinfo_krimi"
+                name="Das Kriminalhörspiel"
+                programmurl="http://www.ndr.de/info/sendungen/hoerspiel_kriminalhoerspiel/">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="21:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- NDR Info Mikado Kinderhörspiel -->
+            <sendung
+                id="ndrinfo_mikado"
+                name="Mikado Kinderhörspiel"
+                programmurl="http://www.ndr.de/info/sendungen/mikado/index.html">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="14:05"
+                    dauer="55"
+                    intervall="14-tägig"/>
+            </sendung>
+      <!-- NDR Info Feature -->
+            <sendung
+                id="ndrinfo_feature"
+                name="Das Feature"
+                programmurl="http://www.ndr.de/info/sendungen/das_feature/index.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="11:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- NDR Info Ohrenbär -->
+            <sendung
+                id="ndrinfo_obaer"
+                name="Ohrenbär"
+                programmurl="http://www.ohrenbaer.de">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="19:50"
+                    dauer="10"
+                    wdhvon="rbb_ob_mo"/>
+                <sendetermin
+                    tag="2"
+                    zeit="19:50"
+                    dauer="10"
+                    wdhvon="rbb_ob_di"/>
+                <sendetermin
+                    tag="3"
+                    zeit="19:50"
+                    dauer="10"
+                    wdhvon="rbb_ob_mi"/>
+                <sendetermin
+                    tag="4"
+                    zeit="19:50"
+                    dauer="10"
+                    wdhvon="rbb_ob_do"/>
+                <sendetermin
+                    tag="5"
+                    zeit="19:50"
+                    dauer="10"
+                    wdhvon="rbb_ob_fr"/>
+                <sendetermin
+                    tag="6"
+                    zeit="19:50"
+                    dauer="10"
+                    wdhvon="rbb_ob_sa"/>
+                <sendetermin
+                    tag="7"
+                    zeit="19:50"
+                    dauer="10"
+                    wdhvon="rbb_ob_so"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+
+  <!-- SWR -->
+    <senderfamilie
+        id="swr"
+        name="Südwestrundfunk"
+        url="http://www.swr.de"
+        frequenzenurl="http://www.swr.de/empfang/-/id=3786/mrfxfv/index.html">
+
+    <!-- SWR 1 -->
+    <!--
+    <sender
+     id="swr1"
+     name="SWR 1"
+     longname="Südwestrundfunk Eins"
+     url="http://www.swr.de/swr1/bw/index.html"
+     ><livestream>
+<url>rtsp://213.254.239.61/farm/*/encoder/swr/swr1/live_bw.rm</url>
+     <typ>RP</typ>
+     frequenzenurl="http://www.swr.de/frequenzen/radio/-/id=3726/1av3kox/index.html"
+     programmurl="http://www.swr.de/swr1/bw/programm/index.html"
+     <psradioid>115</psradioid>
+</livestream>
+      <sendung
+       id="swr1_huk"
+       name="Heiß &amp; Kalt"
+       programmurl="http://www.swr.de/swr1/rp/programm/sendungen/-/id=446470/nid=446470/did=455492/1lrngmv/index.html"
+       >
+<kategorie>Krimi</kategorie>
+        <sendetermin tag="7" zeit="23:03" dauer="57" anmerkung="ab 2007 donnerstags 21:03 - 22:00 auf SWR 2"/>
+      </sendung>
+    </sender> -->
+
+    <!-- SWR 2 -->
+    <!-- Zuletzt aktualisiert 2012-01-06 -->
+        <sender
+            id="swr2"
+            name="SWR 2"
+            longname="Südwestrundfunk Zwei"
+            url="http://www.swr.de/swr2/-/id=7576/otnbb1/index.html"
+            programmurl="http://www.swr.de/swr2/hoerspiel/sendungen.html">
+            <livestream>
+                <url>http://mp3-live.swr.de/swr2_m.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>6159</psradioid>
+            </livestream>
+      <!-- Fortsetzung folgt -->
+            <sendung
+                id="swr2_ff"
+                name="Fortsetzung folgt"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/fortsetzung-folgt/-/id=658902/fys1d2/">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="14:30"
+                    dauer="25"
+                    id="swr2_ff_mo"/>
+                <sendetermin
+                    tag="2"
+                    zeit="14:30"
+                    dauer="25"
+                    id="swr2_ff_di"/>
+                <sendetermin
+                    tag="3"
+                    zeit="14:30"
+                    dauer="25"
+                    id="swr2_ff_mi"/>
+                <sendetermin
+                    tag="4"
+                    zeit="14:30"
+                    dauer="25"
+                    id="swr2_ff_do"/>
+                <sendetermin
+                    tag="5"
+                    zeit="14:30"
+                    dauer="25"
+                    id="swr2_ff_fr"/>
+            </sendung>
+      <!-- Literatur -->
+            <sendung
+                id="swr2_lit"
+                name="Literatur"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/literatur/-/id=659892/mj7chp/">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="22:05"
+                    dauer="55"
+                    anmerkung="ab Di 13h eine Woche online"/>
+            </sendung>
+      <!-- SWR2 Feature -->
+            <sendung
+                id="swr2_feature"
+                name="Feature"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/feature/-/id=659934/ipxw8l/">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="3"
+                    zeit="22:05"
+                    dauer="55"
+                    id="swr2_feature_mi"
+                    anmerkung="eine Woche online" />
+            </sendung>
+      <!-- SWR2 Krimi -->
+            <sendung
+                id="swr2_krimi"
+                name="Krimi"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/hoerspiele/-/id=660014/ixdq1u/index.html">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="22:03"
+                    dauer="57"
+                    id="swr2_hspielkrimi"/>
+            </sendung>
+      <!-- Hörspielstudio -->
+            <sendung
+                id="swr2_hspielstud"
+                name="Hörspielstudio"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/hoerspiel-studio/-/id=660014/ixdq1u/index.html">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="4"
+                    zeit="22:03"
+                    dauer="57"
+                    anmerkung="beginnt gelegentlich erst um 22:33"/>
+            </sendung>
+      <!-- ars acustica -->
+            <sendung
+                id="swr2_arac"
+                name="ars acustica"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/hoerspiele/-/id=660014/ixdq1u/index.html">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="23:00"
+                    dauer="60"
+                    intervall="am ersten Dienstag im Monat" />
+            </sendung>
+      <!-- SWR2 Aus dem Land: Feature -->
+            <sendung
+                id="swr2_land_feature"
+                name="Aus dem Land: Feature"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/aus-dem-land/-/id=658700/1pcju80/index.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="22:03"
+                    dauer="57"
+                    id="swr2_land_feature_sa"/>
+            </sendung>
+      <!-- SWR2 Feature am Sonntag-->
+            <sendung
+                id="swr2_feature_so"
+                name="Feature am Sonntag"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/feature/-/id=659934/ipxw8l/">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="14:05"
+                    dauer="55"
+                    id="swr2_feature_so_so"/>
+            </sendung>
+      <!-- Hörspiel -->
+            <sendung
+                id="swr2_spiel"
+                name="Hörspiel"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/hoerspiele/-/id=660014/ixdq1u/index.html">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="18:20"
+                    dauer="100"/>
+            </sendung>
+      <!-- SWR2 Tandem -->
+            <sendung
+                id="swr2_tandem_feature"
+                name="Tandem Feature"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/tandem/-/id=8986864/1ckc216/index.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="10:05"
+                    dauer="25"
+                    id="swr2_tandem_feature_mo_morgen"/>
+                <sendetermin
+                    tag="1"
+                    zeit="19:20"
+                    dauer="40"
+                    id="swr2_tandem_feature_mo_abend"/>
+                <sendetermin
+                    tag="2"
+                    zeit="10:05"
+                    dauer="25"
+                    wdhvon="swr2_tandem_feature_mo_abend"
+                    id="swr2_tandem_feature_di_morgen"/>
+                <sendetermin
+                    tag="3"
+                    zeit="10:05"
+                    dauer="25"
+                    id="swr2_tandem_feature_mi_morgen"/>
+                <sendetermin
+                    tag="4"
+                    zeit="10:05"
+                    dauer="25"
+                    id="swr2_tandem_feature_do_morgen"/>
+                <sendetermin
+                    tag="5"
+                    zeit="10:05"
+                    dauer="25"
+                    id="swr2_tandem_feature_fr_morgen"/>
+            </sendung>
+            <sendung
+                id="swr2_tandem_hoerspiel"
+                name="Tandem Hörspiel"
+                programmurl="http://www.swr.de/swr2/programm/sendungen/tandem/-/id=8986864/1ckc216/index.html">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="19:20"
+                    dauer="40"
+                    id="swr2_tandem_di"/>
+            </sendung>
+
+      <!-- SWR2 Spielraum -->
+            <sendung
+                id="swr2_spielraum"
+                name="Spielraum Geschichtengarten"
+                programmurl="http://www.kindernetz.de/spielraum/programm/-/id=78748/1x3jniw/index.html">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="16:05"
+                    dauer="55"
+                    intervall="am erstem Samstag im Monat"
+                    id="swr2_spielraum_gg"/>
+            </sendung>
+        </sender>
+
+    <!-- SWR 4 -->
+    <!-- Zuletzt aktualisiert 2008-04-18 -->
+        <sender
+            id="swr4"
+            name="SWR 4"
+            longname="Südwestrundfunk Vier"
+            url="http://www.swr.de/swr4/-/id=266578/19hatv2/index.html"
+            programmurl="http://www.swr.de/swr4/bw/programm/-/id=258008/lectpd/index.html">
+            <livestream>
+                <url>http://mp3-live.swr.de/swr4bw_m.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+            </livestream>
+            <sendung
+                id="swr4_marthspiel"
+                name="Mundarthörspiel"
+                programmurl="http://www.swr.de/swr4/bw/programm/-/id=258008/nid=258008/did=5914844/sn9zft/index.html">
+                <kategorie>Dialekt</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="21:05"
+                    dauer="60"/>
+            </sendung>
+        </sender>
+
+    <!-- SWR info -->
+    <!-- Zuletzt aktualisiert 2012-06-04 -->
+    <!--
+        <sender
+            id="swrinfo"
+            name="SWR info"
+            longname="Südwestrundfunk info"
+            url="http://www.swr.de/swrinfo/"
+            programmurl="http://www.swr.de/swrinfo/programm/-/id=1285138/g38uol/index.html">
+            <livestream>
+                <url>http://mp3-live.swr.de/swrinfo_m.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>1206</psradioid>
+            </livestream>
+        </sender>
+    -->
+
+    <!-- DASDING -->
+    <!-- Zuletzt aktualisiert 2008-04-18 -->
+        <sender
+            id="swrdasding"
+            name="DASDING"
+            longname="Südwestrundfunk DASDING"
+            url="http://www.dasding.de"
+            programmurl="http://www.dasding.de/hoerzeit/">
+            <livestream>
+                <url>http://mp3-live.dasding.de/dasding_m.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>114</psradioid>
+            </livestream>
+            <!--
+            <sendung
+                    id="swrdasding_hzeit"
+                    name="Hörzeit"
+                    programmurl="http://www.dasding.de/hoerzeit/">
+                <kategorie>Krimi</kategorie>
+                <sendetermin tag="4" dauer="60" zeit="22:00"/>
+            </sendung>
+            -->
+        </sender>
+
+    </senderfamilie>
+
+
+
+  <!-- WDR -->
+    <senderfamilie
+        id="wdr"
+        name="Westdeutscher Rundfunk"
+        url="http://www.wdr.de">
+
+    <!-- Eins Live -->
+        <sender
+            id="einslive"
+            name="Eins Live"
+            longname="Westdeutscher Rundfunk Eins Live"
+            url="http://www.einslive.de"
+            frequenzenurl="http://www.einslive.de/einslive/on-air/frequenzen/index.html"
+            programmurl="http://www.einslive.de/einslive/on-air/sendungen/">
+            <livestream>
+                <url>http://wdr-1live-live.icecast.wdr.de/wdr/1live/live/mp3/128/stream.mp3</url>
+                <typ>MP3</typ>
+                <mplayertyp>mp3</mplayertyp>
+                <psradioid>147</psradioid>
+            </livestream>
+      <!-- Eins Live Soundstories -->
+            <sendung
+                id="einslive_sndstry"
+                name="Plan B Soundstories"
+                programmurl="http://www.einslive.de/einslive/on-air/sendungen/soundstories/">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="23:04"
+                    dauer="60"
+                    intervall="14-täglich"/>
+            </sendung>
+      <!-- Eins Live Krimi -->
+            <sendung
+                id="einslive_krimi"
+                name="Plan B Krimi"
+                programmurl="http://www.einslive.de/einslive/on-air/sendungen/krimi/">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="4"
+                    zeit="23:04"
+                    dauer="60"/>
+            </sendung>
+        <!-- Eins Live Shortstory -->
+            <sendung
+                id="einslive_shortstory"
+                name="Shortstory"
+                programmurl="http://www.einslive.de/einslive/on-air/sendungen/shortstory/">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="4"
+                    zeit="23:00"
+                    intervall="14-täglich"
+                    dauer="60"/>
+            </sendung>
+        <!-- Eins Live Klubbing Lesung -->
+            <sendung
+                id="einslive_lesung"
+                name="Klubbing Lesung"
+                programmurl="http://www.einslive.de/einslive/on-air/sendungen/shortstory/">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="21:00"
+                    dauer="60"/>
+            </sendung>
+        </sender>
+
+    <!-- WDR5 -->
+    <!-- zuletzt aktualisiert 2010-01-11 -->
+        <sender
+            id="wdr5"
+            name="WDR 5"
+            longname="Westdeutscher Rundfunk Fünf"
+            frequenzenurl="http://www.wdr.de/unternehmen/technik/empfang/Radio/Frequenzkarten/hoerfunk_wdr5.jsp"
+            programmurl="http://www.wdr5.de/programm.html"
+            sendeschema="http://www.wdr5.de/sendungen/sendeschema/montag-bis-freitag/tagesprogramm.html"
+            url="http://www.wdr5.de">
+            <livestream>
+                <url>http://wdr-wdr5-live.icecast.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3</url>
+                <typ>MP3</typ>
+                <mplayertyp>mp3</mplayertyp>
+                <psradioid>150</psradioid>
+            </livestream>
+      <!-- WDR5 Bärenbude -->
+            <sendung
+                id="wdr5_bbude"
+                name="Bärenbude"
+                programmurl="http://www.baerenbude.de/baerenbude/programmkalender/">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="19:30"
+                    dauer="30"
+                    anmerkung="darin Ohrenbär"
+                    wdhvon="rbb_ob_mo"/>
+                <sendetermin
+                    tag="2"
+                    zeit="19:30"
+                    dauer="30"
+                    anmerkung="darin Ohrenbär"
+                    wdhvon="rbb_ob_di"/>
+                <sendetermin
+                    tag="3"
+                    zeit="19:30"
+                    dauer="30"
+                    anmerkung="darin Ohrenbär"
+                    wdhvon="rbb_ob_mi"/>
+                <sendetermin
+                    tag="4"
+                    zeit="19:30"
+                    dauer="30"
+                    anmerkung="darin Ohrenbär"
+                    wdhvon="rbb_ob_do"/>
+                <sendetermin
+                    tag="5"
+                    zeit="19:30"
+                    dauer="30"
+                    anmerkung="darin Ohrenbär"
+                    wdhvon="rbb_ob_fr"/>
+                <sendetermin
+                    tag="6"
+                    zeit="19:30"
+                    dauer="30"
+                    anmerkung="darin Ohrenbär"
+                    wdhvon="rbb_ob_sa"/>
+                <sendetermin
+                    tag="7"
+                    zeit="19:30"
+                    dauer="30"
+                    anmerkung="darin Ohrenbär"
+                    wdhvon="rbb_ob_so"/>
+            </sendung>
+      <!-- WDR5 Krimi -->
+            <sendung
+                id="wdr5_krimi"
+                name="Krimi am Samstag"
+                programmurl="http://www.wdr5.de/sendungen/krimiamsamstag/krimiamsamstag_index100.html">
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="17:05"
+                    dauer="55"
+                    id="wdr5_krimi_sa" />
+                <sendetermin
+                    tag="6"
+                    zeit="23:05"
+                    dauer="55"
+                    wdhvon="wdr5_krimi_sa"
+                    name="Krimi am Samstag (Wdh.)"/>
+            </sendung>
+      <!-- WDR5 Ohrclip -->
+            <sendung
+                id="wdr5_ohrclip"
+                name="Ohrclip - Der Literaturabend"
+                programmurl="http://www.wdr5.de/sendungen/ohrclip/ohrclip_index100.html">
+                <kategorie>Literatur</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="21:05"
+                    dauer="115"
+                    anmerkung="außer am letzten Samstag im Monat"/>
+            </sendung>
+      <!-- WDR5 Mundarthörspiel -->
+            <sendung
+                id="wdr5_ohrclip_mundarthsp"
+                name="Mundarthörspiel Land und Leute"
+                programmurl="http://www.wdr5.de/sendungen/ohrclip/ohrclip_index100.html">
+                <kategorie>Dialekt</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="21:05"
+                    dauer="115"
+                    intervall="am letzten Samstag im Monat"
+                    anmerkung="im Wechsel mit der Telefonischen Mord(s)beratung"/>
+            </sendung>
+      <!-- WDR5 Tiefenblick-->
+            <sendung
+                id="wdr5_tiefenblick"
+                name="Tiefenblick"
+                programmurl="http://www.wdr5.de/sendungen/tiefenblick/tiefenblick_index100.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="07:30"
+                    dauer="30"
+                    id="wdr5_tiefenblick_sa"/>
+                <sendetermin
+                    tag="7"
+                    zeit="22:05"
+                    dauer="30"
+                    wdhvon="wdr5_tiefenblick_sa"/>
+            </sendung>
+      <!-- WDR 5 DOK 5: Das Feature-->
+            <sendung
+                id="wdr5_dok5"
+                name="Dok 5 - Das Feature"
+                programmurl="http://www.wdr5.de/sendungen/dok5/dokfuenf_index100.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="20:05"
+                    dauer="55"
+                    wdhvon="wdr5_dok5_so"/>
+                <sendetermin
+                    tag="7"
+                    zeit="11:05"
+                    dauer="55"
+                    id="wdr5_dok5_so"/>
+            </sendung>
+      <!-- WDR 5 Hörspiel am Dienstag -->
+            <sendung
+                id="wdr5_hspiel"
+                name="Hörspiel am Dienstag"
+                programmurl="http://www.wdr5.de/sendungen/hoerspielamdienstag/hoerspielamdienstag_index101.html">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="20:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- WDR 5 Hörspiel bei Lilipuz -->
+            <sendung
+                id="wdr5_lilipuz"
+                name="Hörspiel bei Lilipuz"
+                programmurl="http://www.kiraka.de/hoerspiele/">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="14:05"
+                    dauer="55"
+                    id="lilipuzhsp"/>
+            </sendung>
+        </sender>
+
+        <sender
+            id="kiraka"
+            name="Kiraka"
+            longname="Westdeutscher Rundfunk Kiraka"
+            url="http://www.kiraka.de/startseite/"
+            programmurl="http://www.kiraka.de/startseite/">
+            <livestream>
+                <url>http://www.wdr.de/wdrlive/media/kiraka.m3u</url>
+                <typ>MP3</typ>
+                <mplayertyp>m3u</mplayertyp>
+                <psradioid>6068</psradioid>
+            </livestream>
+            <sendung
+                id="kiraka_lilipuz"
+                name="Lilipuz-Hörspiel"
+                programmurl="http://www.kiraka.de/hoerspiele/">
+                <kategorie>Kinder</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="17:00"
+                    dauer="60"
+                    wdhvon="lilipuzhsp"/>
+            </sendung>
+        </sender>
+
+    <!-- zuletzt aktualisiert 2008-09-03 -->
+    <!--WDR 3-->
+        <sender
+            id="wdr3"
+            name="WDR 3"
+            longname="Westdeutscher Rundfunk Drei"
+            frequenzenurl="http://www.wdr.de/unternehmen/technik/empfang/Radio/Frequenzkarten/hoerfunk_wdr3.jsp"
+            programmurl="http://www.wdr.de/radio/hoerspiel/uebersicht.html"
+            url="http://www.wdr3.de/">
+            <livestream>
+                <url>http://wdr-wdr3-live.icecast.wdr.de/wdr/wdr3/live/mp3/256/stream.mp3 </url>
+                <typ>MP3</typ>
+                <mplayertyp>mp3</mplayertyp>
+                <psradioid>3607</psradioid>
+            </livestream>
+      <!-- WDR3 Bühne Radio -->
+            <sendung
+                id="wdr3_buehne"
+                name="Bühne Radio"
+                programmurl="http://www.wdr3.de/programm/sendungen/wdr3buehneradio/">
+                <kategorie>Theater</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="20:05"
+                    dauer="175"/>
+            </sendung>
+      <!-- WDR3 Hörspiel-->
+            <sendung
+                id="wdr3_hspiel"
+                name="Hörspiel"
+                programmurl="http://www.wdr3.de/programm/sendungen/wdr3hoerspiel/">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="15:05"
+                    dauer="60"/>
+            </sendung>
+      <!-- WDR3 open: pop drei-->
+            <sendung
+                id="wdr3_openpop3"
+                name="open: pop drei"
+                programmurl="http://www.wdr3.de/programm/sendungen/wdr3openpopdrei/">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="1"
+                    zeit="23:05"
+                    dauer="55"/>
+            </sendung>
+      <!-- WDR3 open: Wortlaut-->
+            <sendung
+                id="wdr3_wortlaut"
+                name="open: Wortlaut"
+                programmurl="http://www.wdr3.de/programm/sendungen/wdr3openwortlaut/">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="4"
+                    zeit="23:05"
+                    dauer="60"/>
+            </sendung>
+      <!-- WDR3 open: StudioAkustischeKunst-->
+            <sendung
+                id="wdr3_StudioAkustischeKunst"
+                name="open: Studio Akustische Kunst"
+                programmurl="http://www.wdr3.de/programm/sendungen/wdr3openstudioakustischekunst/">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="23:05"
+                    dauer="60"
+                    anmerkung="Nicht am letzten Freitag im Monat"/>
+            </sendung>
+      <!-- WDR3 open: Hoerspiel -->
+            <sendung
+                id="wdr3_openhoerspiel"
+                name="open: Hörspiel"
+                programmurl="http://www.wdr3.de/programm/sendungen/wdr3openhoerspiel/">
+                <kategorie>Experimentelles Hörspiel</kategorie>
+                <sendetermin
+                    tag="5"
+                    zeit="23:05"
+                    dauer="60"
+                    intervall="Am letzten Freitag im Monat"/>
+            </sendung>
+    <!-- WDR3 Kulturfeature-->
+            <sendung
+                id="wdr3_kfeat"
+                name="Kulturfeature"
+                programmurl="http://www.wdr3.de/programm/sendungen/wdr3kulturfeature/index.html">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="6"
+                    zeit="12:05"
+                    dauer="55"/>
+            </sendung>
+    <!-- WDR3 Dichtung und Wahrheit-->
+            <sendung
+                id="wdr3_dichtwahr"
+                name="Dichtung und Wahrheit"
+                programmurl="http://www.wdr3.de/programm/sendungen/wdr3dichtungundwahrheit/">
+                <kategorie>Feature</kategorie>
+                <sendetermin
+                    tag="7"
+                    zeit="15:05"
+                    dauer="55"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+      <!-- RTL -->
+    <senderfamilie
+        id="rtl"
+        name="Radio Télévision Luxembourg"
+        url="http://www.rtlgroup.com/">
+            <!-- 89.0 RTL -->
+        <sender
+            id="rtl890"
+            name="RTL 89.0"
+            longname="89.0 Radio Télévision Luxembourg (Halle)"
+            url="http://www.89.0rtl.de"
+            programmurl="http://www.89.0rtl.de/sendungen"
+            frequenzenurl="http://www.89.0rtl.de/webradio/890-rtl-ueber-ukw">
+            <livestream>
+                <url>http://80.237.156.45/890rtl-128.mp3</url>
+                <typ>MP3</typ>
+                <mplayertyp>mp3</mplayertyp>
+                <psradioid>219</psradioid>
+            </livestream>
+       <!-- Hörspielnacht -->
+            <sendung
+                id="rtl890_hoerspielnacht"
+                name="Hörspielnacht"
+                programmurl="http://www.89.0rtl.de/sendungen/890-rtl-hoerspielnacht">
+                <kategorie>Hörspiel allgemein</kategorie>
+                <kategorie>Krimi</kategorie>
+                <sendetermin
+                    tag="2"
+                    zeit="02:00"
+                    dauer="60"/>
+                <sendetermin
+                    tag="3"
+                    zeit="02:00"
+                    dauer="60"/>
+                <sendetermin
+                    tag="4"
+                    zeit="02:00"
+                    dauer="60"/>
+                <sendetermin
+                    tag="5"
+                    zeit="02:00"
+                    dauer="60"/>
+                <sendetermin
+                    tag="7"
+                    zeit="22:00"
+                    dauer="180"/>
+            </sendung>
+        </sender>
+    </senderfamilie>
+
+</senderliste>

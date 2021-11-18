@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  encoding: UTF-8
+  Namespaces
+-->
+<grammar ns="http://www.mospace.de/hspiel" xmlns:hspiel="http://www.mospace.de/hspiel" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- Das Wurzel-Element -->
+  <start>
+    <ref name="senderliste"/>
+  </start>
+  <define name="senderliste">
+    <element name="senderliste">
+      <a:documentation>Senderliste ist das Wurzelelement der Sendeplatz-Übersicht. Es enthält
+Senderfamilien als Tochterelemente.</a:documentation>
+      <ref name="senderliste.attlist"/>
+      <zeroOrMore>
+        <ref name="senderfamilie"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="senderliste.attlist">
+    <attribute name="xsi:schemaLocation">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="senderfamilie">
+    <element name="senderfamilie">
+      <a:documentation>Senderfamilie/Rundfunkanstalt.</a:documentation>
+      <ref name="senderfamilie.attlist"/>
+      <oneOrMore>
+        <ref name="sender"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="senderfamilie.attlist">
+    <interleave>
+      <ref name="id.att"/>
+      <ref name="name.att"/>
+      <ref name="url.att"/>
+      <optional>
+        <ref name="frequrl.att"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="sender">
+    <element name="sender">
+      <a:documentation>Ein einzelner Sender mit einer oder mehreren eigenen Frequenzen und/oder
+Livestreams, auf denen das gleiche Programm gesendet wird.</a:documentation>
+      <ref name="sender.attlist"/>
+      <ref name="sender.content"/>
+    </element>
+  </define>
+  <define name="sender.attlist">
+    <interleave>
+      <ref name="id.att"/>
+      <ref name="name.att"/>
+      <ref name="url.att"/>
+      <ref name="programmurl.att"/>
+    </interleave>
+  </define>
+  <define name="sender.attlist" combine="interleave">
+    <attribute name="longname">
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="sender.attlist" combine="interleave">
+    <optional>
+      <ref name="frequrl.att"/>
+    </optional>
+  </define>
+  <define name="sender.attlist" combine="interleave">
+    <optional>
+      <attribute name="sendeschema">
+        <data type="anyURI"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="sender.content">
+    <zeroOrMore>
+      <ref name="livestream"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="sendung"/>
+    </zeroOrMore>
+  </define>
+  <define name="livestream">
+    <element name="livestream">
+      <a:documentation>Ein Webradio-Angebot.</a:documentation>
+      <ref name="livestream.content"/>
+    </element>
+  </define>
+  <define name="livestream.content">
+    <ref name="url"/>
+    <ref name="typ"/>
+    <ref name="mplayertyp"/>
+    <optional>
+      <ref name="psradioid"/>
+    </optional>
+  </define>
+  <define name="sendung">
+    <element name="sendung">
+      <a:documentation>Eine Radiosendung mit unter Umständen mehreren Sendeterminen.</a:documentation>
+      <ref name="sendung.attlist"/>
+      <ref name="sendung.content"/>
+    </element>
+  </define>
+  <define name="sendung.attlist">
+    <interleave>
+      <ref name="id.att"/>
+      <ref name="name.att"/>
+      <optional>
+        <ref name="programmurl.att"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="sendung.content">
+    <oneOrMore>
+      <ref name="kategorie"/>
+    </oneOrMore>
+    <oneOrMore>
+      <ref name="sendetermin"/>
+    </oneOrMore>
+  </define>
+  <define name="kategorie">
+    <element name="kategorie">
+      <a:documentation>Eine Sendungskategorie.</a:documentation>
+      <ref name="kategorie.datatype"/>
+    </element>
+  </define>
+  <define name="sendetermin">
+    <element name="sendetermin">
+      <a:documentation>Ein einzelner Sendetermin. Das Attribut "name" sollte für "sendetermin"
+nur benutzt werden, wenn es sich um die identische Wiederholung einer
+anderen Ausstrahlung handelt. Andernfalls soll ein eigenes Element "sendung"
+verwendet werden.</a:documentation>
+      <ref name="sendetermin.attlist"/>
+    </element>
+  </define>
+  <define name="sendetermin.attlist">
+    <interleave>
+      <optional>
+        <ref name="id.att"/>
+      </optional>
+      <attribute name="tag">
+        <ref name="DAY.datatype"/>
+      </attribute>
+      <attribute name="zeit">
+        <ref name="zeit.datatype"/>
+      </attribute>
+      <optional>
+        <attribute name="dauer">
+          <ref name="dauer.datatype"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="intervall">
+          <data type="string" datatypeLibrary=""/>
+        </attribute>
+      </optional>
+      <optional>
+        <interleave>
+          <attribute name="wdhvon">
+            <data type="IDREF"/>
+          </attribute>
+          <optional>
+            <ref name="name.att"/>
+          </optional>
+        </interleave>
+      </optional>
+      <optional>
+        <attribute name="anmerkung">
+          <data type="string" datatypeLibrary=""/>
+        </attribute>
+      </optional>
+    </interleave>
+  </define>
+  <define name="url">
+    <element name="url">
+      <a:documentation>Eine Internet-Adresse.</a:documentation>
+      <data type="anyURI"/>
+    </element>
+  </define>
+  <define name="psradioid">
+    <element name="psradioid">
+      <a:documentation>Die Phonostar channelid des Senders bzw. Livestreams.</a:documentation>
+      <data type="nonNegativeInteger"/>
+    </element>
+  </define>
+  <define name="typ">
+    <element name="typ">
+      <a:documentation>Der Anzeigename für das Datenformat des Livestreams.</a:documentation>
+      <ref name="livestreamtyp.datatype"/>
+    </element>
+  </define>
+  <define name="mplayertyp">
+    <element name="mplayertyp">
+      <a:documentation>Das genaue Datenformat des Livestreams, zur maschinellen Weiterverarbeitung.</a:documentation>
+      <ref name="mplayertyp.datatype"/>
+    </element>
+  </define>
+  <!-- Universal-Attribute -->
+  <define name="url.att">
+    <attribute name="url">
+      <data type="anyURI"/>
+    </attribute>
+  </define>
+  <define name="programmurl.att">
+    <attribute name="programmurl">
+      <data type="anyURI"/>
+    </attribute>
+  </define>
+  <define name="frequrl.att">
+    <attribute name="frequenzenurl">
+      <data type="anyURI"/>
+    </attribute>
+  </define>
+  <define name="id.att">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+  </define>
+  <define name="name.att">
+    <attribute name="name">
+      <data type="string" datatypeLibrary=""/>
+    </attribute>
+  </define>
+  <!-- Datentypen -->
+  <define name="mplayertyp.datatype">
+    <choice>
+      <value type="string" datatypeLibrary="">ra</value>
+      <value type="string" datatypeLibrary="">rm</value>
+      <value type="string" datatypeLibrary="">m3u</value>
+      <value type="string" datatypeLibrary="">asx</value>
+      <value type="string" datatypeLibrary="">wma</value>
+      <value type="string" datatypeLibrary="">mp3</value>
+      <value type="string" datatypeLibrary="">smil</value>
+    </choice>
+  </define>
+  <define name="livestreamtyp.datatype">
+    <a:documentation>Der Typ des Webradioangebots. Für Webradioangebote im MP3-Format soll
+"MP3" verwendet werden, ebenso für Angebote im Ogg-Vorbis-Format "OGG".
+"RP" steht als Sammelbezeichnung für die proprietären RealPlayer-Formate,
+"WM" ebenso für proprietäre Windows-Media-Formate.
+Livestreams in nicht-proprietären Formaten sollten bevorzugt angegeben
+werden. Dabei soll dem MP3-Format
+der Vorzug gegeben werden, da zur Zeit das Ogg-Vorbis-Format noch keine
+vergleichbare Soft- und Hardware-Unterstützung genießt,</a:documentation>
+    <choice>
+      <value type="string" datatypeLibrary="">RP</value>
+      <value type="string" datatypeLibrary="">WM</value>
+      <value type="string" datatypeLibrary="">MP3</value>
+      <value type="string" datatypeLibrary="">OGG</value>
+    </choice>
+  </define>
+  <define name="kategorie.datatype">
+    <a:documentation>Eine Sendungskategorie. Hörspiele erhalten in der Regel die Kategorie
+"Hörspiel allgemein", es sei denn es handelt sich um Sendungen speziell
+für Kinder ("Kinder"), um Krimis ("Krimi") oder um Klangkunst und Hörspiele
+eher avantgardistischer Natur ("Experimentelles Hörspiel"). Falls an einem
+bestimmten Sendetermin stets nur Teile mehrteiliger Hörspiele gesendet
+werden, soll die Kategorie "Serie" verwendet werden. "Literatur" soll
+ausschließlich für Lesungen nicht-szenischer Werke verwendet werden,
+"Theater" für Tonaufnahmen tatsächlicher Theateraufführungen.</a:documentation>
+    <choice>
+      <value type="string" datatypeLibrary="">Kinder</value>
+      <value type="string" datatypeLibrary="">Literatur</value>
+      <value type="string" datatypeLibrary="">Feature</value>
+      <value type="string" datatypeLibrary="">Serie</value>
+      <value type="string" datatypeLibrary="">Krimi</value>
+      <value type="string" datatypeLibrary="">Dialekt</value>
+      <value type="string" datatypeLibrary="">Hörspiel allgemein</value>
+      <value type="string" datatypeLibrary="">Experimentelles Hörspiel</value>
+      <value type="string" datatypeLibrary="">Theater</value>
+    </choice>
+  </define>
+  <define name="dauer.datatype">
+    <a:documentation>Dauer in ganzen Minuten. Ein angehängtes Plus-Zeichen kann verwendet werden,
+um auszudrücken, dass die Dauer den angegebenen Wert gelegentlich
+überschreiten kann. Variiert die Dauer stark, so soll das Attribut "dauer"
+überhaupt nicht angegeben werden.</a:documentation>
+    <data type="string">
+      <param name="pattern">\d+\+?</param>
+    </data>
+  </define>
+  <define name="zeit.datatype">
+    <a:documentation>Eine minutengenaue 24h-Uhrzeit in MEZ/MESZ;
+mit zweistelligen Stunden zwischen 00 und 23
+und zweistelligen Minuten zwischen 00 und 59</a:documentation>
+    <data type="string">
+      <param name="pattern">(([0-1][0-9])|(2[0-3])):[0-5][0-9]</param>
+    </data>
+  </define>
+  <define name="DAY.datatype">
+    <a:documentation>Wochentag als Ganzzahl zwischen 0 und 7.
+0 und 7 stehen für Sonntag. 1 = Montag, 2 = Dienstag, etc.</a:documentation>
+    <data type="integer">
+      <param name="minInclusive">0</param>
+      <param name="maxInclusive">7</param>
+    </data>
+  </define>
+</grammar>

@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+ xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta
+     http-equiv="Content-Type"
+     content="text/html; charset=UTF-8" />
+    <meta
+     http-equiv="Content-Script-Type"
+     content="text/javascript" />
+    <meta
+     http-equiv="Content-Style-Type"
+     content="text/css" />
+    <meta
+     name="author"
+     content="Moritz Ringler, based on work by R. Eberhard" />
+    <meta
+     name="keywords"
+     content="Hoerspiel, Hörspiel, Hörspielprogramm, Hoerspielprogramm, Sendeplätze" />
+    <meta
+     name="description"
+     content="Übersicht der wöchentlichen Hörspielsendeplätze deutschsprachiger Sender - mit Links zum Programm und zum jeweiligen Live-Stream" />
+    <meta
+     name="page-topic"
+     content="Kultur" />
+    <meta
+     name="page-type"
+     content="Private Homepage" />
+    <meta
+     name="audience"
+     content="Alle" />
+    <meta
+     name="robots"
+     content="INDEX,FOLLOW" />
+    <link
+     rel="shortcut icon"
+     href="http://mospace.de/favicon.ico" />
+    <title>
+      Webradio-Aufnahme mit mplayer und cron
+    </title>
+    <link
+     rel="stylesheet"
+     type="text/css"
+     href="hspiel.css" />
+<style
+ type="text/css">
+      div.main {width:600px}
+      pre {background-color:#eeeeee; border:none #aaaaaa 1px; margin:0px; padding:2px}
+      blockquote p {font-family:monospace}
+
+</style>
+  </head>
+  <body>
+    <div
+     class="main">
+     <hr />
+     <p style="color:red; font-style:italic">Neu: <a href="mp3autocut.html">
+                  <xsl:text>Schneiden von MP3-Aufnahmen mit Audio-Mustererkennung</xsl:text></a>
+      </p>
+      <hr />
+      <h1>
+        Aufnahme mit mplayer und cron<br />
+      </h1>
+      <p>
+        Das beschriebene Verfahren ist kommandozeilenorientiert. Das muss Sie
+        aber nicht unbedingt abschrecken. So schreibt eine Nutzerin, die zuvor
+        schon verschiedene zum Teil kostenpflichtige Aufnahmeprogramme mit
+        grafischer Oberfläche ausprobiert hatte:
+      </p>
+      <blockquote><p>
+        Fazit: auch wenn für mich als Klicki-Bunti-User diese Lösung nicht so
+        fix zu realisieren war, wie zunächst gedacht, so bin ich heilfroh, dass
+        ich mich dafür entschieden habe und überzeugt, dass dies für mich die
+        beste Lösung war, damit das Thema Hörspiel ein schönes Hobby sein kann
+        und auch Zeit zum Genießen bleibt.
+      </p></blockquote>
+      <p>
+        Trotzdem eine WARNUNG: Falls der jeweilige 'stop'-Befehl aus
+        irgendeinem Grund scheitert, kann der gesamte freie Platz Ihrer
+        Festplatte vollgeschrieben werden. Für Schäden, die durch die Benutzung
+        von <code>record.sh</code> entstehen, übernehme ich keine
+        Verantwortung. Benutzen Sie es nur, wenn Sie sich zutrauen zu
+        verstehen, was Sie da tun.
+      </p>
+      <hr />
+      <h2>
+        Download
+      </h2>
+      <p>
+        Sie benötigen
+      </p>
+      <ul>
+        <li>
+          xsltproc, cron, bash, grep, awk, nano und curl.<br />
+           Unter Unix sind diese Programme in der Regel vorinstalliert oder mit
+           der Paketverwaltung einfach zu installieren; unter
+          Windows kann man sie mithilfe der Unix-Emulation <a
+           href="http://cygwin.com">Cygwin</a> nutzen: cron ist in der Category
+          'Admin' der Cygwin-Paketverwaltung; bash, grep und (g)awk in 'Base',
+          nano in 'Editors', curl in 'Net'. Installieren Sie außerdem cygutils
+          aus der Kategorie 'Utils'.
+        </li>
+        <li>
+          <a
+           href="http://www.mplayerhq.hu/">mplayer</a> mit Windows codecs
+        </li><!--
+        <li>
+          <a
+           href="livestreams.txt">diese Streaminfo-Datei</a>
+        </li>-->
+        <li>
+          das bash-Skript <a
+           href="record.sh.html">record.sh</a> (<a
+           href="record.sh">unformatiert</a> zum herunterladen)
+        </li>
+      </ul>
+      <h2>
+        record.sh anpassen und installieren
+      </h2>
+      <p>
+        Passen Sie die Variablendefinitionen am Anfang des bash-Skriptes an
+        Ihre lokalen Verhältnisse an, d.h. tragen Sie in den Variablen mplayer,
+        streams, pidfile und dest ein, wo sich die jeweiligen
+        Dateien/Verzeichnisse auf Ihrem System befinden. Nutzen Sie dabei unter
+        cygwin den Befehl <code>cygpath -ua 'C:\bla\bla'</code>, um Windows- in
+        Unix-Pfade umzuwandeln (nicht bei dest).
+        </p>
+       Aktivieren Sie falls gewünscht das <a href="autotag.html">
+                  <xsl:text>Automatische Speichern von Sendungsdaten</xsl:text></a>.
+      </p>
+      <p>
+        Unter Cygwin müssen Sie ggf. noch die Zeilenenden Ihres bash-Skriptes
+        korrigieren, z. B.mit einem Befehl wie
+      </p>
+<pre>
+dos2unix 'C:\Downloads\record.sh'
+</pre>
+      <p>
+        wenn Sie Cygwin mit Unix-Zeilenenden installiert haben (andernfalls
+        unix2dos verwenden).<br />
+         Legen Sie das bash-Skript in den cron PATH, indem sie es nach /usr/bin
+        kopieren (dies erfordert möglicherweise superuser-Rechte). Geben Sie
+        dazu in der bash einen Befehl wie
+      </p>
+<pre>
+cp -v 'C:\Downloads\record.sh' /usr/bin
+</pre>
+      <p>
+        ein. Testen Sie nun Ihre Konfiguration, geben Sie
+      </p>
+<pre>
+cd
+record.sh start dlf DLF_Testaufnahme
+record.sh status dlf DLF_Testaufnahme
+</pre>
+      <p>
+        und etwa eine Minute später
+      </p>
+<pre>
+record.sh stop dlf DLF_Testaufnahme
+</pre>
+      <p>
+        ein. Es sollten keine Fehlermeldungen ausgegeben werden, und es sollte
+        eine mp3-Datei DLF_Testaufnahme_JJJJ-MM-TT.mp3 im von Ihnen
+        eingestellten Zielverzeichnis erzeugt werden.
+      </p>
+      <h2>
+        cron konfigurieren
+      </h2>
+      <p>
+        Stellen Sie sicher, dass Ihre Systemuhr die richtige Zeit hat, z. B.
+        indem Sie einstellen, dass die Systemuhr sich regelmäßig mit dem
+        NTP-Zeitserver <code>ptbtime1.ptb.de</code> <a
+         href="http://www.lrz-muenchen.de/services/netzdienste/ntp/">synchronisiert</a>.
+      </p>
+      <p>
+        Aktivieren Sie den cron-Dienst - unter Cygwin per
+      </p>
+<pre>
+cron-config
+</pre>
+      <p>
+        Führen Sie dann
+      </p>
+<pre>
+crontab -e
+</pre>
+      <p>
+        aus - unter Cygwin empfehle ich die Benutzung des Editors <i>nano</i>
+        per vorherigem
+      </p>
+<pre>
+export EDITOR=nano
+</pre>
+      <p>
+        Klicken Sie jetzt <a
+         href="index.html#aufnahme">am unteren Ende der Sendeplätze-Tabelle</a>
+        auf das gelbe Feld "Auswahlkästchen anzeigen" und wählen Sie die
+        Sendungen aus, die Sie wöchentlich aufnehmen möchten.<br />
+         Klicken Sie auf "crontab ausgeben" und kopieren Sie den Text aus dem
+        sich öffnenden Fenster in Ihr crontab. Speichern (nano: Strg+O, RETURN,
+        Strg+X). Fertig.
+      </p><!--
+      <p>Wenn Sie die lokale Kopie der <a
+           href="livestreams.txt">Streaminfo-Datei</a> regelmäßig aktualisieren
+      möchten, können Sie Ihrem crontab in der gleichen Weise einen Eintrag der Form</p>
+<pre>
+mm HH * * * curl http://hspiel.mospace.de/livestreams.txt > /usr/share/streams.dat 2> /dev/null
+</pre>
+           <p>hinzufügen. Hierbei sind für mm und HH die Minuten und Stunden der
+           Aktualisierungs-Uhrzeit einzusetzen. Falls Sie die Definition der
+           Variablen <code>streams</code> in record.sh geändert haben, müssen
+           Sie außerdem
+           <code>/usr/share/streams.dat</code> entsprechend ersetzen.</p>-->
+      <h2>
+        Aufnahmen abspielen und nachbearbeiten
+      </h2>
+      <!--
+      <p>
+        Die aufgenommenen Sendungen werden von mplayer im Zielverzeichnis als
+        roher Datenstrom abgespeichert und können (außer bei mp3) in der Regel
+        nur mit mplayer abgespielt werden. Sie können die Dateien aber auch von
+        mplayer in eine (mit ca. 10 MB/min. große) pcm- bzw. wav-Datei
+        umschreiben lassen,
+      </p>
+<pre>
+/pfad/zu/mplayer.exe blabla.ra -ao pcm:file=blabla.wav
+</pre>
+      <p>
+        die sie dann mit einem entsprechenden Kodierer als ogg vorbis oder mp3
+        komprimieren können. Unter Windows kann man die Aufnahme auch direkt
+        mittels Mediacoder (s.u.) umwandeln.
+      </p>
+      -->
+      <p>
+      Mittlerweile bieten alle Radiosender mp3-Streams an. Aufnahmen von
+      mp3-Streams sind gültige mp3-Dateien und können mit jedem mp3-Player
+      abgespielt werden. Somit ist in der Regel keine Umkodierung erforderlich.
+      </p>
+      <p>
+      Eventuell möchten Sie die Aufnahme jedoch zuschneiden und Metadaten
+      wie Titel, Autor etc. zur mp3-Datei hinzufügen. Dafür können Sie
+      die folgenden Programme verwenden:
+      </p>
+      <ul>
+      <!--
+        <li>
+          <a
+           href="http://www.mediacoderhq.com/"
+           lang="en">Mediacoder</a> - ein quelloffenes Audio-Umkodier-Programm
+          für Windows
+        </li>
+        <li>
+          <a
+           href="http://audacity.sourceforge.net"
+           lang="en">Audacity</a> - quelloffenes Audio-Bearbeitungsprogramm (u.
+          a. Schneiden, Komprimieren)
+        </li>
+        -->
+        <li>
+            <a href="mp3autocut.html">MP3AutoCut</a> - quelloffenes Programm,
+            das das Schneiden von record.sh-Hörspielaufnahmen erleichtert
+            (vom Autor dieser Seite).
+        </li>
+        <li>
+          <a
+           href="http://mp3splt.sourceforge.net"
+           lang="en">Mp3splt</a> - quelloffenes Programm zum verlustfreien
+          Mp3-Schneiden
+        </li>
+        <li>
+            <a
+                href="http://mpesch3.de1.cc/mp3dc.html"
+                lang="en">Mp3DirectCut</a> - kostenloses Windows-Programm zum
+                verlustfreien Mp3-Schneiden (läuft auch unter Wine)
+        </li>
+        <li>
+          <a
+           href="http://mp3gain.sourceforge.net/"
+           lang="en">Mp3gain</a> - quelloffenes Programm zur Pegelanpassung in
+          Mp3-Dateien
+        </li>
+        <li>
+          <a
+           href="http://mp3dings.sourceforge.net"
+           lang="en">Mp3dings</a> - quelloffenes Programm zum Bearbeiten von
+          Metadaten in Mp3-Dateien (vom Autor dieser Seite)
+        </li>
+      </ul>
+      <hr />
+      <p>
+          <script
+            type="text/javascript"
+            src="hspiel.js" ></script>
+        <a href="javascript:eml('jqgturkgnBoqockn0g6yctf0eqo')" title="erfordert JavaScript">
+        Schreiben Sie mir</a>, wenn Sie Hilfe zum beschriebenen Verfahren
+        benötigen oder Verbesserungsvorschläge haben.
+      </p>
+    </div>
+  </body>
+</html>
+
+

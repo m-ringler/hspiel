@@ -1,0 +1,50 @@
+<!ENTITY % URI    "CDATA">
+<!ENTITY % NUMBER "CDATA">
+<!ENTITY % DAY    "( 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 )">
+<!ENTITY % CAT    "CDATA">
+<!ENTITY % DIGIT  "(0|1|2|3|4|5|6|7|8|9)">
+
+<!ELEMENT senderfamilie ( sender+ )>
+<!ATTLIST senderfamilie id     ID        #REQUIRED >
+<!ATTLIST senderfamilie name   CDATA     #REQUIRED >
+<!ATTLIST senderfamilie url    %URI;     #IMPLIED >
+
+<!ELEMENT sender ( sendung+ ) >
+<!ATTLIST sender url           %URI;     #REQUIRED >
+<!ATTLIST sender frequenzenurl %URI;     #IMPLIED  >
+<!ATTLIST sender id            ID        #REQUIRED >
+<!ATTLIST sender livestreamtyp (RP | WM | MP3) #IMPLIED  >
+<!ATTLIST sender livestreamurl %URI;     #IMPLIED  >
+<!ATTLIST sender longname      CDATA     #REQUIRED >
+<!ATTLIST sender name          CDATA     #REQUIRED >
+<!ATTLIST sender programmurl   %URI;     #REQUIRED >
+<!ATTLIST sender psradioid     NMTOKEN   #IMPLIED >
+
+<!ELEMENT senderliste ( senderfamilie+ ) >
+<!ATTLIST senderliste xmlns %URI; #IMPLIED
+        xmlns:xsi %URI; #IMPLIED
+        xsi:schemaLocation CDATA #IMPLIED>
+
+
+<!ELEMENT sendetermin EMPTY >
+<!ATTLIST sendetermin dauer  %NUMBER; #IMPLIED
+              id     ID       #IMPLIED
+              name   CDATA    #IMPLIED
+              tag    %DAY;    #REQUIRED
+              wdhvon IDREF    #IMPLIED
+              zeit   CDATA    #REQUIRED
+              intervall CDATA #IMPLIED
+              anmerkung CDATA #IMPLIED>
+
+<!ELEMENT sendung ( kategorie+, sendetermin+ ) >
+<!ATTLIST sendung id          ID    #REQUIRED
+      name        CDATA #REQUIRED
+      programmurl %URI; #IMPLIED>
+
+<!ELEMENT kategorie ( #PCDATA ) >
+<!--
+kategorie should be one of
+(Kinder|Literatur|Feature|Serie|Krimi|H&ouml;rspiel allgemein|Experimentelles H&ouml;rspiel)
+but default values with whitespace don't work in DTD
+-->
+

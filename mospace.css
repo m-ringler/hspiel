@@ -1,0 +1,16 @@
+body        {color:#C0C0C0; font-size:10pt}
+
+a:link      {color:#00BB55}
+
+a:visited   {color:#00AABB}
+
+a:active    {color:#FFFFFF}
+
+a:link, a:visited, a:active {text-decoration:none}
+
+td          {color:#c0c0c0;text-decoration:none}
+
+td.c        {text-align:center}
+
+h1          {font-size:150%}
+

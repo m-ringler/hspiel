@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+ xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta
+     http-equiv="Content-Type"
+     content="text/html; charset=UTF-8" />
+    <meta
+     http-equiv="Content-Script-Type"
+     content="text/javascript" />
+    <meta
+     http-equiv="Content-Style-Type"
+     content="text/css" />
+    <meta
+     name="author"
+     content="Moritz Ringler" />
+    <meta
+     name="keywords"
+     content="Hoerspiel, Hörspiel, Hörspielprogramm, Hoerspielprogramm, Sendeplätze, XSLT" />
+    <meta
+     name="description"
+     content="Übersicht der wöchentlichen Hörspielsendeplätze deutschsprachiger Sender - mit Links zum Programm und zum jeweiligen Live-Stream" />
+    <meta
+     name="page-topic"
+     content="Kultur" />
+    <meta
+     name="page-type"
+     content="Private Homepage" />
+    <meta
+     name="audience"
+     content="Alle" />
+    <meta
+     name="robots"
+     content="INDEX,FOLLOW" />
+    <link
+     rel="shortcut icon"
+     href="http://mospace.de/favicon.ico" />
+    <title>
+      Automatisches Speichern von Sendungsdaten bei der Hörspiel-Aufnahme
+    </title>
+    <link
+     rel="stylesheet"
+     type="text/css"
+     href="hspiel.css" />
+<style
+ type="text/css">
+      div.main {width:600px}
+      pre {background-color:#eeeeee; border:none #aaaaaa 1px; margin:0px; padding:2px}
+      blockquote p {font-family:monospace}
+      h3 {font-size:110%}
+</style>
+  </head>
+  <body>
+    <div
+     class="main">
+      <h1>Automatisches Speichern von Sendungsdaten bei der Hörspiel-Aufnahme</h1>
+      <p>
+        Diese Anleitung beschreibt, wie Sie bei der
+        <a href="aufnahme.html">Hörspiel-Aufnahme mit record.sh</a>
+        weitgehend automatisiert Informationen wie Autor, Inhalt etc.
+        mit abspeichern können und wie Sie
+        diese Daten nach dem Schneiden und ggf. konvertieren
+        als ID3-Tag in die MP3-Datei schreiben können.
+        Das ganze befindet sich noch in einem frühen Entwicklungsstadium,
+        rechnen Sie also damit, dass noch nicht alles so funktioniert, wie
+        es soll...
+      </p>
+      <p>Die Daten werden von
+      <a href="http://www.xn--hrdat-jua.de">Hördat</a>
+      abgefragt, ich möchte Sie daher eindringlich bitten, eine Spende an Hördat
+      zu erwägen (ich selbst habe davon keinerlei Vorteil).</p>
+      <hr />
+      <h2>Benötigtes Werkzeug</h2>
+      <p>
+      <ul>
+        <li><a href="http://xmlsoft.org/XSLT/xsltproc2.html">xsltproc</a> - Installation in Cygwin durch Auswahl der Pakete libxml2 und libxslt unter Libs (Danke für den <a href="http://boscomonkey.blogspot.de/2006/09/xsltproc-on-cygwin.html">Tipp</a>!)</li>
+        <li><a href="http://tidy.sourceforge.net/">HTMLTidy</a> - Paketname und Aufruf "tidy"</li>
+        <li><a href="http://id3v2.sourceforge.net">id3v2</a> -
+        Dieses Paket ist nicht über den Cygwin-Paketmanager installierbar. Sie können es aber leicht
+        <a href="http://sourceforge.net/p/id3v2/patches/26/">selbst kompilieren</a>,
+        (<a href="http://sourceforge.net/p/id3v2/patches/_discuss/thread/76e82ff9/6cb1/attachment/cygid3v2.sh">bash-Skript</a>).</li>
+      </ul>
+      In einer anständigen Linux-Distribution sollten all diese Programme über den Paketmanager verfügbar sein.
+      </p>
+      <h2>Wie funktioniert's?</h2>
+      <p>Die Methode beruht im wesentlichen auf einer Aneinanderkettung von XSL-Transformationen.</p>
+        <h3>Das macht record.sh für Sie</h3>
+        <p>
+        <ul>
+            <li>Herunterladen der Daten von Hördat während der Aufnahme</li>
+            <li>Umwandeln der Daten in XHTML mittels HTMLTidy</li>
+            <li>Umwandeln der Daten von XHTML nach Hoerdat-XML mittels XSLT</li>
+            <li>Auswählen der laufenden Sendung mittels XSLT</li>
+            <li>Umwandeln von Hoerdat-XML nach ID3-XML mittels XSLT</li>
+            <li>Generieren einer id3v2-Kommandozeile aus dem ID3-XML mittels XSLT</li>
+        </ul>
+      </p>
+      <h3>Das müssen Sie noch selber machen</h3>
+      <ul><li>Umwandeln der Aufnahme in MP3 und Schneiden der Aufnahme. Beim Schneiden
+      können Sie sich von <a href="mp3autocut.html">MP3AutoCut</a> unterstützen lassen.</li>
+      <li>Überprüfen, ob die heruntergeladenen Informationen auch die richtigen sind</li>
+      <li>Schreiben des Tags durch Aufruf des von record.sh generierten Skripts</li>
+      </ul>
+      <h2>Klingt gut? Dann mal los...!</h2>
+        <h3>Spenden Sie an Hördat!</h3>
+        <p>Wer sich die Sendungsdaten schonmal selbst zusammengesammelt hat,
+        weiß, was für ein Aufwand das ist. Honorieren Sie, dass Ihnen
+        den jemand abnimmt.
+        <a href="http://www.xn--hrdat-jua.de">Seien Sie großzügig!</a>
+        </p>
+        <h3>Konfiguration von record.sh</h3>
+        <p>In <a href="aufnahme.html">record.sh</a> gibt es ab dem 22. Januar 2009 die Variablen
+        <pre>
+hoerdat_html=false
+hoerdat_xml=false     # depends on hoerdat_html
+hoerdat_id3=false     # depends on hoerdat_xml
+hoerdat_sh=false      # depends on hoerdat_id3
+        </pre>
+        <p>
+        Setzen Sie <code>hoerdat_html</code> auf <code>true</code>, um während der Aufnahme die laufenden
+        Hörspiele von Hördat abzufragen, und das Ergebnis als HTML-Datei in
+        das record.sh-Zielverzeichnis zu speichern (benötigt curl und HTMLTidy).</p>
+        <p>
+        Setzen Sie <code>hoerdat_xml</code> auf <code>true</code>, um die HTML-Datei in eine von
+        Formatierungs-Auszeichnungen befreite XML-Datei umzuwandeln (benötigt xsltproc).</p>
+        <p>
+        Setzen Sie <code>hoerdat_id3</code> auf <code>true</code>, um die hoerdat-XML-Datei in die
+        XML-Darstellung eines <a href="http://id3.org">ID3-Tags</a> umzuwandeln.
+        Wenn Ihnen die von mir gewählte
+        Zuordnung zwischen Hördat-Feldern und ID3-Feldern nicht gefällt,
+        müssen Sie das <a href="xslt/hoerdat-id3.xsl">Stylesheet</a> herunterladen
+        und anpassen und dann in record.sh die Zeichenkette
+        http://hspiel.mospace.de/xslt/hoerdat-id3.xsl durch den Ablageort
+        Ihres modifizierten Stylesheets ersetzen.</p>
+        <p>
+        Setzen Sie <code>hoerdat_sh</code> auf <code>true</code>, um im record.sh-Zielverzeichnis ein
+        bash-Skript zu erzeugen, mit dem Sie die Daten aus der ID3-XML-Datei
+        in die MP3-Datei schreiben können. Dieses Skript muss in dem
+        Verzeichnis ausgeführt werden, indem die MP3-Datei liegt. Der Name
+        der MP3-Datei darf nicht geändert worden sein
+        (außer ggf. .mp3-Erweiterung). Sie sollten die Datei vorher geschnitten
+        haben, da der Tag beim Schneiden vermutlich verloren geht. Zum Schreiben
+        des Tags muss das Programm id3v2 installiert sein. Bitte beachten Sie:
+        das
+    Shell-Script wird im Zeichensatz ISO-8859-1 erzeugt,
+    da
+    das Programm id3v2 zur Zeit andere Zeichensätze nicht unterstützt. Wenn Sie einen anderen Standardzeichensatz
+    verwenden, kann das dazu führen, dass Sonderzeichen in dem Skript nicht korrekt
+    angezeigt werden.
+        </p>
+      </h2>
+      <hr />
+      <p>
+          <script
+            type="text/javascript"
+            src="hspiel.js" ></script>
+        <a href="javascript:eml('jqgturkgnBoqockn0g6yctf0eqo')" title="erfordert JavaScript">
+        Schreiben Sie mir</a>, wenn Sie Hilfe zum beschriebenen Verfahren
+        benötigen oder Verbesserungsvorschläge haben.
+      </p>
+    </div>
+  </body>
+</html>
+
+

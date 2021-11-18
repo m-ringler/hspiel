@@ -1,0 +1,186 @@
+#!/bin/bash
+# THIS PROGRAM COMES WITHOUT ANY WARRANTY
+# USE AT YOUR OWN RISK!
+#
+# Utility for recording a livestream from an internet
+# radio station.
+# Last changed: 2009-01-09
+# based on a thread in de.comp.os.unix.shell
+# http://groups.google.com/group/de.comp.os.unix.shell/browse_thread/thread/e215f94ccf572331
+# Livestreams are dumped as raw
+# streams and can in general be played with mplayer
+# only.
+# Use mplayer recordedfile -ao pcm:file=fifo & lame fifo
+# to transcode to mp3 (fifos don't seem to work under cygwin,
+# you probably need to use a non-fifo temporary wave file).
+#
+# This script is invoked as
+# record.sh (start|stop|status) station name_of_program_
+#
+# This script is designed to run as a cron job.
+# A typical user crontab entry would look like this:
+# 00 10 * * 6 record.sh start wdr5 WDR5_Krimi_am_Samstag
+# 00 11 * * 6 record.sh stop  wdr5 WDR5_Krimi_am_Samstag
+
+# how to invoke the mplayer executable
+# Under cygwin start a cygwin bash shell and type e. g.
+# cygpath -ua 'C:\Programme\mplayer\mplayer.exe'
+# and copy the result after the = sign.
+mplayer=/usr/bin/mplayer.exe
+
+# Additional mplayerflags. This is optional. Under windows you might want to set
+# the process priority for mplayer using
+#  mplayerflags="-priority belownormal"
+# a user has reported this to avoid race conditions when two mplayers are
+# running at the same time.
+mplayerflags=
+
+# The location of the stream info file
+# This can be a local file or a web URL
+# It has one line for each stream with the structure
+# STATIONNAME URL TYPE
+# where TYPE is one of smil, m3u, asx for playlists
+# or the proper file extension for the stream format
+# of the respective internet radio station.
+# Neither URL nor STATIONNAME may contain any blanks
+# Replace blanks in URLs by %20.
+# Under cygwin start a cygwin bash shell and type e. g.
+# cygpath -ua 'C:\downloads\livestreams.txt'
+# and copy the result after the = sign.
+# streams=/usr/share/streams.dat
+streams=http://hspiel.mospace.de/livestreams.txt
+
+# A temporary file where the process id of a recording is
+# saved as long as it is running
+# If you don't know any better try
+# pidfile=~/.$3-mplayer.pid
+pidfile=/var/tmp/records/.$3-mplayer.pid
+
+# The place where recordings are stored. When using the
+# Win32 (MinGW) port of mplayer this must be a windows
+# path (with backslashes).
+dest='E:\tmp\records'
+
+# Returns url and type for a station name
+# @param station the name of the station
+# @return a single string consisting of
+#  stationname, url and type separated by a blank
+stream(){
+    local station=$1
+    if [[ ${streams:0:7} = "http://" ]]
+    then
+    	curl $streams 2> /dev/null | grep -e ^${station}
+    else
+        grep -e ^${station} "$streams"
+    fi
+}
+
+# Starts recording a livestream from a station
+# @param station the station name
+# @param alias a name for the recording
+start(){
+    local station=$1
+    local alias=$2
+    local stream=(`stream $station`)
+    local url=${stream[1]}
+    local type=${stream[2]}
+
+    local playlist=""
+    #handle playlists
+    if [[ "$type" = "smil" || "$type" = "rm" ]]
+        then
+        type="ra"
+        playlist="-playlist"
+    elif [[ "$type" = "m3u" ]]
+        then
+        type="mp3"
+        playlist="-playlist"
+    elif  [[ "$type" = "asx" ]]
+        then type="wma"
+        playlist="-playlist"
+    fi
+
+    if test -f "$pidfile"
+        then
+        echo "Lockfile found!"
+    else
+        echo $$ > $pidfile
+
+        dat=`date '+%Y-%m-%d'`
+        CYG="$(uname  | grep CYGWIN)"
+        if [[ -n "$CYG" ]]
+            then
+            file="${dest}\\${alias}_${dat}.${type}"
+        else
+            file="${dest}/${alias}_${dat}.${type}"
+        fi
+        #echo $file
+        # when debugging use:
+        #"$mplayer" $playlist $url $mplayerflags -dumpstream -dumpfile "$file"
+        "$mplayer" $playlist $url $mplayerflags -msglevel all=2 -dumpstream -dumpfile "$file" 2>/dev/null <&2 >&2 &
+        echo $! >$pidfile
+        disown
+    fi
+}
+
+# Stops recording a livestream from a station
+stop(){
+    if test -f "$pidfile"
+        then
+        # retrieve the pid from the pidfile
+        pid=`cat "$pidfile"`
+        # try to terminate mplayer nicely
+        kill -SIGTERM $pid
+        # give mplayer 2 seconds to terminate
+        sleep 2
+        # if the mplayer process is still running: kill it
+        while [[ $(ps -p $pid  | grep $pid) != "" ]]
+        do
+            echo record.sh stop: Trying to kill process $pid at `date` >&2
+            kill -KILL $pid
+            # wait for 5 seconds before trying again
+            sleep 5
+        done
+        rm -f $pidfile
+    else
+        echo record.sh stop: pidfile missing >&2
+        #no pid? kill all mplayers
+        # could use pgrep, but as far as I remember that does not work on Cygwin
+        for psid in $(ps -eopid,comm| grep mplayer | awk '{printf $1" "}')
+        do
+            echo record.sh stop: Trying to kill $psid at `date` >&2
+            kill -KILL $psid
+        done
+    fi
+}
+
+# Prints whether we are currently recording
+status(){
+    if test -f "$pidfile"
+        then
+        echo "Mplayer is recording $1"
+    else
+        echo "Mplayer is not recording $1"
+    fi
+}
+
+# Displays a usage message
+usage(){
+    echo "Usage: $0 {start|stop|status} station alias"
+}
+
+#main
+case "$1" in
+start)
+    start $2 $3
+;;
+stop)
+    stop
+;;
+status)
+    status $3
+;;
+*)
+    usage
+;;
+esac

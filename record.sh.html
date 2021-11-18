@@ -1,0 +1,3396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org" />
+<title>record.sh</title>
+
+<style type="text/css">
+/*<![CDATA[*/
+<!--
+
+.syntax-NULL {
+  color: #000000;
+}
+.syntax-COMMENT1 {
+  color: #cc0000;
+}
+.syntax-COMMENT2 {
+  color: #ff8400;
+}
+.syntax-COMMENT3 {
+  color: #6600cc;
+}
+.syntax-COMMENT4 {
+  color: #cc6600;
+}
+.syntax-DIGIT {
+  color: #ff0000;
+}
+.syntax-FUNCTION {
+  color: #9966ff;
+}
+.syntax-INVALID {
+  background: #ffffcc;
+  color: #ff0066;
+}
+.syntax-KEYWORD1 {
+  color: #006699;
+  font-weight: bold;
+}
+.syntax-KEYWORD2 {
+  color: #009966;
+  font-weight: bold;
+}
+.syntax-KEYWORD3 {
+  color: #0099ff;
+  font-weight: bold;
+}
+.syntax-KEYWORD4 {
+  color: #66ccff;
+  font-weight: bold;
+}
+.syntax-LABEL {
+  color: #02b902;
+}
+.syntax-LITERAL1 {
+  color: #ff00cc;
+}
+.syntax-LITERAL2 {
+  color: #cc00cc;
+}
+.syntax-LITERAL3 {
+  color: #9900cc;
+}
+.syntax-LITERAL4 {
+  color: #6600cc;
+}
+.syntax-MARKUP {
+  color: #0000ff;
+}
+.syntax-OPERATOR {
+  color: #000000;
+  font-weight: bold;
+}
+
+.gutter {
+  background: #dbdbdb;
+  color: #000000;
+  border-right: 2px solid black ;
+  margin-right: 5px ;
+}
+.gutterH {
+  background: #dbdbdb;
+  color: #990066;
+  border-right: 2px solid black ;
+  margin-right: 5px ;
+}
+
+-->
+/*]]>*/
+</style>
+</head>
+<body>
+<pre>
+<span class="syntax0"><span class="gutter">   1 </span><span class=
+"syntax-COMMENT2">#!</span><span class=
+"syntax-COMMENT2">/bin/bash</span>
+<span class="gutter">   2 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">THIS</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">PROGRAM</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">COMES</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">WITHOUT</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">ANY</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">WARRANTY</span>
+<span class="gutter">   3 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">USE</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">AT</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">YOUR</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">OWN</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">RISK!</span>
+<span class="gutter">   4 </span><span class=
+"syntax-COMMENT1">#</span><span class="syntax-COMMENT1">#</span>
+<span class="gutterH">   5 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Nimmt</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Webradio</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">auf.</span>
+<span class="gutter">   6 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Die</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Originalversion</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">geht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">zurück</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">auf</span>
+<span class="gutter">   7 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">http://groups.google.com/group/de.comp.os.unix.shell/browse_thread/thread/e215f94ccf572331</span>
+<span class="gutter">   8 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">$Id$</span>
+<span class="gutter">   9 </span><span class=
+"syntax-COMMENT1">#</span><span class="syntax-COMMENT1">#</span>
+<span class="gutterH">  10 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">USAGE:</span>
+<span class="gutter">  11 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">record.sh</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">(start|stop|status)</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">&lt;sendername&gt;</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">&lt;sendung&gt;</span>
+<span class="gutter">  12 </span><span class=
+"syntax-COMMENT1">#</span><span class="syntax-COMMENT1">#</span>
+<span class="gutter">  13 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Dieses</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Skript</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">ist</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">dafuer</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">gedacht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">als</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">cron</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">job</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">zu</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">laufen.</span>
+<span class="gutter">  14 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Ein</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">crontab</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Eintrag</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">wuerde</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">dabei</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">typischerweise</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">so</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">aussehen:</span>
+<span class="gutterH">  15 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">00</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">10</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">*</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">*</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">6</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">record.sh</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">start</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">wdr5</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">WDR5_Krimi_am_Samstag</span>
+<span class="gutter">  16 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">00</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">11</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">*</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">*</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">6</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">record.sh</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">stop</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">wdr5</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">WDR5_Krimi_am_Samstag</span>
+<span class="gutter">  17 </span><span class=
+"syntax-COMMENT1">#</span><span class="syntax-COMMENT1">#</span>
+<span class="gutter">  18 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Wenn</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">das</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Ergebnis</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">ein</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">anderes</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Format</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">als</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mp3</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">hat,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">kann</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">es</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">in</span>
+<span class="gutter">  19 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">der</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Regel</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nur</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mit</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mplayer</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">wiedergegeben</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">werden.</span>
+<span class="gutterH">  20 </span><span class=
+"syntax-COMMENT1">#</span><span class="syntax-COMMENT1">#</span>
+<span class="gutter">  21 </span>
+<span class="gutter">  22 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Setzt</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">das</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Home-Verzeichnis</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">wenn</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">es</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">noch</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nicht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">gesetzt</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">ist</span>
+<span class="gutter">  23 </span><span class=
+"syntax-KEYWORD1">if</span> [[ -z <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">HOME</span> ]]
+<span class="gutter">  24 </span><span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutterH">  25 </span>    <span class=
+"syntax-KEYWORD2">HOME</span><span class=
+"syntax-OPERATOR">=</span>/home/<span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>whoami<span class=
+"syntax-OPERATOR">)</span>
+<span class="gutter">  26 </span><span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter">  27 </span>
+<span class="gutter">  28 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">MPlayer-Aufruf</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">als</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">UNIX-Pfad</span>
+<span class="gutter">  29 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Unter</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">cygwin</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">können</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Sie</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">den</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Befehl</span>
+<span class="gutterH">  30 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">cygpath</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-ua</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">'C:\Programme\mplayer\mplayer.exe'</span>
+<span class="gutter">  31 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">benutzen,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">um</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">den</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">richtigen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Pfad</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">zu</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">bekommen.</span>
+<span class="gutter">  32 </span><span class=
+"syntax-KEYWORD2">mplayer</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">usr</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">bin</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">mplayer</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter">  33 </span>
+<span class="gutter">  34 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Das</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Zielverzeichnis,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">in</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">dem</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">die</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Aufnahmen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">gespeichert</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">werden.</span>
+<span class="gutterH">  35 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Unter</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Windows</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">muss</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">das</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">ein</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Windows-Pfad</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">sein.</span>
+<span class="gutter">  36 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">dest='C:\Benutzer\HoerspielNutzer\Downloads\Hoerspiele'</span>
+<span class="gutter">  37 </span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">HOME</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">aufnahmen</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter">  38 </span>
+<span class="gutter">  39 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Automatisches</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Herunterladen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">von</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Metadaten</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">(s.</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a.</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Nachverarbeitung)</span>
+<span class="gutterH">  40 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Dokumentation</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">unter</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">http://hspiel.mospace.de/autotag.html</span>
+<span class="gutter">  41 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Bitte</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">erwaegen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Sie</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">eine</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Spende</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">an</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">hoerdat!</span>
+<span class="gutter">  42 </span><span class=
+"syntax-KEYWORD2">hoerdat_html</span><span class=
+"syntax-OPERATOR">=</span>true
+<span class="gutter">  43 </span><span class=
+"syntax-KEYWORD2">hoerdat_xml</span><span class=
+"syntax-OPERATOR">=</span>true     <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">geht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nur</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mit</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">hoerdat_html</span>
+<span class="gutter">  44 </span><span class=
+"syntax-KEYWORD2">hoerdat_id3</span><span class=
+"syntax-OPERATOR">=</span>false     <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">geht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nur</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mit</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">hoerdat_xml</span>
+<span class="gutterH">  45 </span><span class=
+"syntax-KEYWORD2">hoerdat_sh</span><span class=
+"syntax-OPERATOR">=</span>false      <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">geht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nur</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mit</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">hoerdat_id3</span>
+<span class="gutter">  46 </span>
+<span class="gutter">  47 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Schneiden</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">(siehe</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">http://hspiel.mospace.de/mp3autocut.html)</span>
+<span class="gutter">  48 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Nicht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">schneiden:</span>
+<span class="gutter">  49 </span><span class=
+"syntax-KEYWORD2">autocut</span><span class=
+"syntax-OPERATOR">=</span>
+<span class="gutterH">  50 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Schnitt-Dateien</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">fuer</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Mp3DirectCut</span>
+<span class="gutter">  51 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">autocut=mpd</span>
+<span class="gutter">  52 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">mp3autocut="java</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-jar</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-DHoerdatExtraMins=5.0</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">$dest/mp3autocut.jar"</span>
+<span class="gutter">  53 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Direkt</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">schneiden</span>
+<span class="gutter">  54 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">autocut=mp3</span>
+<span class="gutterH">  55 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">mp3autocut="java</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-jar</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-DHoerdatExtraMins=5.0</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">$dest/mp3autocut.jar"</span>
+<span class="gutter">  56 </span>
+<span class="gutter">  57 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Taggen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">(siehe</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">unter</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">http://hspiel.mospace.de/autotag.html)</span>
+<span class="gutter">  58 </span><span class=
+"syntax-KEYWORD2">run_hoerdat_sh</span><span class=
+"syntax-OPERATOR">=</span>false  <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">geht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nur</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mit</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">hoerdat_sh</span>
+<span class="gutter">  59 </span>
+<span class="gutterH">  60 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">RSS</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">2.0</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">XML-Datei</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">fuer</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Podcatcher</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">erzeugen.</span>
+<span class="gutter">  61 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Podcast</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">funktioniert</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">beispielsweise</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mit</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">gpodder.</span>
+<span class="gutter">  62 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">geht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nur</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mit</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">hoerdat_xml</span>
+<span class="gutter">  63 </span><span class=
+"syntax-KEYWORD2">podcast</span><span class=
+"syntax-OPERATOR">=</span>false
+<span class="gutter">  64 </span>
+<span class="gutterH">  65 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Wenn</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nicht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">gesetzt</span>
+<span class="gutter">  66 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">podcastbaseuri=file:///$dest</span>
+<span class="gutter">  67 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Local</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">web</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">server,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">e.g.</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">NanoHTTPD</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">started</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">with</span>
+<span class="gutter">  68 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">java</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">NanoHTTPD</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-p</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">8081</span>
+<span class="gutter">  69 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">ipaddr=$(ip</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-4</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">addr</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">show</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">scope</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">global</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">|</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">awk</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">'$1=="inet"</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">{</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">print</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">$2</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">}'</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">|</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">cut</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-d'/'</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-f1</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">|</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">head</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-n</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">1)</span>
+<span class="gutterH">  70 </span><span class=
+"syntax-KEYWORD1">if</span> [[ -n <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">ipaddr</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter">  71 </span><span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter">  72 </span>    <span class=
+"syntax-KEYWORD2">podcastbaseuri</span><span class=
+"syntax-OPERATOR">=</span>http://<span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">ipaddr</span>:<span class=
+"syntax-DIGIT">8081</span>
+<span class="gutter">  73 </span><span class=
+"syntax-KEYWORD1">else</span>
+<span class="gutter">  74 </span>    <span class=
+"syntax-KEYWORD2">podcastbaseuri</span><span class=
+"syntax-OPERATOR">=</span>
+<span class="gutterH">  75 </span><span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter">  76 </span>
+<span class="gutter">  77 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Wenn</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nicht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">gesetzt:</span>
+<span class="gutter">  78 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">rssfile=rss.xml</span>
+<span class="gutter">  79 </span><span class=
+"syntax-KEYWORD2">rssfile</span><span class=
+"syntax-OPERATOR">=</span>
+<span class="gutterH">  80 </span>
+<span class="gutter">  81 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Wenn</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nicht</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">gesetzt</span>
+<span class="gutter">  82 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">oldrssfile=$podcastbaseuri/$rssfile</span>
+<span class="gutter">  83 </span><span class=
+"syntax-KEYWORD2">oldrssfile</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">file</span><span class=
+"syntax-LITERAL1">:</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">rssfile</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter">  84 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">oldrssfile=</span>
+<span class="gutterH">  85 </span>
+<span class="gutter">  86 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Zusätzliche</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mplayer-Argumente.</span>
+<span class="gutter">  87 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mplayerflags="-priority</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">belownormal"</span>
+<span class="gutter">  88 </span><span class=
+"syntax-KEYWORD2">mplayerflags</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">nolirc</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">prefer</span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">ipv4</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter">  89 </span>
+<span class="gutterH">  90 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">UNIX-Pfad</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">oder</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Adresse</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">der</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Datei</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mit</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">den</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Daten</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">der</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Webradios.</span>
+<span class="gutter">  91 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Für</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">jeden</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Sender</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">gibt</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">es</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">einen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Eintrag</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">der</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">Form</span>
+<span class="gutter">  92 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">STATIONNAME</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">URL</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">TYPE</span>
+<span class="gutter">  93 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">wobei</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">TYPE</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">entweder</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">smil,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">m3u,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">asx</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">ist</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">(für</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Playlists)</span>
+<span class="gutter">  94 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">oder</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">die</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">richtige</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Erweiterung</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">fuer</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">das</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">betreffende</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Dateiformat.</span>
+<span class="gutterH">  95 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Weder</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">URL</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">noch</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">STATIONNAME</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">duerfen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Leerzeichen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">enthalten,</span>
+<span class="gutter">  96 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">ersetzen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Sie</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Leerzeichen</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">in</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">URLs</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">durch</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">%20.</span>
+<span class="gutter">  97 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">/cygdrive/c/Benutzer/HoerspielNutzer/livestreams.txt</span>
+<span class="gutter">  98 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">streams="/usr/share/streams.dat"</span>
+<span class="gutter">  99 </span><span class=
+"syntax-KEYWORD2">streams</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">http</span><span class=
+"syntax-LITERAL1">:</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">hspiel</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">mospace</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">de</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">livestreams</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">txt</span><span class="syntax-LITERAL1">"</span>
+<span class="gutterH"> 100 </span>
+<span class="gutter"> 101 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Lokale</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Datei,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">die</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">die</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Daten</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">in</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">$streams</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">ergänzt</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">oder</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">überschreibt.</span>
+<span class="gutter"> 102 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Kann</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">auch</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">ungesetzt</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">bleiben.</span>
+<span class="gutter"> 103 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">localstreams=</span>
+<span class="gutter"> 104 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">localstreams="$HOME/share/livestreams.txt"</span>
+<span class="gutterH"> 105 </span><span class=
+"syntax-KEYWORD2">localstreams</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">livestreams</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">txt</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 106 </span>
+<span class="gutter"> 107 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Eine</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">temporäre</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Datei,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">in</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">der</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">die</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Prozess-ID</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">einer</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Aufnahme</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">abgelegt,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">wird.</span>
+<span class="gutter"> 108 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Der</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Name</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">muss</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">für</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">'start'</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">und</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">'stop'</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">gleich</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">sein.</span>
+<span class="gutter"> 109 </span><span class=
+"syntax-KEYWORD2">pidfile</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">3</span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">mplayer</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">pid</span><span class="syntax-LITERAL1">"</span>
+<span class="gutterH"> 110 </span>
+<span class="gutter"> 111 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Wohin</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Fehler</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">geschrieben</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">werden.</span>
+<span class="gutter"> 112 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Auf</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">das</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Terminal</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">(stderr)</span>
+<span class="gutter"> 113 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">errors=/dev/stderr</span>
+<span class="gutter"> 114 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Ignorieren</span>
+<span class="gutterH"> 115 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">errors=/dev/null</span>
+<span class="gutter"> 116 </span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">record</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">sh</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">log</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 117 </span>
+<span class="gutter"> 118 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</span>
+<span class="gutter"> 119 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">AB</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">HIER</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">MUSS</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">FUER</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">GEWOEHNLICH</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">NICHTS</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">MEHR</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">GEAENDERT</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">WERDEN!</span>
+<span class="gutterH"> 120 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</span>
+<span class="gutter"> 121 </span>
+<span class="gutter"> 122 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">error</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">codes</span>
+<span class="gutter"> 123 </span><span class=
+"syntax-KEYWORD2">E_FILE_EXISTS</span><span class=
+"syntax-OPERATOR">=</span><span class="syntax-DIGIT">42</span>
+<span class="gutter"> 124 </span><span class=
+"syntax-KEYWORD2">E_NO_STREAM_URL</span><span class=
+"syntax-OPERATOR">=</span><span class="syntax-DIGIT">43</span>
+<span class="gutterH"> 125 </span><span class=
+"syntax-KEYWORD2">E_NO_STREAM_TYPE</span><span class=
+"syntax-OPERATOR">=</span><span class="syntax-DIGIT">44</span>
+<span class="gutter"> 126 </span><span class=
+"syntax-KEYWORD2">E_WRONG_NUMBER_OF_ARGUMENTS</span><span class=
+"syntax-OPERATOR">=</span><span class="syntax-DIGIT">45</span>
+<span class="gutter"> 127 </span><span class=
+"syntax-KEYWORD2">E_LOCKFILE_FOUND</span><span class=
+"syntax-OPERATOR">=</span><span class="syntax-DIGIT">46</span>
+<span class="gutter"> 128 </span>
+<span class="gutter"> 129 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Returns</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">url</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">and</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">type</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">for</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">station</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">name</span>
+<span class="gutterH"> 130 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">@param</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">station</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">name</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">of</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">station</span>
+<span class="gutter"> 131 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">@return</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">single</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">string</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">consisting</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">of</span>
+<span class="gutter"> 132 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">stationname,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">url</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">and</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">type</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">separated</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">by</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">blank</span>
+<span class="gutter"> 133 </span><span class=
+"syntax-FUNCTION">stream</span><span class=
+"syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>{
+<span class="gutter"> 134 </span>    <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">station</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">1</span>
+<span class="gutterH"> 135 </span>    <span class=
+"syntax-KEYWORD2">result</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 136 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ -f <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">localstreams</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 137 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 138 </span>        <span class=
+"syntax-KEYWORD2">result</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span> grep -m <span class=
+"syntax-DIGIT">1</span> -e ^<span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">station</span><span class=
+"syntax-KEYWORD2">}</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">localstreams</span><span class=
+"syntax-LITERAL1">"</span> <span class="syntax-OPERATOR">)</span>
+<span class="gutter"> 139 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutterH"> 140 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ -z <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">result</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 141 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 142 </span>        <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">streams:0:7</span><span class=
+"syntax-KEYWORD2">}</span> <span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">http</span><span class=
+"syntax-LITERAL1">:</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">/</span><span class="syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 143 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 144 </span>            <span class=
+"syntax-KEYWORD2">result</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span> curl <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">streams</span> <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span> /dev/null <span class=
+"syntax-OPERATOR">|</span> grep -m <span class=
+"syntax-DIGIT">1</span> -e ^<span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">station</span><span class=
+"syntax-KEYWORD2">}</span><span class="syntax-OPERATOR">)</span>
+<span class="gutterH"> 145 </span>        <span class=
+"syntax-KEYWORD1">else</span>
+<span class="gutter"> 146 </span>            grep -m <span class=
+"syntax-DIGIT">1</span> -e ^<span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">station</span><span class=
+"syntax-KEYWORD2">}</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">streams</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 147 </span>        <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 148 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 149 </span>    echo <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">result</span>
+<span class="gutterH"> 150 </span>}
+<span class="gutter"> 151 </span>
+<span class="gutter"> 152 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Starts</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">recording</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">livestream</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">from</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">station</span>
+<span class="gutter"> 153 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">@param</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">station</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">station</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">name</span>
+<span class="gutter"> 154 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">@param</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">alias</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">name</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">for</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">recording</span>
+<span class="gutterH"> 155 </span><span class=
+"syntax-FUNCTION">start</span><span class=
+"syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>{
+<span class="gutter"> 156 </span>    <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">station</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">1</span>
+<span class="gutter"> 157 </span>    <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">alias</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">2</span>
+<span class="gutter"> 158 </span>    <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">stream</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-OPERATOR">(</span><span class=
+"syntax-KEYWORD3">`</span><span class=
+"syntax-KEYWORD3">stream</span><span class=
+"syntax-KEYWORD3"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">station</span><span class=
+"syntax-KEYWORD3">`</span><span class="syntax-OPERATOR">)</span>
+<span class="gutter"> 159 </span>    <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">url</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">stream[1]</span><span class=
+"syntax-KEYWORD2">}</span>
+<span class="gutterH"> 160 </span>    <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">stream[2]</span><span class=
+"syntax-KEYWORD2">}</span>
+<span class="gutter"> 161 </span>    <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">dayHourMinute</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>date +<span class=
+"syntax-LITERAL1">'</span><span class=
+"syntax-LITERAL1">%d-%H-%M</span><span class=
+"syntax-LITERAL1">'</span><span class="syntax-OPERATOR">)</span>
+<span class="gutter"> 162 </span>
+<span class="gutter"> 163 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-KEYWORD2">$#</span> -ne <span class=
+"syntax-DIGIT">2</span> ]]
+<span class="gutter"> 164 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutterH"> 165 </span>        usage
+<span class="gutter"> 166 </span>        <span class=
+"syntax-KEYWORD1">return</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">E_WRONG_NUMBER_OF_ARGUMENTS</span>
+<span class="gutter"> 167 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 168 </span>
+<span class="gutter"> 169 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ -z <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">url</span> ]]
+<span class="gutterH"> 170 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 171 </span>        echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">No</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">stream</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">URL</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">for</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">station</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 172 </span>        <span class=
+"syntax-KEYWORD1">return</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">E_NO_STREAM_URL</span>
+<span class="gutter"> 173 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 174 </span>
+<span class="gutterH"> 175 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ -z <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">type</span> ]]
+<span class="gutter"> 176 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 177 </span>        echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">No</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">stream</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">type</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">for</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">station</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 178 </span>        <span class=
+"syntax-KEYWORD1">return</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">E_NO_STREAM_TYPE</span>
+<span class="gutter"> 179 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutterH"> 180 </span>
+<span class="gutter"> 181 </span>    <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">playlist</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 182 </span>    <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">handle</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">playlists</span>
+<span class="gutter"> 183 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">smil</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">|</span><span class=
+"syntax-OPERATOR">|</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">rm</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 184 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutterH"> 185 </span>        <span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">ra</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 186 </span>        <span class=
+"syntax-KEYWORD2">playlist</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">playlist</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 187 </span>    <span class=
+"syntax-KEYWORD1">elif</span> [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">m3u</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 188 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 189 </span>        <span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">mp3</span><span class="syntax-LITERAL1">"</span>
+<span class="gutterH"> 190 </span>        <span class=
+"syntax-KEYWORD2">playlist</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">playlist</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 191 </span>    <span class=
+"syntax-KEYWORD1">elif</span>  [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">asx</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 192 </span>        <span class=
+"syntax-KEYWORD1">then</span> <span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">wma</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 193 </span>        <span class=
+"syntax-KEYWORD2">playlist</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">playlist</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 194 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutterH"> 195 </span>
+<span class="gutter"> 196 </span>    <span class=
+"syntax-KEYWORD1">if</span> test -f <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pidfile</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 197 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 198 </span>        echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">Lockfile</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">found</span><span class=
+"syntax-LITERAL1">!</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 199 </span>        <span class=
+"syntax-KEYWORD1">return</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">E_LOCKFILE_FOUND</span>
+<span class="gutterH"> 200 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 201 </span>    echo <span class=
+"syntax-KEYWORD2">$$</span> <span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pidfile</span>
+<span class="gutter"> 202 </span>
+<span class="gutter"> 203 </span>    <span class=
+"syntax-KEYWORD2">dat</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD3">`</span><span class=
+"syntax-KEYWORD3">date</span><span class=
+"syntax-KEYWORD3"> </span><span class=
+"syntax-KEYWORD3">'</span><span class=
+"syntax-KEYWORD3">+</span><span class=
+"syntax-KEYWORD3">%</span><span class=
+"syntax-KEYWORD3">Y</span><span class=
+"syntax-KEYWORD3">-</span><span class=
+"syntax-KEYWORD3">%</span><span class=
+"syntax-KEYWORD3">m</span><span class=
+"syntax-KEYWORD3">-</span><span class=
+"syntax-KEYWORD3">%</span><span class=
+"syntax-KEYWORD3">d</span><span class=
+"syntax-KEYWORD3">'</span><span class="syntax-KEYWORD3">`</span>
+<span class="gutter"> 204 </span>    <span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">alias</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">_</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">dat</span><span class=
+"syntax-KEYWORD2">}</span><span class="syntax-LITERAL1">"</span>
+<span class="gutterH"> 205 </span>    <span class=
+"syntax-KEYWORD2">CYG</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-LITERAL1">(</span><span class=
+"syntax-LITERAL1">uname</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">|</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">grep</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">CYGWIN</span><span class=
+"syntax-LITERAL1">)</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 206 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ -n <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">CYG</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 207 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 208 </span>        <span class=
+"syntax-KEYWORD2">file</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">\\</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-KEYWORD2">}</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 209 </span>    <span class=
+"syntax-KEYWORD1">else</span>
+<span class="gutterH"> 210 </span>        <span class=
+"syntax-KEYWORD2">file</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">type</span><span class=
+"syntax-KEYWORD2">}</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 211 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 212 </span>
+<span class="gutter"> 213 </span>    <span class=
+"syntax-KEYWORD1">if</span> test -f <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">file</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 214 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutterH"> 215 </span>        echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">Target</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">file</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">file</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">exists</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 216 </span>        <span class=
+"syntax-KEYWORD1">return</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">E_FILE_EXISTS</span>
+<span class="gutter"> 217 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 218 </span>    <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1">echo</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">$file</span>
+<span class="gutter"> 219 </span>    <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">unfortunately</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-endpos</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">does</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">not</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">work</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">with</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">-dumpstream</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">so</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">we</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">cannot</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">use</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">that</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">to</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">terminate</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mplayer</span>
+<span class="gutterH"> 220 </span>    <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mplayer</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">playlist</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">url</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mplayerflags</span> -msglevel <span class=
+"syntax-KEYWORD2">all</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-DIGIT">2</span> -dumpstream -dumpfile <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">file</span><span class=
+"syntax-LITERAL1">"</span>  <span class=
+"syntax-OPERATOR">&gt;</span>/dev/null <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&lt;</span><span class=
+"syntax-OPERATOR">&amp;</span><span class=
+"syntax-DIGIT">2</span> <span class="syntax-OPERATOR">&amp;</span>
+<span class="gutter"> 221 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-OPERATOR">!</span> <span class=
+"syntax-KEYWORD2">$?</span> ]]
+<span class="gutter"> 222 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 223 </span>        echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">FAILED</span><span class=
+"syntax-LITERAL1">:</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mplayer</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">playlist</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">url</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mplayerflags</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">msglevel</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">all</span><span class=
+"syntax-LITERAL1">=</span><span class=
+"syntax-LITERAL1">2</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">dumpstream</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">-</span><span class=
+"syntax-LITERAL1">dumpfile</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">file</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 224 </span>        <span class=
+"syntax-KEYWORD1">return</span> <span class=
+"syntax-KEYWORD2">$?</span>
+<span class="gutterH"> 225 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 226 </span>    echo <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">!</span> <span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pidfile</span>
+<span class="gutter"> 227 </span>    disown
+<span class="gutter"> 228 </span>
+<span class="gutter"> 229 </span>    echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">file</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pidfile</span>
+<span class="gutterH"> 230 </span>
+<span class="gutter"> 231 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">hoerdat_html</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">true</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 232 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 233 </span>        <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">html</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">html</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 234 </span>        <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">xmln</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">xml</span><span class="syntax-LITERAL1">"</span>
+<span class="gutterH"> 235 </span>        <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">xml1</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">~</span><span class=
+"syntax-LITERAL1">1</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">xml</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 236 </span>        <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">id3</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">id3</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 237 </span>        <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">sh</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">sh</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 238 </span>        <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">mp3</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">mp3</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 239 </span>        <span class=
+"syntax-KEYWORD1">local</span> <span class=
+"syntax-KEYWORD2">hoerdatsender</span><span class=
+"syntax-OPERATOR">=</span>
+<span class="gutterH"> 240 </span>        <span class=
+"syntax-KEYWORD1">case</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">station</span> <span class=
+"syntax-KEYWORD1">in</span>
+<span class="gutter"> 241 </span>        einslive<span class=
+"syntax-OPERATOR">)</span>
+<span class="gutter"> 242 </span>            <span class=
+"syntax-KEYWORD2">hoerdatsender</span><span class=
+"syntax-OPERATOR">=</span>wdr
+<span class="gutter"> 243 </span>            <span class=
+"syntax-OPERATOR">;;</span>
+<span class="gutter"> 244 </span>        *<span class=
+"syntax-OPERATOR">)</span>
+<span class="gutterH"> 245 </span>            <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">use</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">first</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">three</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">letters</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">with</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">numbers</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">removed</span>
+<span class="gutter"> 246 </span>            <span class=
+"syntax-KEYWORD2">hoerdatsender</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>echo <span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">station:0:3</span><span class=
+"syntax-KEYWORD2">}</span> <span class=
+"syntax-OPERATOR">|</span> sed <span class=
+"syntax-LITERAL1">'</span><span class=
+"syntax-LITERAL1">s/[0-9]//</span><span class=
+"syntax-LITERAL1">'</span><span class="syntax-OPERATOR">)</span>
+<span class="gutter"> 247 </span>            <span class=
+"syntax-OPERATOR">;;</span>
+<span class="gutter"> 248 </span>        <span class=
+"syntax-KEYWORD1">esac</span>
+<span class="gutter"> 249 </span>
+<span class=
+"gutterH"> 250 </span>        curl -s http://www.xn--hrdat-jua.de/index.php?<span class="syntax-KEYWORD2">dat</span><span class="syntax-OPERATOR">=</span><span class="syntax-KEYWORD2">${</span><span class="syntax-KEYWORD2">dat</span><span class="syntax-KEYWORD2">}</span><span class="syntax-KEYWORD2">\&amp;sender</span><span class="syntax-OPERATOR">=</span><span class="syntax-KEYWORD2">${</span><span class="syntax-KEYWORD2">hoerdatsender</span><span class="syntax-KEYWORD2">}</span> \
+<span class="gutter"> 251 </span>            <span class=
+"syntax-OPERATOR">|</span> tidy -asxhtml -numeric \
+<span class="gutter"> 252 </span>            <span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">html</span><span class=
+"syntax-LITERAL1">"</span> \
+<span class="gutter"> 253 </span>            <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span> /dev/null
+<span class="gutter"> 254 </span>        <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">hoerdat_xml</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-OPERATOR">=</span> true ]]
+<span class="gutterH"> 255 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 256 </span>
+<span class="gutter"> 257 </span>            <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Extract</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">data</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">as</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">XML</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">from</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">XHTML</span>
+<span class=
+"gutter"> 258 </span>            xsltproc -novalid -nodtdattr http://hspiel.mospace.de/xslt/hoerdat-parser2.xsl <span class="syntax-LITERAL1">"</span><span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">html</span><span class="syntax-LITERAL1">"</span> \
+<span class="gutter"> 259 </span>                <span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">xmln</span><span class=
+"syntax-KEYWORD2">}</span><span class="syntax-LITERAL1">"</span> \
+<span class="gutterH"> 260 </span>                <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 261 </span>            <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Try</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">to</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">select</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">currently</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">running</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">program</span>
+<span class=
+"gutter"> 262 </span>            xsltproc --stringparam day-hour-minute <span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">dayHourMinute</span> \
+<span class=
+"gutter"> 263 </span>                http://hspiel.mospace.de/xslt/hoerdat-select.xsl \
+<span class="gutter"> 264 </span>                <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">xmln</span><span class=
+"syntax-KEYWORD2">}</span><span class="syntax-LITERAL1">"</span> \
+<span class="gutterH"> 265 </span>                <span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">xml1</span><span class=
+"syntax-KEYWORD2">}</span><span class="syntax-LITERAL1">"</span> \
+<span class="gutter"> 266 </span>                <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 267 </span>            <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">If</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">we</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">have</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">found</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">matching</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">entry</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">use</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">it,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">else</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">remove</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">empty</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">output</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">file</span>
+<span class="gutter"> 268 </span>            <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>stat -c <span class=
+"syntax-KEYWORD2">%</span><span class=
+"syntax-KEYWORD2">s</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">xml1</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-OPERATOR">)</span> -gt <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">80</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 269 </span>            <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutterH"> 270 </span>                mv <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">xml1</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">xmln</span><span class=
+"syntax-KEYWORD2">}</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 271 </span>            <span class=
+"syntax-KEYWORD1">else</span>
+<span class="gutter"> 272 </span>                rm <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">xml1</span><span class=
+"syntax-KEYWORD2">}</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 273 </span>            <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 274 </span>
+<span class="gutterH"> 275 </span>            <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">hoerdat_id3</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">true</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 276 </span>            <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 277 </span>                <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Generate</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">ID3</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">XML</span>
+<span class=
+"gutter"> 278 </span>                xsltproc http://hspiel.mospace.de/xslt/hoerdat-id3.xsl <span class="syntax-LITERAL1">"</span><span class="syntax-KEYWORD2">${</span><span class="syntax-KEYWORD2">xmln</span><span class="syntax-KEYWORD2">}</span><span class="syntax-LITERAL1">"</span> \
+<span class="gutter"> 279 </span>                    <span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">id3</span><span class=
+"syntax-LITERAL1">"</span> \
+<span class="gutterH"> 280 </span>                    <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 281 </span>
+<span class="gutter"> 282 </span>                <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">hoerdat_sh</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">true</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 283 </span>                <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 284 </span>                    <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Generate</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">bash</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">script</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">for</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">tagging</span>
+<span class=
+"gutterH"> 285 </span>                    echo <span class=
+"syntax-LITERAL1">'</span><span class=
+"syntax-LITERAL1">#!/bin/bash</span><span class=
+"syntax-LITERAL1">'</span> <span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">sh</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 286 </span>                    <span class=
+"syntax-KEYWORD2">cmd</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>xsltproc http://hspiel.mospace.de/xslt/id3-bash.xsl <span class="syntax-LITERAL1">"</span><span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">id3</span><span class="syntax-LITERAL1">"</span><span class="syntax-OPERATOR">)</span> \
+<span class=
+"gutter"> 287 </span>                        <span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">sh</span><span class="syntax-LITERAL1">"</span> \
+<span class=
+"gutter"> 288 </span>                        <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class=
+"gutter"> 289 </span>                    echo <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">cmd</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mp3</span> <span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">sh</span><span class="syntax-LITERAL1">"</span>
+<span class="gutterH"> 290 </span>                <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 291 </span>            <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 292 </span>        <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 293 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 294 </span>
+<span class="gutterH"> 295 </span>}
+<span class="gutter"> 296 </span>
+<span class="gutter"> 297 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">pgrep</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">substitute</span>
+<span class="gutter"> 298 </span>function <span class=
+"syntax-FUNCTION">_pgrep_</span><span class=
+"syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>{
+<span class="gutter"> 299 </span>    <span class=
+"syntax-KEYWORD1">if</span> which pgrep <span class=
+"syntax-OPERATOR">&gt;</span>/dev/null <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span>/dev/null
+<span class="gutterH"> 300 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 301 </span>        pgrep <span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">1</span>
+<span class="gutter"> 302 </span>    <span class=
+"syntax-KEYWORD1">elif</span> [[ <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>uname -o<span class=
+"syntax-OPERATOR">)</span> <span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">'</span><span class=
+"syntax-LITERAL1">Cygwin</span><span class=
+"syntax-LITERAL1">'</span> ]]
+<span class="gutter"> 303 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 304 </span>        ps -e <span class=
+"syntax-OPERATOR">|</span> awk <span class=
+"syntax-LITERAL1">'</span>
+<span class="gutterH"> 305 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">NR==1</span><span class=
+"syntax-LITERAL1"> </span><span class="syntax-LITERAL1">{</span>
+<span class="gutter"> 306 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">for</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">(c=1;c&lt;=NF;c++){</span>
+<span class="gutter"> 307 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">if</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">($c</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">==</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">"PID")</span><span class=
+"syntax-LITERAL1"> </span><span class="syntax-LITERAL1">{</span>
+<span class="gutter"> 308 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">break;</span>
+<span class="gutter"> 309 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class="syntax-LITERAL1">}</span>
+<span class="gutterH"> 310 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class="syntax-LITERAL1">}</span>
+<span class="gutter"> 311 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class="syntax-LITERAL1">};</span>
+<span class="gutter"> 312 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">match($0,</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">prog)</span><span class=
+"syntax-LITERAL1"> </span><span class="syntax-LITERAL1">{</span>
+<span class="gutter"> 313 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">print</span><span class=
+"syntax-LITERAL1"> </span><span class="syntax-LITERAL1">$c;</span>
+<span class="gutter"> 314 </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">}</span><span class=
+"syntax-LITERAL1">'</span> <span class=
+"syntax-KEYWORD2">prog</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">1</span><span class="syntax-LITERAL1">"</span>
+<span class="gutterH"> 315 </span>    <span class=
+"syntax-KEYWORD1">else</span>
+<span class=
+"gutter"> 316 </span>        ps -eopid,comm <span class="syntax-OPERATOR">|</span> grep mplayer <span class="syntax-OPERATOR">|</span> grep -v grep <span class="syntax-OPERATOR">|</span> awk <span class="syntax-LITERAL1">'</span><span class="syntax-LITERAL1">{print</span><span class="syntax-LITERAL1"> </span><span class="syntax-LITERAL1">$1}</span><span class="syntax-LITERAL1">'</span>
+<span class="gutter"> 317 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 318 </span>}
+<span class="gutter"> 319 </span>
+<span class="gutterH"> 320 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Creates</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">or</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">extends</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">an</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">RSS</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">2.0</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">podcast</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">file</span>
+<span class="gutter"> 321 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">@param</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">audiofile</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">absolute</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">path</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">of</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">audio</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">file</span>
+<span class="gutter"> 322 </span><span class=
+"syntax-FUNCTION">makepodcast</span><span class=
+"syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>{
+<span class="gutter"> 323 </span>    <span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">1</span>
+<span class="gutter"> 324 </span>    <span class=
+"syntax-KEYWORD2">hoerdatxml</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">audiofile%%mp3</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">xml</span><span class="syntax-LITERAL1">"</span>
+<span class="gutterH"> 325 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">podcast</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">true</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&amp;</span><span class=
+"syntax-OPERATOR">&amp;</span> -f <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">hoerdatxml</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 326 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 327 </span>        <span class=
+"syntax-KEYWORD2">mp3</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 328 </span>
+<span class="gutter"> 329 </span>        <span class=
+"syntax-KEYWORD1">if</span> [[ -z <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">podcastbaseuri</span> ]]
+<span class="gutterH"> 330 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 331 </span>            <span class=
+"syntax-KEYWORD2">podcastbaseuri</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">file</span><span class=
+"syntax-LITERAL1">:</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">dest</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 332 </span>        <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 333 </span>
+<span class="gutter"> 334 </span>        <span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>basename <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mp3</span><span class=
+"syntax-LITERAL1">"</span><span class="syntax-OPERATOR">)</span>
+<span class="gutterH"> 335 </span>        <span class=
+"syntax-KEYWORD2">mp3fileuri</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">podcastbaseuri</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">fname</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 336 </span>        <span class=
+"syntax-KEYWORD2">mp3filesize</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>stat -c <span class=
+"syntax-KEYWORD2">%</span><span class=
+"syntax-KEYWORD2">s</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mp3</span><span class=
+"syntax-LITERAL1">"</span><span class="syntax-OPERATOR">)</span>
+<span class="gutter"> 337 </span>        <span class=
+"syntax-KEYWORD2">pubdate</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>date -R<span class=
+"syntax-OPERATOR">)</span>
+<span class="gutter"> 338 </span>
+<span class="gutter"> 339 </span>        <span class=
+"syntax-KEYWORD1">if</span> [[ -z <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">rssfile</span> ]]
+<span class="gutterH"> 340 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 341 </span>            <span class=
+"syntax-KEYWORD2">rssfile</span><span class=
+"syntax-OPERATOR">=</span>rss.xml
+<span class="gutter"> 342 </span>        <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 343 </span>
+<span class="gutter"> 344 </span>        <span class=
+"syntax-KEYWORD2">rsspath</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">dest</span><span class=
+"syntax-LITERAL1">/</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">rssfile</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutterH"> 345 </span>
+<span class="gutter"> 346 </span>        <span class=
+"syntax-KEYWORD2">oldrssfileuri</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">podcastbaseuri</span>/<span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">rssfile</span>
+<span class="gutter"> 347 </span>
+<span class="gutter"> 348 </span>        <span class=
+"syntax-KEYWORD2">newxml</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>xsltproc \
+<span class=
+"gutter"> 349 </span>            --stringparam mp3-file-size <span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">mp3filesize</span> \
+<span class=
+"gutterH"> 350 </span>            --stringparam mp3-file-uri <span class="syntax-LITERAL1">"</span><span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">mp3fileuri</span><span class="syntax-LITERAL1">"</span> \
+<span class=
+"gutter"> 351 </span>            --stringparam pubDate <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pubdate</span><span class=
+"syntax-LITERAL1">"</span> \
+<span class=
+"gutter"> 352 </span>            --stringparam old-rss-file <span class="syntax-LITERAL1">"</span><span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">oldrssfileuri</span><span class="syntax-LITERAL1">"</span> \
+<span class=
+"gutter"> 353 </span>            http://hspiel.mospace.de/xslt/podcast.xsl \
+<span class="gutter"> 354 </span>            <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">hoerdatxml</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-OPERATOR">)</span> <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutterH"> 355 </span>        <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-KEYWORD2">$?</span> -eq <span class=
+"syntax-DIGIT">0</span> ]]
+<span class="gutter"> 356 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 357 </span>            echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">newxml</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">rsspath</span>
+<span class="gutter"> 358 </span>        <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 359 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutterH"> 360 </span>}
+<span class="gutter"> 361 </span>
+<span class="gutter"> 362 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Performs</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">autocutting</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">if</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">autocutting</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">is</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">active</span>
+<span class="gutter"> 363 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">@param</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">audiofile</span>
+<span class="gutter"> 364 </span><span class=
+"syntax-FUNCTION">cut</span><span class=
+"syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>{
+<span class="gutterH"> 365 </span>    <span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">1</span>
+<span class="gutter"> 366 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ -n <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">autocut</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&amp;</span><span class=
+"syntax-OPERATOR">&amp;</span> -n <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mp3autocut</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 367 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 368 </span>        <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">autocut</span><span class=
+"syntax-LITERAL1">"</span> -eq <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">mp3</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 369 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutterH"> 370 </span>            <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mp3autocut</span> mp3 /var/tmp <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&gt;</span>/dev/null <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> /dev/null
+<span class="gutter"> 371 </span>            <span class=
+"syntax-KEYWORD2">tmpfile</span><span class=
+"syntax-OPERATOR">=</span>/var/tmp/<span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>basename <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-LITERAL1">"</span><span class="syntax-OPERATOR">)</span>
+<span class="gutter"> 372 </span>            <span class=
+"syntax-KEYWORD1">if</span> [[ -f <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">tmpfile</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 373 </span>            <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 374 </span>                mv <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-LITERAL1">.</span><span class=
+"syntax-LITERAL1">original</span><span class=
+"syntax-LITERAL1">"</span>
+<span class=
+"gutterH"> 375 </span>                mv /var/tmp/<span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>basename <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-OPERATOR">)</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 376 </span>            <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 377 </span>        <span class=
+"syntax-KEYWORD1">else</span>
+<span class="gutter"> 378 </span>            <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">mp3autocut</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">autocut</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&gt;</span>/dev/null <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> /dev/null
+<span class="gutter"> 379 </span>        <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutterH"> 380 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 381 </span>}
+<span class="gutter"> 382 </span>
+<span class="gutter"> 383 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Performs</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">autotagging</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">if</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">autotagging</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">is</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">active.</span>
+<span class="gutter"> 384 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">@param</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">audiofile</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">The</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">file</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">to</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">tag</span>
+<span class="gutterH"> 385 </span><span class=
+"syntax-FUNCTION">tag</span><span class=
+"syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>{
+<span class="gutter"> 386 </span>    <span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">1</span>
+<span class="gutter"> 387 </span>    <span class=
+"syntax-KEYWORD2">hoerdatsh</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">${</span><span class=
+"syntax-KEYWORD2">audiofile%%mp3</span><span class=
+"syntax-KEYWORD2">}</span><span class=
+"syntax-LITERAL1">sh</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 388 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">run_hoerdat_sh</span><span class=
+"syntax-LITERAL1">"</span> -eq <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">true</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&amp;</span><span class=
+"syntax-OPERATOR">&amp;</span> -f <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">hoerdatsh</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 389 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutterH"> 390 </span>        <span class=
+"syntax-KEYWORD2">olddir</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">PWD</span>
+<span class="gutter"> 391 </span>        cd <span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">dest</span>
+<span class="gutter"> 392 </span>        source <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">hoerdatsh</span> <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 393 </span>        cd <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">olddir</span>
+<span class="gutter"> 394 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutterH"> 395 </span>}
+<span class="gutter"> 396 </span>
+<span class="gutter"> 397 </span>
+<span class="gutter"> 398 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Stops</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">recording</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">livestream</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">from</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">station</span>
+<span class="gutter"> 399 </span><span class=
+"syntax-FUNCTION">stop</span><span class=
+"syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>{
+<span class="gutterH"> 400 </span>    <span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-OPERATOR">=</span>
+<span class="gutter"> 401 </span>    <span class=
+"syntax-KEYWORD1">if</span> test -f <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pidfile</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutter"> 402 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 403 </span>
+<span class="gutter"> 404 </span>        <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">retrieve</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">pid</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">from</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">pidfile</span>
+<span class="gutterH"> 405 </span>        <span class=
+"syntax-KEYWORD2">pid</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD3">`</span><span class=
+"syntax-KEYWORD3">head</span><span class=
+"syntax-KEYWORD3"> </span><span class=
+"syntax-KEYWORD3">-</span><span class=
+"syntax-KEYWORD3">n</span><span class=
+"syntax-KEYWORD3"> </span><span class=
+"syntax-KEYWORD3">1</span><span class=
+"syntax-KEYWORD3"> </span><span class=
+"syntax-KEYWORD3">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pidfile</span><span class=
+"syntax-KEYWORD3">"</span><span class="syntax-KEYWORD3">`</span>
+<span class="gutter"> 406 </span>
+<span class="gutter"> 407 </span>        <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">read</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">audio</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">file</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">name</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">from</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">pidfile</span>
+<span class="gutter"> 408 </span>        <span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-OPERATOR">=</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>tail -n +<span class=
+"syntax-DIGIT">2</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pidfile</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">|</span> head -n <span class=
+"syntax-DIGIT">1</span><span class="syntax-OPERATOR">)</span>
+<span class="gutter"> 409 </span>
+<span class="gutterH"> 410 </span>        <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">try</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">to</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">terminate</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mplayer</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">nicely</span>
+<span class="gutter"> 411 </span>        kill -SIGTERM <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pid</span> <span class=
+"syntax-OPERATOR">&gt;</span>/dev/null <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span>/dev/null
+<span class="gutter"> 412 </span>
+<span class="gutter"> 413 </span>        <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">give</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mplayer</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">2</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">seconds</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">to</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">terminate</span>
+<span class="gutter"> 414 </span>        sleep <span class=
+"syntax-DIGIT">2</span>
+<span class="gutterH"> 415 </span>
+<span class="gutter"> 416 </span>        <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">if</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">the</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mplayer</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">process</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">is</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">still</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">running:</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">kill</span><span class=
+"syntax-COMMENT1"> </span><span class="syntax-COMMENT1">it</span>
+<span class="gutter"> 417 </span>        <span class=
+"syntax-KEYWORD1">while</span> [[ <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>ps -p <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pid</span>  <span class=
+"syntax-OPERATOR">|</span> grep <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pid</span><span class=
+"syntax-OPERATOR">)</span> <span class=
+"syntax-OPERATOR">!</span><span class=
+"syntax-OPERATOR">=</span> <span class=
+"syntax-LITERAL1">"</span><span class="syntax-LITERAL1">"</span> ]]
+<span class="gutter"> 418 </span>        <span class=
+"syntax-KEYWORD1">do</span>
+<span class=
+"gutter"> 419 </span>            echo record.sh stop: Trying to kill process <span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">pid</span> at <span class="syntax-KEYWORD3">`</span><span class="syntax-KEYWORD3">date</span><span class="syntax-KEYWORD3">`</span> <span class="syntax-OPERATOR">&gt;</span><span class="syntax-OPERATOR">&gt;</span> <span class="syntax-LITERAL1">"</span><span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">errors</span><span class="syntax-LITERAL1">"</span>
+<span class=
+"gutterH"> 420 </span>            kill -KILL <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pid</span> <span class=
+"syntax-OPERATOR">&gt;</span>/dev/null <span class=
+"syntax-DIGIT">2</span><span class=
+"syntax-OPERATOR">&gt;</span>/dev/null
+<span class="gutter"> 421 </span>
+<span class="gutter"> 422 </span>            <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">wait</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">for</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">5</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">seconds</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">before</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">trying</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">again</span>
+<span class="gutter"> 423 </span>            sleep <span class=
+"syntax-DIGIT">5</span>
+<span class="gutter"> 424 </span>        <span class=
+"syntax-KEYWORD1">done</span>
+<span class="gutterH"> 425 </span>        rm -f <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pidfile</span>
+<span class="gutter"> 426 </span>    <span class=
+"syntax-KEYWORD1">else</span>
+<span class=
+"gutter"> 427 </span>        echo record.sh stop: pidfile missing <span class="syntax-OPERATOR">&gt;</span><span class="syntax-OPERATOR">&gt;</span> <span class="syntax-LITERAL1">"</span><span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">errors</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 428 </span>
+<span class="gutter"> 429 </span>        <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">no</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">pid?</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">kill</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">all</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">mplayers</span>
+<span class="gutterH"> 430 </span>        <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">could</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">use</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">pgrep,</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">but</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">as</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">far</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">as</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">I</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">remember</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">that</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">does</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">not</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">work</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">on</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Cygwin</span>
+<span class="gutter"> 431 </span>        <span class=
+"syntax-KEYWORD1">for</span> psid <span class=
+"syntax-KEYWORD1">in</span> <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-OPERATOR">(</span>_pgrep_ mplayer<span class=
+"syntax-OPERATOR">)</span>
+<span class="gutter"> 432 </span>        <span class=
+"syntax-KEYWORD1">do</span>
+<span class=
+"gutter"> 433 </span>            echo record.sh stop: Trying to kill <span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">psid</span> at <span class="syntax-KEYWORD3">`</span><span class="syntax-KEYWORD3">date</span><span class="syntax-KEYWORD3">`</span> <span class="syntax-OPERATOR">&gt;</span><span class="syntax-OPERATOR">&gt;</span> <span class="syntax-LITERAL1">"</span><span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">errors</span><span class="syntax-LITERAL1">"</span>
+<span class=
+"gutter"> 434 </span>            kill -KILL <span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">psid</span> <span class="syntax-DIGIT">2</span><span class="syntax-OPERATOR">&gt;</span><span class="syntax-OPERATOR">&gt;</span> <span class="syntax-LITERAL1">"</span><span class="syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">errors</span><span class="syntax-LITERAL1">"</span>
+<span class="gutterH"> 435 </span>        <span class=
+"syntax-KEYWORD1">done</span>
+<span class="gutter"> 436 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 437 </span>
+<span class="gutter"> 438 </span>    <span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">post-processing</span>
+<span class="gutter"> 439 </span>    <span class=
+"syntax-KEYWORD1">if</span> [[ -n <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span><span class=
+"syntax-LITERAL1">"</span> ]]
+<span class="gutterH"> 440 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 441 </span>        cut <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span>
+<span class="gutter"> 442 </span>        tag <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span>
+<span class="gutter"> 443 </span>        makepodcast <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">audiofile</span>
+<span class="gutter"> 444 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutterH"> 445 </span>}
+<span class="gutter"> 446 </span>
+<span class="gutter"> 447 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Prints</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">whether</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">we</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">are</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">currently</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">recording</span>
+<span class="gutter"> 448 </span><span class=
+"syntax-FUNCTION">status</span><span class=
+"syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>{
+<span class="gutter"> 449 </span>    <span class=
+"syntax-KEYWORD1">if</span> test -f <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">pidfile</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutterH"> 450 </span>        <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 451 </span>        echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">Mplayer</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">is</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">recording</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">1</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 452 </span>    <span class=
+"syntax-KEYWORD1">else</span>
+<span class="gutter"> 453 </span>        echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">Mplayer</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">is</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">not</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">recording</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">1</span><span class="syntax-LITERAL1">"</span>
+<span class="gutter"> 454 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutterH"> 455 </span>}
+<span class="gutter"> 456 </span>
+<span class="gutter"> 457 </span><span class=
+"syntax-COMMENT1">#</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">Displays</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">a</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">usage</span><span class=
+"syntax-COMMENT1"> </span><span class=
+"syntax-COMMENT1">message</span>
+<span class="gutter"> 458 </span><span class=
+"syntax-FUNCTION">usage</span><span class=
+"syntax-OPERATOR">(</span><span class="syntax-OPERATOR">)</span>{
+<span class="gutter"> 459 </span>    echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">Usage</span><span class=
+"syntax-LITERAL1">:</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">0</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">{</span><span class=
+"syntax-LITERAL1">start</span><span class=
+"syntax-LITERAL1">|</span><span class=
+"syntax-LITERAL1">stop</span><span class=
+"syntax-LITERAL1">|</span><span class=
+"syntax-LITERAL1">status</span><span class=
+"syntax-LITERAL1">}</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">station</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">alias</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutterH"> 460 </span>}
+<span class="gutter"> 461 </span>
+<span class="gutter"> 462 </span><span class=
+"syntax-COMMENT1">#</span><span class="syntax-COMMENT1">main</span>
+<span class="gutter"> 463 </span><span class=
+"syntax-KEYWORD1">case</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">1</span><span class=
+"syntax-LITERAL1">"</span> <span class="syntax-KEYWORD1">in</span>
+<span class="gutter"> 464 </span>start<span class=
+"syntax-OPERATOR">)</span>
+<span class="gutterH"> 465 </span>    start <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">2</span> <span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">3</span>
+<span class="gutter"> 466 </span>    <span class=
+"syntax-KEYWORD2">error</span><span class=
+"syntax-OPERATOR">=</span><span class="syntax-KEYWORD2">$?</span>
+<span class="gutter"> 467 </span>    <span class=
+"syntax-KEYWORD1">if</span> let <span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">error</span>
+<span class="gutter"> 468 </span>    <span class=
+"syntax-KEYWORD1">then</span>
+<span class="gutter"> 469 </span>        echo <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-LITERAL1">\"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">0</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-LITERAL1">*</span><span class=
+"syntax-LITERAL1">\"</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">failed</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">with</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">error</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-LITERAL1">code</span><span class=
+"syntax-LITERAL1"> </span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">error</span><span class=
+"syntax-LITERAL1">"</span> <span class=
+"syntax-OPERATOR">&gt;</span><span class=
+"syntax-OPERATOR">&gt;</span> <span class=
+"syntax-LITERAL1">"</span><span class=
+"syntax-KEYWORD2">$</span><span class=
+"syntax-KEYWORD2">errors</span><span class=
+"syntax-LITERAL1">"</span>
+<span class="gutterH"> 470 </span>        exit <span class=
+"syntax-KEYWORD2">$?</span>
+<span class="gutter"> 471 </span>    <span class=
+"syntax-KEYWORD1">fi</span>
+<span class="gutter"> 472 </span><span class=
+"syntax-OPERATOR">;;</span>
+<span class="gutter"> 473 </span>stop<span class=
+"syntax-OPERATOR">)</span>
+<span class="gutter"> 474 </span>    stop
+<span class="gutterH"> 475 </span><span class=
+"syntax-OPERATOR">;;</span>
+<span class="gutter"> 476 </span>status<span class=
+"syntax-OPERATOR">)</span>
+<span class="gutter"> 477 </span>    status <span class=
+"syntax-KEYWORD2">$</span><span class="syntax-KEYWORD2">3</span>
+<span class="gutter"> 478 </span><span class=
+"syntax-OPERATOR">;;</span>
+<span class="gutter"> 479 </span>*<span class=
+"syntax-OPERATOR">)</span>
+<span class="gutterH"> 480 </span>    usage
+<span class="gutter"> 481 </span><span class=
+"syntax-OPERATOR">;;</span>
+<span class="gutter"> 482 </span><span class=
+"syntax-KEYWORD1">esac</span>
+</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,44 @@
+body, table{
+    font-size:150%;
+}
+a.frequenzen, a.livestream{
+    font-size:100%;
+}
+input.button{
+    font-size:100%;
+}
+input.button2{
+    font-size:100%;
+}
+td{
+    vertical-align:top;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+td.sender{
+    width:auto;
+}
+hr{
+    text-align:left;
+    width:100%;
+}
+div.main{
+    width:auto;
+    left:initial;
+}
+a.frequenzen, a.livestream{
+    font-size:66%;
+    font-family:Helvetica, Arial, sans-serif;
+    border:silver solid 1px;
+    padding-left:1px;
+    padding-right:1px;
+    text-align:center;
+    margin:0pt;
+}
+p.framesornoframes{
+    display:none
+}
+span.record
+{
+    display:none
+}

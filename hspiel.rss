@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hörspiel-Sendeplätze</title>
+    <link>http://hspiel.mospace.de</link>
+    <atom:link href="http://hspiel.mospace.de/hspiel.rss" rel="self" type="application/rss+xml" />
+    <description>Änderungsbenachrichtigungen für http://hspiel.mospace.de</description>
+    <language>de-de</language>
+    <pubDate>Thu, 08 Jun 2017 22:34:43 +0200</pubDate>
+
+    <!--
+    <item>
+      <title></title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      </description>
+      <guid isPermaLink="false">urn:uuid:(java.util.UUID.randomUUID())</guid>
+      <pubDate>(format = new java.text.SimpleDateFormat("EE, d MMM yyyy HH:mm:ss Z", java.util.Locale.US);
+       format.format(new Date());)</pubDate>
+    </item>-->
+    <item>
+      <title>Keine Aktualisierungen mehr</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      nachdem ich heute die letzten mir mitgeteilten
+      Änderungen eingepflegt habe,
+      werde ich künftig die Liste der Hörspielsendeplätze
+      nicht mehr aktualisieren.
+      Meine persönlichen Interessen haben sich verschoben, meine Zeit ist knapper
+      geworden, und mittlerweile gibt es Podcasts und andere Möglichkeiten
+      zum Nachhören, so dass die Sendeplätze im Radioprogramm vielfach
+      nicht mehr so wichtig sind. Falls jemand die Sendeplatzliste andernorts
+      weiterpflegen möchte, unterstütze ich gerne und richte ggf. auch eine
+      Weiterleitung ein.
+      </description>
+      <guid isPermaLink="false">urn:uuid:adab7426-dd61-480c-a2ab-780d3e8f6cba</guid>
+      <pubDate>Fri, 26 Oct 2018 10:48:08 +0200</pubDate>
+    </item>
+    <item>
+      <title>Livestream-URLs des WDR aktualisiert</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Das Webradio von Eins Live, WDR 3 und WDR 5 ist unter neuen Adressen zu finden.
+      Danke an BP für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:65e6899b-1936-4e79-b372-adf8a859364a</guid>
+      <pubDate>Thu, 08 Jun 2017 22:34:43 +0200</pubDate>
+    </item>
+    <item>
+      <title>Livestream-URLs von Radio Bremen aktualisiert.</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Das Webradio von Nordwestradio und Bremen 4 ist unter neuen Adressen zu finden.
+      Danke an TSP für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:2ee8180b-8a60-475e-a370-1531927decc1</guid>
+      <pubDate>Fri, 16 Oct 2015 13:50:26 +0200</pubDate>
+    </item>
+
+<item>
+      <title>Verknüpfungen überprüft; BR 2 Radiotexte am Samstag entfernt</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Ein paar gebrochene Verknüpfungen repariert. Die BR 2 Radiotexte am Samstag scheint es nicht mehr zu geben.
+      </description>
+      <guid isPermaLink="false">urn:uuid:34b733a0-b591-4851-85f3-249840472e26</guid>
+      <pubDate>Sun, 24 May 2015 00:53:25 +0200</pubDate>
+    </item>
+
+<item>
+      <title>Angepasstes Layout für mobile Endgeräte</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Ab sofort gibt es ein (leicht) angepasstes Layout der Sendeplatzübersicht für mobile Endgeräte.
+      </description>
+      <guid isPermaLink="false">d7ea9edb-4325-4744-b995-f3a0ce71c583</guid>
+      <pubDate>Mon, 04 May 2015 12:44:58 +0200</pubDate>
+    </item>
+
+<item>
+      <title>Niederdeutsches Hörspiel im Nordwestradio und Änderungen bei EinsLive</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Das Niederdeutsche Hörspiel läuft im Nordwestradio nun sonntags und montags (Danke an TSP für den Hinweis).
+      Eins Live: Klubbing Lesung neu aufgenommen, Sendetermine von SoundStory und ShortStory aktualisiert (Danke an MK für den Hinweis).
+      </description>
+      <guid isPermaLink="false">urn:uuid:02a70476-ffde-4c6e-a8d3-9f93c966d26e</guid>
+      <pubDate>Mon, 04 May 2015 11:46:25 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>WDR 3 Musikporträt entfällt</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Das sonntägliche Musikporträt taucht im Sendeschema von WDR 3
+      (http://www.wdr3.de/programm) nicht mehr auf. Danke an MK für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:edef1b17-5f8e-47c2-b952-2194fd107e8d</guid>
+      <pubDate>Sun, 25 Jan 2015 16:50:25 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Eins Live Shortstory</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>Eins Live Verknüpfungen repariert und Shortstory
+      (Sonntags 21h - 22h) neu aufgenommen.
+      </description>
+      <guid isPermaLink="false">urn:uuid:38443e0f-898f-4cc5-be34-efa2a352e5b2</guid>
+      <pubDate>Tue, 13 Jan 2015 22:58:15 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>DLR Kakadu</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>Seit einiger Zeit wird das Kakadu Kinderhörspiel
+am Sonntag nicht mehr 14:05 sondern 08:05 gesendet.
+Der Erzähltag ist von 13:30 am Dienstag nach 07:30 am Sonntag
+gewandert. Dank an TB und AI für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:2a694a44-fb60-457d-9d72-66318266f4a6</guid>
+      <pubDate>Tue, 13 Jan 2015 21:57:56 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>DLR »Aus den Archiven«</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Samstags um 5:05h gibt es im Deutschlandfunk die Sendung
+      »Aus den Archiven« mit alten Hörspielen und Features.
+      Vielen Dank an TB für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:c15dfcdc-70bf-43b7-87c9-11856e891390</guid>
+      <pubDate>Tue, 30 Dec 2014 09:05:54 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>SR 2 Fortsetzung folgt um 14:05</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      SR 2 "Fortsetzung folgt" läuft jetzt um 14:05. Vielen Dank an TB für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:310351d1-5871-4643-8988-8506ee2b38d2</guid>
+      <pubDate>Tue, 16 Sep 2014 21:21:55 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Hördat ist umgezogen. record.sh muss angepasst werden.</title>
+      <link>http://hspiel.mospace.de/record.sh</link>
+      <description>
+      Hördat ist umgezogen. Die Webseite unter der alten Domain http://hoerdat.in-berlin.de
+      wird nicht mehr richtig gepflegt. Die neue Domain heißt http://www.hördat.de
+      bzw. http://www.xn--hrdat-jua.de. Im record.sh-Skript sollte die Zeichenkette
+      hoerdat.in-berlin.de durch www.xn--hrdat-jua.de ersetzt werden. Ich hoffe,
+      dass das Herunterladen von Hördat-Daten dann wieder besser funktioniert.
+      Herzlichen Dank an MK für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:47e1b19d-e109-4fee-9547-72975d2e7e47</guid>
+      <pubDate>Thu, 31 Jul 2014 20:02:50 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Livestream-Links gehen jetzt auch mit Android</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Android kann mit m3u-Dateien, die URLs enthalten, nichts anfangen (Android issue 7028
+      https://code.google.com/p/android/issues/detail?id=7028). Ich versuche nun,
+      dieses Problem zu umgehen. Fuer Nutzer anderer Betriebssysteme bleibt alles
+      wie gehabt.
+      </description>
+      <guid isPermaLink="false">urn:uuid:ef62ddf4-6f44-4a2a-8e68-df356c3037ed</guid>
+      <pubDate>Sun, 06 Jul 2014 15:38:53 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Gebrochene Verknüpfungen repariert und Kulturforum aufgenommen</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Einige gebrochenen Verknüpfungen (NDR und SWR) repariert, Kulturforum
+      (NDR Kultur) als Feature neu in die Übersicht aufgenommen.
+      </description>
+      <guid isPermaLink="false">urn:uuid:ec00e35c-8855-48cd-a340-8885115ccf5f</guid>
+      <pubDate>Sun, 06 Jul 2014 03:38:42 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>BR 2 Livestream aktualisiert</title>
+      <link>http://hspiel.mospace.de/livestreams.txt</link>
+      <description>
+      </description>
+      <guid isPermaLink="false">urn:uuid:55498b02-3ab5-4bb5-a93a-8c3e6de850f7</guid>
+      <pubDate>Wed, 29 Jan 2014 22:50:38 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>BR 2 Krimi nun ohne Wiederholung</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Die Wiederholung des BR 2-Krimis am Donnerstagabend wird durch die
+      Literatursendung Radiotexte am Donnerstag ersetzt. Danke an MK für den Hinweis
+      und Frohes Neues Jahr allen Hörspielfreunden!
+      </description>
+      <guid isPermaLink="false">urn:uuid:09fe29c4-f843-4417-a410-897a88ce3d44</guid>
+      <pubDate>Thu, 02 Jan 2014 18:43:32 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Neue Adressen beim Deutschlandradio und geänderter Sendetermin des Mittwochhörspiels auf HR 2</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Das Deutschlandradio verwendet nun getrennte Domain-Namen für Deutschlandfunk und Deutschlandradio Kultur,
+      die alten Adressen funktionierten zwar noch, wurden aber umgeleitet. Ich habe die Verknüpfungen aktualisiert.
+      Der Mittwochs-Hörspielplatz bei HR 2 ändert sich, ab dem 15.1.2014 wird
+      um 21h (alt: 21.30) gesendet. Danke an MK für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:2ad463bc-21d2-459e-ad49-30e0b5e86bca</guid>
+      <pubDate>Fri, 06 Dec 2013 19:42:41 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Umbau des WDR-Internetauftritts</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Die Webseiten des WDR sind mal wieder umgebaut worden. Ich habe die
+      dadurch gebrochenen Verknüpfungen aktualisiert. Die WDR5 Feature-Serie heißt
+      jetzt "Tiefenblick". Das WDR3 Musikfeature heißt nun Musik-Porträt.
+      </description>
+      <guid isPermaLink="false">urn:uuid:1b60657a-a1af-4e59-a1b9-68dd0964c463</guid>
+      <pubDate>Mon, 28 Oct 2013 20:53:58 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Hördat-Sender für SRF ist nun SRF nicht mehr DRS</title>
+      <link>http://hspiel.mospace.de/record.sh</link>
+      <description>Der Hördat-Sender für SRF ist nun SRF nicht mehr DRS, das
+      record.sh-Skript ist nun daran angepasst.
+      </description>
+      <guid isPermaLink="false">urn:uuid:9ba1990f-7538-4ed8-942f-cb44df8fb7c3</guid>
+      <pubDate>Thu, 09 May 2013 14:48:39 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Titel-Behandlung im Hoerdat-Parser gefixt</title>
+      <link>http://hspiel.mospace.de/xslt/hoerdat-parser2.xsl</link>
+      <description>
+      Der Titel kam nach der Umstellung in hoerdat (manchmal) nicht mit.
+      Das sollte jetzt behoben sein. Danke an Jan für den Hinweis und den Lösungsvorschlag.
+      </description>
+      <guid isPermaLink="false">urn:uuid:402e1795-53d6-420b-912a-be3d5cf3c409</guid>
+      <pubDate>Sun, 05 May 2013 13:10:57 +0200</pubDate>
+    </item>
+
+<item>
+      <title>HörbuchFM Neustart am ersten Mai</title>
+      <link>http://hoerbuchfm.de/</link>
+      <description>
+Aus der Pressemitteilung:
+"100% Hörspiele und Hörbücher, 100% werbefrei.
+Am Mittwoch, dem 1. Mai, startet der für den Grimme Online Award 2012 nominierte
+Radiosender hörbuchFM neu. hörbuchFM wird rund um die Uhr mit Hörspielen und
+Hörbüchern eine Alternative zum Radioeinheitsbrei bieten und auf ein
+innovatives Finanzierungsmodell setzen. Als erstes Hörspiel wird zum
+Sendeneustart am 1. Mai um 16 Uhr die Sherlock Holmes-Geschichte
+„Im Schatten des Rippers“ mit Joachim Tennstedt, der deutschen Stimme von
+Mickey Rourke, in der Hauptrolle gesendet."
+
+Livestream http://srv12.blitz-stream.de:80
+
+Der Sender ist bisher noch nicht in der Sendeplatzliste. Denn ich überlege noch
+wie ich das unterbringe.
+      </description>
+      <guid isPermaLink="false">f5ce1db1-a011-4a3a-beb4-e547a91de2f6</guid>
+      <pubDate>Mon, 29 Apr 2013 21:58:21 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Hördat-Umstellung - Neue Version von record.sh</title>
+      <link>http://hspiel.mospace.de/record.sh</link>
+      <description>
+      Die Hördat-Webseite ist umgestellt worden, dadurch ist eine Anpassung
+      des record.sh-Skripts und des Hördat-Parsers erforderlich geworden.
+      In diesem Zuge habe ich auf eine neue Version von record.sh umgestellt,
+      die die Möglichkeit bietet, direkt bei 'stop' diverse Nachprozessierungen
+      zu machen.
+      Wer weiterhin die alte Version benutzen will, muss im alten record.sh-Skript
+      heute.php durch index.php ersetzen und
+      hoerdat-parser.xsl durch hoerdat-parser2.xsl.
+      </description>
+      <guid isPermaLink="false">urn:uuid:154cc7c3-9b72-479c-ba5a-f8fecb0a832e</guid>
+      <pubDate>Thu, 25 Apr 2013 21:43:52 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>SRF Livestreams aktualisiert</title>
+      <link>http://hspiel.mospace.de/livestreams.txt</link>
+      <description>
+      Das Schweizer Radio hat seine Livestreams umgezogen. Danke an BP für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:2b857704-8976-42a1-93b0-d6aba6e967f3</guid>
+      <pubDate>Sun, 24 Mar 2013 18:50:21 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>NDR Livestreams aktualisiert</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Die NDR Livestreams sind umgezogen.
+      </description>
+      <guid isPermaLink="false">urn:uuid:85c0cb76-1201-4e63-8bf1-dcc0729ff144</guid>
+      <pubDate>Tue, 01 Jan 2013 20:16:28 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>DRS umbenannt in SRF - neuer Netzauftritt</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Am 16. 12. ist das Schweizer Radio DRS in SRF umbenannt worden. Gleichzeitig
+      wurde ein neuer Internetauftritt in Betrieb genommen. Die Sendeplätze sind
+      - soweit ich sehe - vorerst unverändert. Wegen des neuen Sendernamens müssen
+      Sie, wenn Sie record.sh verwenden, Ihr crontab dennoch aktualisieren.
+      Danke an FM für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:6894f3d7-8ccb-4381-a174-c893bdf0792d</guid>
+      <pubDate>Thu, 27 Dec 2012 14:33:49 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>WDR 5 Krimi am Samstag ab 2013 nachmittags</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Der Krimi am Samstag wird ab 2013 um 17:05 gesendet. Die Wiederholung
+      gibt es weiterhin um 23:05. Danke an FK fuer den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:42a8d0f8-a2c6-40bb-a1a7-cbdb7e903706</guid>
+      <pubDate>Fri, 21 Dec 2012 22:56:13 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Neue Version 0.1.4 von MP3AutoCut</title>
+      <link>http://hspiel.mospace.de/mp3autocut.html</link>
+      <description>
+      Bei mp3autocut kann nun mittels der Java System-Properties
+      HoerdatExtraMins und HoerdatExtraMinsCa ein Sicherheitspuffer auf
+      die Hoerdat-Sendungsdauer addiert werden. Das ist insbesondere fuer
+      die vollautomatische Nutzung gedacht (java -jar mp3autocut.jar mp3 ...).
+      </description>
+      <guid isPermaLink="false">urn:uuid:ab5d7fb3-df23-44d2-bf32-7436aa0d8776</guid>
+      <pubDate>Sat, 08 Dec 2012 20:58:36 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Verknüpfungen aktualisiert</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Alle Verknüpfungen geprüft und aktualisiert. Insbesondere bei WDR3
+      hatte sich einiges geändert. Hier heißt nun auch das Literaturfeature
+      "Dichtung und Wahrheit".
+      </description>
+      <guid isPermaLink="false">urn:uuid:c3cd3728-d1e0-4d00-80a4-175061d9f783</guid>
+      <pubDate>Wed, 28 Nov 2012 23:02:03 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>record.sh mit autotag schneller</title>
+      <link>http://hspiel.mospace.de/aufnahme.html</link>
+      <description>
+      Nach Einfügen der xsltproc-Parameter -novalid -nodtdattr beim Wandeln des
+      XHTML in Hoerdat-XML
+      ist die Ausführungszeit von record.sh mit Autotag nun deutlich kürzer.
+      </description>
+      <guid isPermaLink="false">urn:uuid:b35f1887-6c79-483b-9c23-866c483c6577</guid>
+      <pubDate>Sun, 4 Nov 2012 12:45:00 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>ARD Online Award (Hörspieltage 2012)</title>
+      <link>http://tinyurl.com/ardonlineaward</link>
+      <description>
+      Zur Wahl stehen die gleichen zehn Produktionen, die auch für den
+      "Deutschen Hörspielpreis der ARD" nominiert sind. Doch beim ARD Online
+      Award entscheidet nicht die Fachjury über den Gewinner oder die Gewinnerin,
+      sondern die Nutzer - einfach online per Klick. Vom 23. Oktober bis
+      10. November (18 Uhr) können die Hörspiele im Hörspielplayer angehört,
+      zum Teil heruntergeladen und kommentiert werden.
+      </description>
+      <guid isPermaLink="false">urn:uuid:9cade77c-890d-4c40-897e-214a4be0ef53</guid>
+      <pubDate>Sun, 28 Oct 2012 00:10:51 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>SWR cont.ra heißt nun SWR info</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Aus SWR contr.a ist SWR info geworden. Anscheinend hat SWR info
+      keine relevanten Sendeplätze mehr.
+      Danke an IW für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:5463231a-1f98-4c7a-b0f8-769ecaa97af3</guid>
+      <pubDate>Mon, 4 Jun 2012 22:07:45 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>WDR 3 open Studio Akustische Kunst und Hörspiel</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>WDR 3 open Studio Akustische Kunst und Hörspiel, Fr 23:05 neu
+      aufgenommen.
+      </description>
+      <guid isPermaLink="false">urn:uuid:4b107a6e-77f9-4377-80fb-f5b2409cfa33</guid>
+      <pubDate>Fri, 4 May 2012 00:40:35 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Links entrümpelt</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Ellenlange Linklisten liest eh keiner und sie sind aufwendig zu pflegen.
+      Daher: Reduktion aufs Wesentliche, für alles andere gibt es Suchmaschinen.
+      Bei den Downloads nur noch Primäranbieter.
+      </description>
+      <guid isPermaLink="false">urn:uuid:fe4a6043-a3e0-4e89-b7ec-278f6b5ddb54</guid>
+      <pubDate>Tue, 17 Apr 2012 20:28:57 +0200</pubDate>
+    </item>
+
+        <item>
+      <title>89.0 RTL Hörspielnacht</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Die Hörspielnacht des Privatsenders 89.0 RTL aus Halle ist neu in der
+      Sendeplatzübersicht. Danke an FM für den Hinweis.
+      Leider habe ich nirgendwo das Programm der kommenden Sendungen gefunden.
+      </description>
+      <guid isPermaLink="false">urn:uuid:24e8981f-1bab-4013-b964-a7911a71c43d</guid>
+      <pubDate>Sun, 15 Apr 2012 13:16:49 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Hörspiel-Downloads</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Separate Link-Liste für Seiten mit Hörspielen zum Herunterladen und Nachhören;
+      auf Anregung und mit Hilfe von MK.
+      </description>
+      <guid isPermaLink="false">urn:uuid:e3a8676e-33a4-4540-819d-53a696aae5fe</guid>
+      <pubDate>Sun, 15 Apr 2012 12:38:04 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Neuer Link: SWR 2 Hörspiel auf Klick</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      SWR-Hörspiele zum Nachhören oder Herunterladen.
+      Die Produktionen stehen in der Regel sieben Tage
+      zum Hören und/oder Herunterladen bereit.
+      </description>
+      <guid isPermaLink="false">urn:uuid:fb6b6352-e8f4-43fa-aa92-92cb57de50b9</guid>
+      <pubDate>Sun, 11 Mar 2012 11:19:48 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>SWR 2 Dschungel wird SWR 2 Tandem</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Aus "Dschungel" und "Leben" wird die neue Sendung "SWR2 Tandem".
+      Montags bis freitags um 10.05 Uhr und um 19.20 Uhr.
+      Morgens und Montag abends gibt es anscheinend ein Feature, Dienstag abends
+      ein Hoerspiel.
+      </description>
+      <guid isPermaLink="false">f83a98dd-fe9c-4dd4-84d7-fd766b0e1d11</guid>
+      <pubDate>Mon, 9 Jan 2012 22:45:27 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>SR2 Hörspielzeit nun sonntags, SWR2 Krimi und Hörspielstudio tauschen Sendeplätze</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>SR2 Hörspielzeit Do 18-19.30  verschiebt sich ab 1.1.2012
+auf So 17-18.30 (Danke an Matthias K. für den Hinweis). SWR 2 Krimi Do 22h und
+SWR 2 Hörspielstudio Fr 22h tauschen ihre Sendeplätze (Danke an B. S. für den Hinweis).
+      </description>
+      <guid isPermaLink="false">e7503828-33f5-4a5f-9ce4-0d07693d0650</guid>
+      <pubDate>Fri, 6 Jan 2012 12:59:10 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>DRS Pirando heißt jetzt Zambo</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      DRS Pirando heißt jetzt Zambo. Das Hörspiel am Sonntag heißt Zambox.
+      Die "Wochengeschichten" scheint es nicht mehr zu geben.
+      </description>
+      <guid isPermaLink="false">urn:uuid:415a0cc1-dc6b-47e4-bf40-c3ab08d906cf</guid>
+      <pubDate>Mon, 19 Dec 2011 15:54:26 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>BR2 Programmseiten aktualisiert</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Nach dem Umbau des BR2-Online-Auftritts haben sich
+      die Adressen einiger Programmseiten geändert.
+      </description>
+      <guid isPermaLink="false">urn:uuid:cbcd6f82-d8df-46ef-95b6-a01e80c446ed</guid>
+      <pubDate>Wed, 23 Nov 2011 16:45:13 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Fehler bei BR2 Radiotexten korrigiert</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Beide Sendezeitpunkte waren am Samstag einsortiert. Beim Dienstag war
+der Sonntag verlinkt und andersherum. Danke an T. Bellmann für den Hinweis.
+      </description>
+      <guid isPermaLink="false">urn:uuid:fdb96eec-088b-4734-a1ff-281c8e27f6f4</guid>
+      <pubDate>Mon, 26 Sep 2011 21:35:14 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Änderungen im Programm von HR2</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Das Hörspiel am Sonntagabend entfällt. Die Lesung mittags ist jetzt um 15:05.
+      Vielen Dank an M. K. für den Hinweis.
+      </description>
+      <guid isPermaLink="false">15303ad1-6fa9-40c5-bf20-53589f558dcb</guid>
+      <pubDate>Tue, 13 Sep 2011 22:41:51 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Livestream Ö1 aktualisiert</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Danke an JR für den Hinweis (vor einiger Zeit).
+      </description>
+      <guid isPermaLink="false">ad231105-f183-4c25-bf6c-622742944c50</guid>
+      <pubDate>Wed, 6 Jul 2011 22:31:36 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Geänderte Sendezeiten auf BR 2</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Die Hörspiele fangen nun nicht mehr zur halben sondern zur vollen Stunde an.
+      Neu aufgenommen: Radiotexte am Dienstag.
+      </description>
+      <guid isPermaLink="false">34a84e99-390e-46a2-b0be-6709ecc1d1c7</guid>
+      <pubDate>Wed, 6 Jul 2011 22:17:44 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Sendeschemaänderung Nordwestradio und Verlängerung BR2 Sonntagshörspiel</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Im Nordwestradio gibt es ab sofort nur noch einen Hörspielsendeplatz
+      freitags um 19:05 (M. K., Email von 2010-12-13; und JR, Email von 2011-01-08).
+      Neu aufgenommen habe ich bei der Gelegenheit das Nordwestradio-Feature.
+      Das Bayern2-Hörspiel am Samstag beginnt ab diesem Jahr zehn Minuten früher
+      (MK). Den beiden und allen Hörspielfans alles Gute fürs Neue Jahr!
+      </description>
+      <guid isPermaLink="false">urn:uuid:0193898a-ecef-4b44-bd52-79e5773e0717</guid>
+      <pubDate>Sat, 15 Jan 2011 19:50:27 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Neue Livestream-Adressen des NDR</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Der NDR hat die Adressen der Webradio-Angebote geändert. Danke an JR für den Hinweis (Email vom 24. 10.).
+      </description>
+      <guid isPermaLink="false">urn:uuid:51bdc713-9e9e-4767-894b-1e59fb3a5c35</guid>
+      <pubDate>Tue, 26 Oct 2010 01:21:54 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Schneller zum gewünschten Wochentag per Tastatur</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Für die Wochentage Montag bis Sonntag sind nun die Tastenkürzel
+      1 bis 7 eingetragen. Wie man ein Tastenkürzel benutzt, hängt vom Browser
+      ab (siehe http://en.wikipedia.org/wiki/Accesskey#Access_in_different_Browsers),
+      in Firefox unter Windows oder Linux bringt einen beispielsweise
+      Alt+Umschalt+7 zu Sonntag.
+      </description>
+      <guid isPermaLink="false">urn:uuid:1e6b5aad-becd-445d-b6cd-d54997ebe9af</guid>
+      <pubDate>Thu, 23 Sep 2010 23:13:42 +0200</pubDate>
+    </item>
+
+    <item>
+    <title>Neuer Internetauftritt des NDR</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Der Internetauftritt des NDR ist umgestaltet worden (danke an F.&#160;Kochanski
+      für den Hinweis). Die Verknüpfungen sind nun aktualisiert.
+      </description>
+      <guid isPermaLink="false">urn:uuid:cd169b73-dfb6-414c-8039-8061372ef35f</guid>
+      <pubDate>Wed, 15 Sep 2010 21:00:00 +0200</pubDate>
+    </item>
+
+    <item>
+        <title>Linkchecker: Gebrochene Verknüpfungen aktualisiert</title>
+        <link>http://hspiel.mospace.de/</link>
+      <description>
+      RBB Berlin 88.8 Frequenzen; Bremen vier Frequenzen; Kiraka Frequenzen;
+      SWR 4 Mundarthörspiel Programm, Lilipuz Hörspiel Programm.
+      </description>
+      <guid isPermaLink="false">urn:uuid:c2bcdc11-7fff-4ba0-804e-3a567dd415a7</guid>
+      <pubDate>Wed, 15 Sep 2010 20:26:00 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>ARD Radiofestival, Das Ding Hörzeit entfällt</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+Das Ding Hörzeit gibt es nicht mehr.
+
+
+ARD Radiofestival
+=====================================================================
+Vom 17.07. bis 11.09.2010 zwischen 20:05 und 24:00 Uhr
+
+Betroffen sind
+ Bayern 2plus
+ hr2-kultur,
+ Kulturradio vom rbb,
+ MDR FIGARO,
+ NDR Kultur,
+ Nordwestradio,
+ SR 2 KulturRadio,
+ SWR 2 und
+ WDR 3
+
+siehe ARD Radiofestival Hilfe
+
+Lesung
+Mo - Fr, 22:30 - 23:00 Uhr
+
+HörReihe "Große Stimmen - Große Namen"
+Sonntags, 22.05 - 24:00 Uhr
+
+Danke an JR für die beiden Hinweise.
+      </description>
+      <guid isPermaLink="false">urn:uuid:3070bc11-3de2-475b-9a2b-fd659f544fbc</guid>
+      <pubDate>Sun, 18 Jul 2010 17:09:30 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>RBB-Livestreams im MP3-Format</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Die Livestreams des RBB sind nun auch als MP3-Streams verfuegbar. Danke an F.&#160;Kochanski
+      fuer den Hinweis (Email von Mon, 3 May 2010 18:02:03 +0200). Damit ist zum ersten Mal
+      für alle Hörspiel-Sender ein MP3-Stream verfügbar.
+      </description>
+      <guid isPermaLink="false">urn:uuid:5a188c94-4ccb-4cab-ae51-81bbabd86410</guid>
+      <pubDate>Tue, 11 May 2010 23:15:47 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Neue Version 0.1.2 von MP3AutoCut</title>
+      <link>http://hspiel.mospace.de/mp3autocut.html</link>
+      <description>
+      Version 0.1.2 behebt einen Fehler in Version 0.1.1, durch den das
+      Ende zumeist falsch bestimmt wurde.
+      </description>
+      <guid isPermaLink="false">urn:uuid:88dd9376-31e0-4aa7-9572-157711673153</guid>
+      <pubDate>Sun, 11 Apr 2010 12:55:45 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Neue Version 0.1.1 von MP3AutoCut</title>
+      <link>http://hspiel.mospace.de/mp3autocut.html</link>
+      <description>
+      Version 0.1.1 gibt gegenüber 0.1 genauere Schnittpositionen aus.
+      Insbesondere wird im Direktschnitt-Modus (ohne MP3DirectCut)
+      nun genau an der MP3-Framegrenze und nicht mehr mitten in einem Frame
+      geschnitten. Allerdings ist die Schnittbestimmung dadurch langsamer
+      geworden.
+      </description>
+      <guid isPermaLink="false">urn:uuid:ef215373-ec30-44e0-acc5-fa77de3d54b8</guid>
+      <pubDate>Wed, 7 Apr 2010 00:12:32 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>EPGData Radioprogramm vorübergehend (?) eingestellt</title>
+      <link>http://text.epgdata.de/radioprogramm/</link>
+      <description>
+      Das EPGData-Radioprogramm ist "vorübergehend deaktiviert". Auf der
+      Hörzu-Webseite gibt es das Radioprogramm wochenweise als PDF.
+      Solange EPGData nicht zurückkommt und ich nichts besseres finde,
+      verweise ich auf http://hspiel.mospace.de darauf.
+      </description>
+      <guid isPermaLink="false">urn:uuid:35b2a610-8f5a-4bf3-843a-2b6b90cedc4d</guid>
+      <pubDate>Mon, 22 Feb 2010 22:22:14 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Livestream-Adresse von SWR 2 korrigiert</title>
+      <link>http://hspiel.mospace.de/livestreams.txt</link>
+      <description>
+      Die für SWR 2 angegebene Livestream-Adresse wies auf den Livestream
+      von SWR 1, die Livestream-Adresse von Eins-Live wurde ebenfalls
+      aktualisiert. Danke an M. K. für den Hinweis
+      (Email von Thu, 11 Feb 2010 15:31:10 +0100).
+      </description>
+      <guid isPermaLink="false">urn:uuid:e1d8cbe4-5e1f-4eed-8c3b-f3651f1cfae3</guid>
+      <pubDate>Thu, 11 Feb 2010 20:31:45 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Neues Programmschema bei MDR Figaro</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      MDR Figaro hat ein neues Programmschema.
+      Der Krimi müssen sich künftig seinen um vier Stunden vorverlegten Sendeplatz am
+      Sonntagabend um 18:00 mit Features und anderen Hörspielen teilen.
+      Figarinos Kinderhörspiel am Sonntagmorgen ist auf 7:10 vorverlegt worden.
+      Unverändert sind der
+      Hörspiel-Sendeplatz am Montagabend um 22:00 und die Feature-Sendeplätze
+      am Mittwoch und Samstag.
+      Die Literatur-Sendeplätze (Lesezeit und Figarothek Klassiklesung) sind
+      ebenfalls gleich geblieben. Informationen des Senders zur Programmreform unter
+      http://www.mdr.de/mdr-figaro/programm/
+      </description>
+      <guid isPermaLink="false">urn:uuid:ea35c821-215b-4213-8e2e-8994df81a426</guid>
+      <pubDate>Sun, 7 Feb 2010 23:30:02 +0100</pubDate>
+    </item>
+
+<item>
+      <title>Lilipuz-Hörspiel und SR2 Hörspielzeit</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>Das Lilipuz-Hörspiel ist auf den Freitag verlegt worden
+      (T.&#160;Bellmann), am gleichen Tag wird es um 17:00 im Kiraka
+      (Digitalradio und Internet) wiederholt.
+      Die Dauer der SR2-Hörspielzeit variiert und kann eine Stunde
+      deutlich überschreiten (T.&#160;Bellmann).
+      </description>
+      <guid isPermaLink="false">urn:uuid:1f41afbd-7780-46f4-9929-80784d35be14</guid>
+      <pubDate>Thu, 4 Feb 2010 23:28:58 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Neue Stream-URLs für SWR</title>
+      <link>http://hspiel.mospace.de/livestreams.txt</link>
+      <description>Die neuen URLs sehen aus, als könnten sie diesmal länger halten.
+      Danke an T.&#160;Bellmann für den Hinweis (Email von Thu, 21 Jan 2010 20:50:34 +0100).
+      </description>
+      <guid isPermaLink="false">urn:uuid:d15b9543-4f8d-4327-b09a-13c511093bad</guid>
+      <pubDate>Thu, 21 Jan 2010 21:23:01 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Neues Helferlein für den Hörspielfreund: MP3AutoCut</title>
+      <link>http://hspiel.mospace.de/mp3autocut.html</link>
+      <description>MP3AutoCut erleichtert das Schneiden von
+      MP3-Radiomitschnitten, indem es nach festen Audio-Mustern sucht, die den
+      Anfang bzw. das Ende der Sendung markieren. Beispielsweise kann man für
+      den Anfang der Radiosendung einen Jingle und für das Ende der Sendung das
+      Nachrichtensignal des Senders verwenden. Zur Zeit werden ausschließlich
+      mp3-Dateien mit konstanter Bitrate unterstützt (von Internetradio
+      aufgenommene MP3-Dateien haben in der Regel eine konstante Bitrate). Um
+      MP3Autocut benutzen zu können, muss Java 6 oder eine spätere Java-Version
+      installiert sein. </description>
+      <guid isPermaLink="false">urn:uuid:1ebff795-b7ee-44d3-bd4b-31f40a6e471d</guid>
+      <pubDate>Mon, 11 Jan 2010 16:46:13 +0100</pubDate>
+    </item>
+
+    <item>
+        <title>ARD radiofeature</title>
+        <link>http://www.ard.de/radio/radiofeature</link>
+        <description>Nach dem Krimi nun das Feature: gleiche Sendungen
+        in kurzem Zeitabstand in mehreren ARD-Sendern, soweit ich sehe
+        auf den regelmäßigen Feature-Sendeplätzen.</description>
+      <guid isPermaLink="false">urn:uuid:57d1ccc9-3eb8-4f47-b53e-7c637617b88f</guid>
+      <pubDate>Mon, 11 Jan 2010 13:43:00 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Genereller Link-Check</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      ARD Hörspielportal gibt es nicht mehr. Mediacoder hat neue Homepage
+      (http://hspiel.mospace.de/aufnahme.html).
+      </description>
+      <guid isPermaLink="false">urn:uuid:9f74f954-42e1-4704-aead-49d808330fe6</guid>
+      <pubDate>Mon, 11 Jan 2010 13:30:00 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Änderungen im Programm von WDR5</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Die Hörspielserie am Sonntag gibt es nicht mehr. Ohrclip samstags
+      eine Stunde später. An jedem zweiten letzten Samstag im Monat (sic!)
+      Mundarthörspiel Land und Leute in Ohrclip.
+      </description>
+      <guid isPermaLink="false">urn:uuid:433ff5dd-fd03-4387-ab6f-9b2a0aec9016</guid>
+      <pubDate>Mon, 11 Jan 2010 13:13:53 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>Neue Livestreams für DRS, ORF, SWR (T.&#160;Bellmann)</title>
+      <link>http://hspiel.mospace.de/livestreams.txt</link>
+      <description>
+      DRS jetzt als 128 kbit/s MP3.
+      ORF als 96 kbit/s MP3.
+      SWR-Streams haben neue Adressen.
+      (Emails von Thu, 24 Dec 2009 14:46:54/15:39:13/15:44:39 +0100).
+      Vielen Dank an T.&#160;Bellmann für den Hinweis.
+      Ihm und allen Hörspielfreunden Frohe Weihnachten!
+      </description>
+      <guid isPermaLink="false">urn:uuid:24f7387d-f7ae-4b73-a0b6-d1e210e86320</guid>
+      <pubDate>Thu, 24 Dec 2009 16:16:35 +0100</pubDate>
+    </item>
+
+    <item>
+      <title>SR2 Hörspielzeit</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>Uhrzeiten im 4. Quartal 2009 präzisiert.
+      Danke an F. Kochanski für den Hinweis (Email von
+      Thu, 8 Oct 2009 16:00:28 +0200).
+      </description>
+      <guid isPermaLink="false">urn:uuid:a03694ac-736d-4a37-a53e-daf5a9a55707</guid>
+      <pubDate>Sat, 10 Oct 2009 12:00:52 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Verbesserung in record.sh (autotag)</title>
+      <link>http://hspiel.mospace.de/record.sh</link>
+      <description>Die Uhrzeit für die Auswahl der laufenden Sendung in der
+      hoerdat-XML-Datei wird nun gleich zu Beginn der Start-Funktion bestimmt.
+      Dadurch wird die Auswahl unempfindlich gegenüber der Ausführungsdauer des
+      start-Befehls.
+      </description>
+      <guid isPermaLink="false">urn:uuid:1f1841e7-2cc0-4280-a276-c4b106dea75b</guid>
+      <pubDate>Tue, 11 Aug 2009 23:36:21 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Verbesserung in record.sh (autotag)</title>
+      <link>http://hspiel.mospace.de/record.sh</link>
+      <description>Die Uhrzeit für die Auswahl der laufenden Sendung in der
+      hoerdat-XML-Datei wird nun gleich zu Beginn der Start-Funktion bestimmt.
+      Dadurch wird die Auswahl unempfindlich gegenüber der Ausführungsdauer des
+      start-Befehls.
+      </description>
+      <guid isPermaLink="false">urn:uuid:c3f4aee5-4f85-43db-a5ed-7c493b81fe91</guid>
+      <pubDate>Tue, 11 Aug 2009 23:36:21 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Sendestart Kurzhörspielreihe All Inclusive</title>
+      <link>http://www.you-fm.de/index.jsp?rubrik=47446</link>
+      <description>Am Montag den 27. Juli ist die Kurzhörspielreihe
+      All Inclusive auf HR You FM angelaufen. Die 30 Folgen sind jeweils
+      zweieinhalb Minuten lang. Sie werden Mo - Fr um 12 und um 18 Uhr auf You FM
+      gesendet und sind außerdem als Podcast verfügbar. All Inclusive läuft
+      ebenfalls auf SWR Das Ding  um 18:15 und im Herbst auf RBB Fritz.
+      In der Sendeplatzliste werden
+      wegen der geringen Gesamtlänge von 90 Minuten nur die You-FM-Sendetermine
+      aufgeführt.
+      </description>
+      <guid isPermaLink="false">urn:uuid:c4d78e7c-63c2-4e6e-af89-c394501739ba</guid>
+      <pubDate>Tue, 28 Jul 2009 01:07:57 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Kein Ö1-Hörspiel bis 31.8.</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>Das Ö1-Hörspiel entfällt bis einschließlich 31.8.2009 (Sommerpause).
+      Danke für den Hinweis an JR.</description>
+      <guid isPermaLink="false">urn:uuid:70f1a6db-c15c-4357-a730-cd953c1c335b</guid>
+      <pubDate>Sun, 12 Jul 2009 22:24:56 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>ARD Radiofestival 2009</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>Vom 12. Juli - 12. September 2009 senden die ARD-Kultursender
+      zwischen 20:05 - 24:00 Uhr ein gemeinsames Programm, genannt
+      ARD-Radiofestival. In dieser Zeit entfallen die Hörspielsendeplätze der
+      beteiligten Sender Bayern 4 Klassik, hr2-Kultur, MDR FIGARO, NDR Kultur,
+      Nordwestradio, RBB Kulturradio, SR2 KulturRadio, SWR2 und WDR 3 im
+      genannten Zeitraum. Täglich von 22:30 - 23:00 Uhr wird eine Lesung aus den
+      Buddenbrooks gesendet. Danke für den Hinweis an JR und T.&#160;Bellmann.</description>
+      <guid isPermaLink="false">urn:uuid:19addea8-39ff-41d2-b410-a21091f0c6c2</guid>
+      <pubDate>Sun, 12 Jul 2009 22:24:56 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Bugfix in record.sh (autotag)</title>
+      <link>http://hspiel.mospace.de/autotag.html</link>
+      <description>Bisher scheiterte die Auswahl der laufenden Sendung in der
+      hoerdat-XML-Datei mittels hoerdat-select.xsl meistens. Der Grund dafür
+      war ein falsches Format für den date-Befehl, so dass dem Style-Sheet
+      der Monat (%m) statt die Minute (%M) übergeben wurde.
+      </description>
+      <guid isPermaLink="false">urn:uuid:4033ea37-7bf0-45c4-b5e9-4d5796fae518</guid>
+      <pubDate>Mon, 6 Jul 2009 22:40:53 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Kein Krimi mehr in SR1 Abendrot</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>Danke an T. Bellmann für den Hinweis (Email von
+      Thu, 18 Jun 2009 12:35:55 +0200).
+      </description>
+      <guid isPermaLink="false">urn:uuid:17ef9c23-0281-4bd7-984f-1099c3d4e520</guid>
+      <pubDate>Tue, 23 Jun 2009 22:19:50 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>SR2-Hörspielzeit und SWR2-Krimi</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>Der SR2-Sendeplatz springt im zweiten Halbjahr von 2009
+      zwischen verschiedenen Uhrzeiten. Der SWR2-Sendeplatz wird einmalig am
+      16.7. (oder generell?) auf 19:05 vorverlegt.
+      </description>
+      <guid isPermaLink="false">urn:uuid:b4199d0e-e89f-4680-a546-b2739a62a9ed</guid>
+      <pubDate>Tue, 23 Jun 2009 22:00:31 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Diverse Aktualisierungen</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>WDR5 Frequenzseite aktualisiert.
+      BR2 radioTexte am Sonntag heißen jetzt radioTexte - Das offene Buch (JR).
+      Neue Sendung: DLF Lesezeit Mi 20:30 (T.&#160;Bellmann).
+      </description>
+      <guid isPermaLink="false">urn:uuid:8267f77e-9d27-4db5-b4b6-13bcaabbb212</guid>
+      <pubDate>Wed, 17 Jun 2009 21:20:37 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Link zum Hörzu-Radioprogramm aktualisiert</title>
+      <link>http://hspiel.mospace.de/</link>
+      <description>
+      Hörzu-Radioprogramm jetzt unter http://text.epgdata.de/radioprogramm/.
+      </description>
+      <guid isPermaLink="false">urn:uuid:91615d9c-5fdc-461c-96b7-1f7ab21c6e2b</guid>
+      <pubDate>Mon, 11 May 2009 22:00:34 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Livestreams RB und NDR aktualisiert</title>
+      <link>http://hspiel.mospace.de/livestreams.txt</link>
+      <description>
+      Die Adressen der MP3-Livestreams der NDR-Sender haben sich geändert.
+      Ebenso ist die Adresse des MP3-Livestreams von Radio Bremen 4 neu.
+      </description>
+      <guid isPermaLink="false">urn:uuid:4c3a7f2e-3885-4a38-a0af-d35abe9313c5</guid>
+      <pubDate>Thu, 30 Apr 2009 18:40:51 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>record.sh liest optional eine zweite Stream-Info-Datei</title>
+      <link>http://hspiel.mospace.de/aufnahme.html</link>
+      <description>
+      In record.sh kann nun in der Variablen localstreams eine zweite
+      Stream-Info-Datei angegeben werden, die die Definitionen aus
+      http://hspiel.mospace.de/livestreams.txt ergänzt und überschreibt.
+      </description>
+      <guid isPermaLink="false">urn:uuid:8b5ccbde-a508-4493-bf26-63335d3041caf</guid>
+      <pubDate>Thu, 23 Apr 2009 22:44:30 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Aktualisierungen von JR</title>
+      <link>http://hspiel.mospace.de</link>
+      <description>
+      Livestreams Ö1 und Nordwestradio
+      (Email von Fri, 17 Apr 2009 23:41:49 +0200 und Wed, 15 Apr 2009 07:51:06 +0200)
+      </description>
+      <guid isPermaLink="false">urn:uuid:13be4ecb-006b-4066-a6e1-2476a5a18d2f</guid>
+      <pubDate>Mon, 20 Apr 2009 20:00:18 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Aktualisierungen von F.&#160;Kochanski</title>
+      <link>http://hspiel.mospace.de</link>
+      <description>
+      RB Relaunch (Verknüpfungen)
+      (Email von Fri, 13 Mar 2009 20:03:12 +0100)
+      </description>
+      <guid isPermaLink="false">urn:uuid:3596e06b-e317-4573-9456-ddababf6e49f</guid>
+      <pubDate>Mon, 30 Mar 2009 21:35:32 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Aktualisierungen von T.&#160;Bellmann</title>
+      <link>http://hspiel.mospace.de</link>
+      <description>
+      hr2 Domino Lauschinsel Programm-Verknüpfung;
+      DLR Kultur Lesung am Samstag gibt's nicht mehr.
+      (Email von Sun, 29 Mar 2009 19:03:07 +0200)
+      </description>
+      <guid isPermaLink="false">urn:uuid:f2c6e480-9f6a-46f5-b4fa-a9ff7bd2c87c</guid>
+      <pubDate>Mon, 30 Mar 2009 21:08:12 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>RSS-Feed gestartet</title>
+      <link>http://hspiel.mospace.de</link>
+      <description>RSS-Feed gestartet</description>
+      <guid isPermaLink="false">urn:uuid:7549f884-0e2e-45cf-b6b0-6ccd944e6ee8</guid>
+      <pubDate>Mon, 30 Mar 2009 20:36:23 +0200</pubDate>
+    </item>
+
+
+  </channel>
+</rss>
+

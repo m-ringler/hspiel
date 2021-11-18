@@ -1,0 +1,4 @@
+DirectoryIndex ../mp3autocut.html
+Options +FollowSymlinks
+RewriteEngine on
+RewriteRule (.*)mp3autocut-((jar|src).zip)$ $1mp3autocut-0.1.3-$2
